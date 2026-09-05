@@ -1,0 +1,90 @@
+{
+  "method": "Current Rmd is parsed with tabs preserved; every explicit correction is recorded before conversion. Independently parse the conversion baseline and final chapter TeX with the same LaTeX reader, comparing ordered prose, inline code, formulas and table-cell text after whitespace removal. Code and figures are excluded here and checked separately by the content manifest. This checks content, not PDF pixel equivalence.",
+  "chapters": [
+    {
+      "chapter": "chapters/00-preface.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 268,
+      "actual_semantic_text_chars": 268,
+      "semantic_text_sha256": "5558f57c3ddd0ba7c6c38c190fbacdba32bc0a7d145cc957a5c16f1b4fdc8297"
+    },
+    {
+      "chapter": "chapters/01-hardware-preparation.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 5446,
+      "actual_semantic_text_chars": 5446,
+      "semantic_text_sha256": "e8cfedf8323f30fb3306ff060179ae122fa5c463733be4919c6d0ede71772897"
+    },
+    {
+      "chapter": "chapters/02-software-preparation.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 9661,
+      "actual_semantic_text_chars": 9661,
+      "semantic_text_sha256": "b176ef98031a256108222234fb2f7db30e0f3c55ba5eda5ebc1fdc5067ad538c"
+    },
+    {
+      "chapter": "chapters/03-base-cpu.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 2969,
+      "actual_semantic_text_chars": 2969,
+      "semantic_text_sha256": "72fd9e4937b5911bed3cf70435901b2cecbd96d69b0ae2ae21097e1d6fcc450e"
+    },
+    {
+      "chapter": "chapters/04-advanced-cpu.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 4132,
+      "actual_semantic_text_chars": 4132,
+      "semantic_text_sha256": "64e5342f7176c80a44e59bbdc5aeb6f07b4e48ad3ddbecdb0e01a32cf8af5786"
+    },
+    {
+      "chapter": "chapters/05-complex-cpu.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 11419,
+      "actual_semantic_text_chars": 11419,
+      "semantic_text_sha256": "660105ef2e629f551ce499079e221405bfd0e55edea0af597fc22a563a16922c"
+    },
+    {
+      "chapter": "chapters/06-agility.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 10060,
+      "actual_semantic_text_chars": 10060,
+      "semantic_text_sha256": "1aacf4c640349f82e978cfebd6b23a1f5570a4ad4b5308e7517c68817c260561"
+    },
+    {
+      "chapter": "chapters/07-soc-and-system.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 6760,
+      "actual_semantic_text_chars": 6760,
+      "semantic_text_sha256": "b33dce02eb594cbb5d6e3c3af9727d20ae55ae5da9951360c434dc05509d703b"
+    },
+    {
+      "chapter": "chapters/08-verification-and-implementation.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 17605,
+      "actual_semantic_text_chars": 17605,
+      "semantic_text_sha256": "2d5a9963d0804f19f1e47504f66ec450ab62cd5ec2b6b87ba571ef5021f9560e"
+    },
+    {
+      "chapter": "chapters/09-test-and-show.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 1969,
+      "actual_semantic_text_chars": 1969,
+      "semantic_text_sha256": "de49ce308c15953f0a27f48061d67b37b1f720a99e51c887c9d960453e72f7a5"
+    },
+    {
+      "chapter": "chapters/20-references.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 1151,
+      "actual_semantic_text_chars": 1151,
+      "semantic_text_sha256": "348b62f95af396a12aa293a2c4c650b85982eba4568225e19626ea0f100768f8"
+    },
+    {
+      "chapter": "chapters/30-resources.tex",
+      "text_matches_after_documented_edits": true,
+      "expected_semantic_text_chars": 1086,
+      "actual_semantic_text_chars": 1086,
+      "semantic_text_sha256": "c0a81567ea2cea826e5d3631f7933ff3ebaba13f1e314ba8b89fd7b1b6e1c9f2"
+    }
+  ],
+  "all_chapters_match": true
+}

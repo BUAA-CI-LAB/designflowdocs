@@ -1,0 +1,166 @@
+% 原生 LaTeX 语法高亮；修改代码后随 XeLaTeX 编译自动更新，无预生成缓存。
+\usepackage{listings}
+\usepackage{xeCJK-listings}
+
+\definecolor{CodeKeyword}{HTML}{1F4E79}
+\definecolor{CodeType}{HTML}{68428A}
+\definecolor{CodeString}{HTML}{9A4B00}
+\definecolor{CodeComment}{HTML}{446845}
+\definecolor{CodeAdded}{HTML}{24683D}
+\definecolor{CodeRemoved}{HTML}{A02C35}
+\definecolor{CodeBackground}{HTML}{FAFAF8}
+\definecolor{CodeRule}{HTML}{D7DDE3}
+
+% 程序使用 Latin Modern Mono；纯文本/目录树使用覆盖特殊符号的 DejaVu。
+\newfontfamily\CodeSymbolFont{DejaVuSansMono.ttf}[
+  Path=fonts/,Scale=0.872,Ligatures=NoCommon,
+  BoldFont=DejaVuSansMono-Bold.ttf,
+  ItalicFont=DejaVuSansMono-Oblique.ttf,
+  BoldItalicFont=DejaVuSansMono-BoldOblique.ttf
+]
+\lstdefinestyle{bookcode}{
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{CodeKeyword}\bfseries,
+  keywordstyle=[2]\color{CodeType},
+  keywordstyle=[3]\color{CodeKeyword},
+  commentstyle=\color{CodeComment},
+  stringstyle=\color{CodeString},
+  identifierstyle=\color{black},
+  backgroundcolor=\color{CodeBackground},
+  rulecolor=\color{CodeRule},
+  frame=tb,
+  framerule=0.4pt,
+  framesep=2mm,
+  aboveskip=0.8\baselineskip,
+  belowskip=0.8\baselineskip,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  showspaces=false,
+  showtabs=false,
+  tabsize=4,
+  upquote=true,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakautoindent=true,
+  breakindent=1em,
+  numbers=none,
+  mathescape=false,
+  texcl=false,
+  escapeinside={}
+}
+
+\lstdefinelanguage{BookText}{basicstyle=\small\ttfamily\CodeSymbolFont}
+\lstdefinelanguage{BookVerilog}[]{Verilog}{
+  morekeywords=[2]{signed,unsigned,integer,reg,wire},
+  morekeywords=[3]{`define,`include,`ifdef,`ifndef,`endif,`timescale}
+}
+\lstdefinelanguage{BookSystemVerilog}[]{BookVerilog}{
+  morekeywords={always_comb,always_ff,always_latch,logic,bit,byte,int,longint,
+    shortint,struct,typedef,enum,package,endpackage,import,interface,endinterface,
+    modport,unique,priority,assert,property,endproperty,sequence,endsequence}
+}
+\lstdefinelanguage{BookScala}[]{Scala}{
+  morekeywords=[2]{UInt,Bool,Bits,SInt,Vec,Bundle,Module,Component,Input,Output,
+    Reg,RegInit,RegNext,Wire,Mux,Cat,Fill,U,S,B,True,False},
+  morekeywords={when,elsewhen,otherwise,switch,is}
+}
+\lstdefinelanguage{BookC}[]{C}{
+  morekeywords=[2]{uint8_t,uint16_t,uint32_t,uint64_t,int8_t,int16_t,int32_t,
+    int64_t,uintptr_t,size_t,bool,u8,u16,u32,u64,NULL},
+  morekeywords=[3]{__init,__initdata,__iomem,__asm__,__volatile__}
+}
+\lstdefinelanguage{BookShell}[]{bash}{
+  morekeywords=[2]{make,git,cp,mkdir,rm,ls,sudo,chmod,tar,grep,find,ifconfig,ping,
+    setenv,load,tftpboot,bootelf,nproc,dc_shell,verilator,strip,gcc,export,
+    vcs,simv,verdi,dve,java,pwd,sbt,gtkwave,g,clear,
+    loongarch32r-linux-gnusf-strip,loongarch32r-linux-gnusf-gcc,
+    loongarch32r-linux-gnusf-objdump,loongarch32r-linux-gnusf-objcopy}
+}
+\lstdefinelanguage{BookMake}[gnu]{make}{
+  morekeywords=[2]{CONFIG_LS_SOC,CONFIG_BX_SOC,CONFIG_MEGA_SOC_FPGA}
+}
+\lstdefinelanguage{BookTcl}[]{tcl}{
+  morekeywords=[2]{set_app_var,read_verilog,read_file,analyze,elaborate,link,
+    uniquify,check_design,compile,compile_ultra,check_timing,report_timing,
+    set_synthesis_strategy,create_clock,get_ports,get_nets,get_cells,get_clocks,
+    all_inputs,all_outputs,set_input_delay,set_output_delay,set_clock_latency,
+    set_clock_uncertainty,set_clock_transition,set_propagated_clock,
+    set_max_transition,set_max_fanout,set_max_capacitance,set_max_area,
+    set_false_path,set_multicycle_path,write,write_file,write_sdf,
+    set_svf,read_db,set_top,match,verify,set_analysis_view,
+    verify_pg_nets,verify_lvs,check_routes,saveNetlist,defOut,streamOut}
+}
+\lstdefinelanguage{BookDTS}{
+  sensitive=true,
+  alsoletter={-\#},
+  morekeywords={compatible,reg,interrupts,interrupt-parent,status,ranges,
+    device_type,clock-frequency,clocks,clock-names,phandle,model,bootargs,
+    gpio-controller,interrupt-controller,\#address-cells,\#size-cells,
+    \#interrupt-cells,\#gpio-cells},
+  morekeywords=[2]{GIC_SPI,IRQ_TYPE_LEVEL_HIGH,IRQ_TYPE_EDGE_RISING},
+  morecomment=[l]{//},morecomment=[s]{/*}{*/},morestring=[b]"
+}
+\lstdefinelanguage{BookLoongArch}{
+  sensitive=true,alsoletter={.},alsoother={$},
+  morekeywords={add.w,addi.w,sub.w,lu12i.w,lu32i.d,lu52i.d,li.w,li.d,la.local,
+    la.global,la.abs,la.pcrel,or,ori,and,andi,xor,xori,nor,slt,sltu,slti,sltui,
+    sll.w,slli.w,srl.w,srli.w,sra.w,srai.w,mul.w,mulh.w,mulh.wu,div.w,div.wu,
+    mod.w,mod.wu,ld.w,ld.b,ld.bu,ld.h,ld.hu,st.w,st.b,st.h,ll.w,sc.w,
+    jirl,bl,b,beq,bne,beqz,bnez,bge,bgeu,blt,bltu,blez,bgtz,bltz,bgez,
+    csrrd,csrwr,csrxchg,iocsrrd.w,iocsrwr.w,ertn,syscall,break,tlbsrch,tlbrd,
+    tlbwr,tlbfill,invtlb,cacop,dbar,ibar,nop,move,ret,jr},
+  morekeywords=[3]{.text,.data,.bss,.section,.align,.globl,.global,.type,.size,
+    .macro,.endm,.word,.long,.byte,.space,.equ,.set,.rept,.endr,.extern,.asciz,.int},
+  morekeywords=[2]{zero,ra,tp,sp,a0,a1,a2,a3,a4,a5,a6,a7,t0,t1,t2,t3,t4,t5,
+    t6,t7,t8,r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,fp,s0,s1,s2,s3,s4,s5,s6,s7,s8},
+  morecomment=[l]{\#},morecomment=[l]{//},morecomment=[s]{/*}{*/},
+  morestring=[b]"
+}
+\lstdefinelanguage{BookPseudo}[]{Python}{
+  morekeywords={true,false,elseif,then,end,foreach,repeat,until}
+}
+\lstdefinelanguage{BookConfig}{
+  sensitive=true,identifierstyle=\color{CodeType},
+  morekeywords={config,menuconfig,menu,endmenu,choice,endchoice,bool,tristate,
+    string,int,hex,prompt,default,depends,on,select,imply,if,endif,source,help},
+  morekeywords=[2]{y,n,m},morecomment=[l]{\#},morestring=[b]"
+}
+\lstdefinelanguage{BookLinker}{
+  sensitive=true,
+  morekeywords={OUTPUT_FORMAT,OUTPUT_ARCH,ENTRY,MEMORY,SECTIONS,INCLUDE,
+    ORIGIN,LENGTH,ALIGN,KEEP,PROVIDE,AT,LOADADDR,ADDR,SIZEOF},
+  morecomment=[s]{/*}{*/},morecomment=[l]{\#},morestring=[b]"
+}
+\lstdefinelanguage{BookDiff}{
+  sensitive=true,
+  morecomment=[l][\color{CodeAdded}]{+},
+  morecomment=[l][\color{CodeRemoved}]{-},
+  morecomment=[l][\color{CodeType}]{@@},
+  morecomment=[l][\color{CodeKeyword}\bfseries]{diff},
+  morecomment=[l][\color{CodeKeyword}]{index}
+}
+
+% 本书的 C++ 仿真模型、带注释的 JSON 配置和 C Shell 签核脚本。
+\lstdefinelanguage{BookCpp}[]{C++}{
+  morekeywords={constexpr,nullptr,override,final,noexcept,decltype,thread_local},
+  morekeywords=[2]{uint8_t,uint16_t,uint32_t,uint64_t,size_t,VL_INLINE_OPT,
+    VL_NOT_FINAL,VerilatedModule,VerilatedContext}
+}
+\lstdefinelanguage{BookJSON}{
+  sensitive=true,morekeywords={true,false,null},
+  morestring=[b]",
+  morecomment=[l]{//},morecomment=[s]{/*}{*/}
+}
+\lstdefinelanguage{BookCShell}{
+  sensitive=true,
+  morekeywords={set,setenv,unset,unsetenv,if,then,else,endif,switch,case,breaksw,
+    endsw,foreach,end,while,break,continue,exit,source,alias,unalias},
+  morekeywords=[2]{calibre,tee,echo,cat,rm,mkdir,cp,cd,ln},
+  morecomment=[l]{\#},morestring=[b]",morestring=[b]'
+}
+
+% 例如：\begin{CodeBlock}[language=BookVerilog] ... \end{CodeBlock}
+\lstnewenvironment{CodeBlock}[1][language=BookText]
+  {\lstset{style=bookcode,#1}}
+  {}

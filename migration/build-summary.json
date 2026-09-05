@@ -1,0 +1,17 @@
+{
+  "project": "/mnt/d/Desktop/教材与专著/CPU_BOOK/designflowdocslatex",
+  "pdf": "build/main.pdf",
+  "pages": 205,
+  "pdf_sha256": "aea463ef5edfb3c2aa83149d29aae9e0c5d2c2f3b33bad4b63b2c0c2c279ae71",
+  "engine": "XeTeX 3.141592653-2.6-0.999997 (TeX Live 2025/Debian)",
+  "latexmk": "Latexmk, John Collins, 15 June 2025. Version 4.87",
+  "build_returncode": 0,
+  "verification_returncode": 0,
+  "copied_without_previous_build_cache": true,
+  "prose_comparison_all_12_chapters_match": true,
+  "original_or_other_book_inputs_in_build": false,
+  "syntax_highlighting": "listings + xeCJK-listings; no shell escape",
+  "sample_pdf": "build/code-styles.pdf",
+  "sample_pages": 5,
+  "source_files_unchanged": 103
+}

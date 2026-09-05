@@ -1,0 +1,192 @@
+% !TeX program = xelatex
+% 从工程根目录运行：latexmk examples/code-styles.tex
+\documentclass[10pt,letterpaper]{book}
+\input{config/preamble}
+\newfontfamily\PreviousCodeFont{DejaVuSansMono.ttf}[
+  Path=fonts/,Scale=0.9,Ligatures=NoCommon,
+  BoldFont=DejaVuSansMono-Bold.ttf,
+  ItalicFont=DejaVuSansMono-Oblique.ttf,
+  BoldItalicFont=DejaVuSansMono-BoldOblique.ttf
+]
+\begin{document}
+\pagestyle{plain}
+\section*{代码字体与语法高亮示例}
+
+下面两段使用相同代码和配色，可以直接比较字体。新版采用接近原稿的
+Latin Modern Mono；中文注释使用 Fandol 仿宋风格。纯文本和目录树继续使用
+DejaVu，以完整显示线条和特殊空格。
+
+\subsection*{新版程序字体：Latin Modern Mono}
+\begin{CodeBlock}[language=BookVerilog]
+// 时序逻辑：低电平复位，保留 0/O、1/l、下划线和引号的区别
+module counter(input wire clk, reset_n, output reg [7:0] count);
+  always @(posedge clk) begin
+    if (!reset_n) count <= 8'h00;
+    else count <= count + 1'b1;
+  end
+  initial $display("counter is ready");
+endmodule
+\end{CodeBlock}
+
+\subsection*{备选等宽字体：DejaVu Sans Mono（同配色对照）}
+\begin{CodeBlock}[language=BookVerilog,basicstyle=\small\ttfamily\PreviousCodeFont]
+// 时序逻辑：低电平复位，保留 0/O、1/l、下划线和引号的区别
+module counter(input wire clk, reset_n, output reg [7:0] count);
+  always @(posedge clk) begin
+    if (!reset_n) count <= 8'h00;
+    else count <= count + 1'b1;
+  end
+  initial $display("counter is ready");
+endmodule
+\end{CodeBlock}
+
+\subsection*{目录树与特殊字符}
+\begin{CodeBlock}[language=BookText]
+chip
+├── rtl  处理器设计
+│   ├── core.sv
+│   └── soc.sv
+└── sim  仿真环境
+ASCII: 0 O 1 l I  _ - --  ' "  $ # % & < >
+\end{CodeBlock}
+
+\clearpage
+\section*{通用语言与硬件设计}
+\subsection*{C：关键字、注释、字符串}
+\begin{CodeBlock}[language=BookC]
+#include <stdint.h>
+// 中文注释应完整显示，并与英文注释保持同色。
+uint32_t read_value(volatile uint32_t *address) {
+    if (address == NULL) return 0;
+    printf("value = %u\n", *address);
+    return *address;
+}
+\end{CodeBlock}
+
+\subsection*{Scala / Chisel / SpinalHDL}
+\begin{CodeBlock}[language=BookScala]
+val count = RegInit(0.U(8.W))
+when (io.enable) {
+  count := count + 1.U
+}.otherwise {
+  count := 0.U
+}
+\end{CodeBlock}
+
+\subsection*{SystemVerilog}
+\begin{CodeBlock}[language=BookSystemVerilog]
+logic [31:0] data;
+always_ff @(posedge clk) begin
+  if (!reset_n) data <= '0;
+  else data <= next_data;
+end
+\end{CodeBlock}
+
+\subsection*{Shell}
+\begin{CodeBlock}[language=BookShell]
+# 编译命令保持原始内容，不由 LaTeX 执行。
+export ARCH=loongarch
+make -j$(nproc)
+echo "Build completed"
+\end{CodeBlock}
+
+\clearpage
+\section*{本书专用语言规则}
+\subsection*{LoongArch 汇编}
+\begin{CodeBlock}[language=BookLoongArch]
+.text
+.globl reset_entry
+reset_entry:
+    li.w    $t0, 0x1c000000  # 初始化地址
+    ld.w    $a0, $t0, 0
+    addi.w  $a0, $a0, 1
+    st.w    $a0, $t0, 0
+    ertn
+\end{CodeBlock}
+
+\subsection*{设备树 DTS}
+\begin{CodeBlock}[language=BookDTS]
+uart0: serial@1fe001e0 {
+    compatible = "ns16550a";
+    reg = <0x1fe001e0 0x8>;
+    interrupts = <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>;
+    status = "okay";
+};
+\end{CodeBlock}
+
+\subsection*{EDA Tcl}
+\begin{CodeBlock}[language=BookTcl]
+# 创建时钟并设置输入延迟。
+set target_library "typical.db"
+read_verilog design.v
+create_clock -name clk -period 10 [get_ports clk]
+set_input_delay -clock clk 3 [all_inputs]
+compile -map_effort high
+\end{CodeBlock}
+
+\clearpage
+\section*{配置、构建与补丁}
+\subsection*{Kconfig / defconfig}
+\begin{CodeBlock}[language=BookConfig]
+config MEGA_SOC_FPGA
+    bool "MEGA SoC for FPGA"
+    default y
+# CONFIG_DEBUG_INFO is not set
+CONFIG_LOG_BUF_SHIFT=18
+\end{CodeBlock}
+
+\subsection*{Makefile}
+\begin{CodeBlock}[language=BookMake]
+CC = loongarch32r-linux-gnusf-gcc
+all: kernel.o
+kernel.o: kernel.c
+	$(CC) -c kernel.c -o kernel.o
+\end{CodeBlock}
+
+\subsection*{链接脚本}
+\begin{CodeBlock}[language=BookLinker]
+OUTPUT_FORMAT(elf32-loongarch)
+MEMORY {
+  ram (rwxa) : ORIGIN = 0x80000000, LENGTH = 128M
+}
+INCLUDE "section.ld"
+\end{CodeBlock}
+
+\clearpage
+\section*{本书新增的高亮语言}
+\subsection*{C++ 仿真模型}
+\begin{CodeBlock}[language=BookCpp]
+// 模型调用示例，保留类型、作用域符号与字符串。
+class Model final {
+public:
+  uint32_t value = 0;
+  void step() { value += 1; }
+};
+int main() {
+  Model model;
+  model.step();
+  std::cout << "value = " << model.value << std::endl;
+}
+\end{CodeBlock}
+
+\subsection*{JSON 配置（支持原稿的注释写法）}
+\begin{CodeBlock}[language=BookJSON]
+{
+  // 解码器配置片段；原稿采用带注释的 JSON 示例。
+  "module_name": "core_decoder",
+  "enabled": true,
+  "width": 32
+}
+\end{CodeBlock}
+
+\subsection*{C Shell / 签核脚本}
+\begin{CodeBlock}[language=BookCShell]
+#!/bin/csh -f
+# 保留与 Bash 不同的变量赋值写法。
+set top = design
+set gds = /design_path/design.gds.gz
+if ( -e $gds ) then
+  echo "Input exists: $gds"
+endif
+\end{CodeBlock}
+\end{document}

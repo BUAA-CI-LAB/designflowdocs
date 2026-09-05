@@ -1,0 +1,24 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[10pt,letterpaper,openright]{book}
+\input{config/preamble}
+\input{config/book-info}
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+\input{chapters/00-preface}
+\mainmatter
+\input{chapters/01-hardware-preparation}
+\input{chapters/02-software-preparation}
+\input{chapters/03-base-cpu}
+\input{chapters/04-advanced-cpu}
+\input{chapters/05-complex-cpu}
+\input{chapters/06-agility}
+\input{chapters/07-soc-and-system}
+\input{chapters/08-verification-and-implementation}
+\input{chapters/09-test-and-show}
+\backmatter
+\input{chapters/20-references}
+\input{chapters/30-resources}
+\end{document}

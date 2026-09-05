@@ -1,0 +1,1077 @@
+{
+  "counts": {
+    "BookShell": 45,
+    "BookMake": 14,
+    "BookText": 8,
+    "BookLoongArch": 16,
+    "BookC": 21,
+    "BookLinker": 1,
+    "BookConfig": 6,
+    "BookScala": 14,
+    "BookSystemVerilog": 22,
+    "BookJSON": 6,
+    "BookVerilog": 2,
+    "BookCpp": 5,
+    "BookDTS": 1,
+    "BookTcl": 12,
+    "BookCShell": 3
+  },
+  "blocks": [
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 1,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 2,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 3,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 4,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 5,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 6,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 7,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 8,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 9,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 10,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 11,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 12,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 13,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 14,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 15,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/01-hardware-preparation.tex",
+      "block": 16,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 1,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 2,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 3,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 4,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 5,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 6,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 7,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 8,
+      "original_language": "console",
+      "language": "BookText"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 9,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 10,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 11,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 12,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 13,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 14,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 15,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 16,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 17,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 18,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 19,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 20,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 21,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 22,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 23,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 24,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 25,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 26,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 27,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 28,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 29,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 30,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 31,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 32,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 33,
+      "original_language": "assembly",
+      "language": "BookLoongArch"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 34,
+      "original_language": "ld",
+      "language": "BookLinker"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 35,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 36,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 37,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 38,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 39,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 40,
+      "original_language": "text",
+      "language": "BookText"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 41,
+      "original_language": "ini",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 42,
+      "original_language": "shell",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 43,
+      "original_language": "shell",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 44,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 45,
+      "original_language": "ini",
+      "language": "BookConfig"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 46,
+      "original_language": "shell",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 47,
+      "original_language": "shell",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 48,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 49,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 50,
+      "original_language": "plaintext",
+      "language": "BookConfig"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 51,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 52,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 53,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 54,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 55,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 56,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 57,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 58,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/02-software-preparation.tex",
+      "block": 59,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/03-base-cpu.tex",
+      "block": 1,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/03-base-cpu.tex",
+      "block": 2,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/03-base-cpu.tex",
+      "block": 3,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/03-base-cpu.tex",
+      "block": 4,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/03-base-cpu.tex",
+      "block": 5,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/03-base-cpu.tex",
+      "block": 6,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 1,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 2,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 3,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 4,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 5,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 6,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 7,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 8,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 9,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 10,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 11,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 12,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 13,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 14,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 15,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 16,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 17,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 18,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 19,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 20,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 21,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 22,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 23,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 24,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 25,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 26,
+      "original_language": "json",
+      "language": "BookJSON"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 27,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 28,
+      "original_language": "bash",
+      "language": "BookText"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 29,
+      "original_language": "bash",
+      "language": "BookText"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 30,
+      "original_language": "bash",
+      "language": "BookText"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 31,
+      "original_language": "bash",
+      "language": "BookText"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 32,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/04-advanced-cpu.tex",
+      "block": 33,
+      "original_language": "systemverilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/05-complex-cpu.tex",
+      "block": 1,
+      "original_language": "text",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/05-complex-cpu.tex",
+      "block": 2,
+      "original_language": "json",
+      "language": "BookJSON"
+    },
+    {
+      "file": "chapters/05-complex-cpu.tex",
+      "block": 3,
+      "original_language": "json",
+      "language": "BookJSON"
+    },
+    {
+      "file": "chapters/05-complex-cpu.tex",
+      "block": 4,
+      "original_language": "json",
+      "language": "BookJSON"
+    },
+    {
+      "file": "chapters/05-complex-cpu.tex",
+      "block": 5,
+      "original_language": "json",
+      "language": "BookJSON"
+    },
+    {
+      "file": "chapters/05-complex-cpu.tex",
+      "block": 6,
+      "original_language": "json",
+      "language": "BookJSON"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 1,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 2,
+      "original_language": "text",
+      "language": "BookText"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 3,
+      "original_language": "text",
+      "language": "BookText"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 4,
+      "original_language": "text",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 5,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 6,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 7,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 8,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 9,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 10,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 11,
+      "original_language": "verilog",
+      "language": "BookVerilog"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 12,
+      "original_language": "cpp",
+      "language": "BookCpp"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 13,
+      "original_language": "cpp",
+      "language": "BookCpp"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 14,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 15,
+      "original_language": "cpp",
+      "language": "BookCpp"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 16,
+      "original_language": "cpp",
+      "language": "BookCpp"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 17,
+      "original_language": "cpp",
+      "language": "BookCpp"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 18,
+      "original_language": "scala",
+      "language": "BookScala"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 19,
+      "original_language": "verilog",
+      "language": "BookSystemVerilog"
+    },
+    {
+      "file": "chapters/06-agility.tex",
+      "block": 20,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 1,
+      "original_language": "verilog",
+      "language": "BookVerilog"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 2,
+      "original_language": "dts",
+      "language": "BookDTS"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 3,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 4,
+      "original_language": "text",
+      "language": "BookConfig"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 5,
+      "original_language": "c",
+      "language": "BookC"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 6,
+      "original_language": "text",
+      "language": "BookConfig"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 7,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 8,
+      "original_language": "text",
+      "language": "BookConfig"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 9,
+      "original_language": "text",
+      "language": "BookConfig"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 10,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 11,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 12,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 13,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 14,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 15,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 16,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/07-soc-and-system.tex",
+      "block": 17,
+      "original_language": "makefile",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 1,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 2,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 3,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 4,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 5,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 6,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 7,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 8,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 9,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 10,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 11,
+      "original_language": "bash",
+      "language": "BookShell"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 12,
+      "original_language": "text",
+      "language": "BookMake"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 13,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 14,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 15,
+      "original_language": "text",
+      "language": "BookTcl"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 16,
+      "original_language": "text",
+      "language": "BookCShell"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 17,
+      "original_language": "text",
+      "language": "BookCShell"
+    },
+    {
+      "file": "chapters/08-verification-and-implementation.tex",
+      "block": 18,
+      "original_language": "text",
+      "language": "BookCShell"
+    },
+    {
+      "file": "chapters/09-test-and-show.tex",
+      "block": 1,
+      "original_language": "c",
+      "language": "BookC"
+    }
+  ]
+}

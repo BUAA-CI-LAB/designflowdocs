@@ -1,0 +1,1373 @@
+\chapter{系统软件开发技能准备}\label{chap:02-software-preparation}
+
+\section{交叉编译环境配置}\label{sec:02-software-preparation-001}
+
+\subsection{下载预编译的交叉编译工具链}\label{sec:02-software-preparation-002}
+
+从\url{https://gitee.com/loongson-edu/la32r-toolchains/releases/}下载压缩包解压到本地合适路径即可。
+
+\subsection{下载 QEMU 仿真平台}\label{sec:02-software-preparation-003}
+
+从\url{https://gitee.com/loongson-edu/la32r-QEMU/releases/}下载相应的qemu可执行文件。
+
+如果官方提供的版本无法正常运行（一般是因为缺少动态链接库，按照提示安装即可），也可以自行编译：
+
+\textbf{1. 安装依赖}
+
+步骤一 安装Ninja
+
+Ninja是一个构建系统，专为速度而设计，通常用于加速软件项目的构建过程。
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+$ sudo apt-get install ninja-build
+\end{CodeBlock}
+
+步骤二 glib-2.56 gthread-2.0
+
+安装GLib 2.56和GThread 2.0库的具体步骤取决于使用的操作系统。
+
+以下是一些常见的操作系统的安装命令：
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+# Ubuntu/Debian:
+$ sudo apt-get install libglib2.0-dev
+\end{CodeBlock}
+
+这些命令会安装GLib的开发包，其中包括用于编译和链接的头文件和库文件。
+
+GLib通常包含了GThread，所以不需要单独安装GThread。
+
+步骤三 安装Meson
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+$ sudo apt-get install meson
+\end{CodeBlock}
+
+步骤四 安装 Pixman Pixman 是一个用于像素操作的图形库，通常被其他图形库如 Cairo 使用。
+
+你可以使用系统的包管理器安装 Pixman。以下是一些常见系统的安装命令：
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+$ sudo apt-get install libpixman-1-dev
+\end{CodeBlock}
+
+这些命令将安装 Pixman 的开发包，其中包括用于编译和链接的头文件和库文件。
+
+\textbf{2. 编译}
+
+步骤一 拉取代码
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+$ git clone --recursive git@gitee.com:loongson-edu/la32r-QEMU.git
+\end{CodeBlock}
+
+步骤二 编译
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+$ cd la32r-QEMU
+$ mkdir build
+$ cd build
+$ ../configure --target-list=loongarch32-softmmu --disable-werror --enable-debug
+$ make -j16  # 可根据实际平台调整编译所用线程数量
+$ make install  # 可以省略（有用的编译结果只有qemu-system-loongarch32这个可执行文件）
+\end{CodeBlock}
+
+更多的编译选项可通过../configure --help查看
+
+步骤三 测试
+
+命令行运行
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+$ ./qemu-system-loongarch32 --version
+\end{CodeBlock}
+
+有如下输出
+
+% 代码语言：BookText
+\begin{CodeBlock}[language=BookText]
+QEMU emulator version 6.2.50
+Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
+\end{CodeBlock}
+
+\section{Loongarch 软件编写基础练习}\label{sec:02-software-preparation-004}
+
+\subsection{为 Loongarch 编写裸机汇编程序}\label{sec:02-software-preparation-005}
+
+\subsubsection{编写汇编串口输出程序}\label{sec:02-software-preparation-006}
+
+串口（Serial Port）是一种常见的通信方式，广泛应用于计算机与外设之间的数据交换。在LoongArch32架构的QEMU仿真中，ns16550a串口设备位于物理地址\textbf{0x1fe001e0}。
+
+NS16550串口通过内存映射I/O（MMIO）进行访问。为了通过该串口设备进行数据输出，需要编写相应的驱动代码，其中主要涉及两个寄存器：\textbf{发送保持寄存器（THR）}和\textbf{线路状态寄存器（LSR）}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{THR（Transmit Holding Register）发送保持寄存器}：用于存放将要发送的数据。当THR寄存器为空时，可以将数据写入该寄存器，以便通过串口发送。
+\item
+  \textbf{LSR（Line Status Register）线路状态寄存器}：用于指示串口的当前状态。其第5位（THRE，Transmit Holding Register Empty）指示THR寄存器是否为空。当该位为1时，表示THR寄存器为空，可以写入新的数据。
+\end{enumerate}
+
+\textbf{串口输出流程}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{检查THR寄存器状态}：读取LSR寄存器，检查第5位（THRE）是否为1。如果为1，表示THR寄存器为空，可以写入数据；否则，继续检查，直到THR寄存器为空。
+\item
+  \textbf{写入数据到THR寄存器}：当THR寄存器为空时，将要发送的数据写入THR寄存器。
+\item
+  \textbf{重复上述过程}：继续检查LSR寄存器的THRE位，并在THR寄存器为空时，写入新的数据，直到所有数据发送完毕。
+\end{enumerate}
+
+以下是一个简单的示例代码，展示如何通过NS16550串口进行数据输出：
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+#define UART_BASE 0x9fe001e0       # UART 基地址
+#define UART_RX     0              # UART 接收寄存器偏移
+#define UART_TX     0              # UART 发送寄存器偏移
+#define UART_LSR    5              # UART 线路状态寄存器偏移
+#define UART_LSR_TEMT       0x40   # UART LSR 寄存器的发送空标志位
+#define UART_LSR_THRE       0x20   # UART LSR 寄存器的发送保持寄存器空标志位
+#define UART_LSR_DR         0x01   # UART LSR 寄存器的数据准备标志位
+
+.global puts
+
+uart_put_c:
+    addi.w      $sp, $sp, -4       # 为堆栈分配空间
+    st.w        $ra, $sp, 0        # 保存返回地址
+    li.w        $t0, UART_BASE     # 加载 UART 基地址
+
+wait_loop:
+    li.w        $t1, UART_LSR      # 加载 UART_LSR 偏移
+    add.w       $t1, $t1, $t0      # 计算 UART_LSR 的地址
+    ld.b        $t1, $t1, 0        # 加载 UART_LSR 的值
+    andi        $t1, $t1, UART_LSR_THRE # 检查 UART_LSR_THRE 是否设置
+    beqz        $t1, wait_loop     # 如果未设置，循环等待
+
+    move        $t1, $a0           # 加载要传输的字符
+    li.w        $t2, UART_TX       # 加载 UART_TX 偏移
+    add.w       $t2, $t2, $t0      # 计算 UART_TX 的地址
+    st.b        $t1, $t2, 0        # 将字符存储到 UART_TX
+
+    ld.w        $ra, $sp, 0        # 恢复返回地址
+    addi.w      $sp, $sp, 4        # 释放堆栈空间
+    jr          $ra                # 从函数返回
+
+puts:
+    addi.w      $sp, $sp, -4       # 为堆栈分配空间
+    st.w        $ra, $sp, 0        # 保存返回地址
+    move        $s0, $a0           # 加载字符串基地址
+
+next_char:
+    ld.b        $t1, $s0, 0        # 从字符串加载下一个字符
+    beqz        $t1, end_puts      # 如果是空字符，结束函数
+    addi.w      $sp, $sp, -4       # 为堆栈分配空间
+    st.w        $s0, $sp, 0        # 保存 s0
+    move        $a0, $t1           # 加载参数
+    bl          uart_put_c         # 调用 uart_put_c
+    ld.w        $s0, $sp, 0        # 恢复 s0
+    addi.w      $sp, $sp, 4        # 释放堆栈空间
+    addi.w      $s0, $s0, 1        # 移动到下一个字符
+    b           next_char          # 循环
+
+end_puts:
+    ld.w        $ra, $sp, 0        # 恢复返回地址
+    addi.w      $sp, $sp, 4        # 释放堆栈空间
+    jr          $ra                # 从函数返回
+\end{CodeBlock}
+
+\subsubsection{使用汇编编写一个 Hello World}\label{sec:02-software-preparation-007}
+
+首先，让我们实现一个经典的例子，即在屏幕上输出''Hello, world!{\kern0pt}``。通过这个例子，我们可以了解汇编程序的基本结构，并掌握在函数调用中，调用者和被调用者需要遵守的寄存器使用规范。
+
+我们先看看这个例子在C语言中的实现：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+// hello.c
+int main() {
+    puts("Hello, world!\n");
+    return 0;
+}
+\end{CodeBlock}
+
+接下来，我们尝试将上述C语言代码翻译成汇编代码。
+
+字符串''Hello, world!{\kern0pt}``需要存储在数据段（\texttt{.data}）中，并给它一个可以访问的标签，记为\texttt{output}。
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.section .data
+output: .asciz "Hello, world!\n"
+\end{CodeBlock}
+
+代码部分位于文本段（\texttt{.text}）中。程序的入口地址\texttt{main}必须设置为全局符号。有些读者在编写其他语言的汇编代码时，可能会将程序入口地址设置为\texttt{\_start}，但实际上，系统已有一个\texttt{\_start}函数。系统的\texttt{\_start}会首先进行初始化工作，之后跳转到\texttt{main}标签处，程序结束后会进行资源回收工作。如果我们将用户程序的入口地址定义为\texttt{\_start}标签，就会覆盖掉系统的函数。有的链接器允许这样操作，而某些链接器则会报告\texttt{\_start}的多重定义错误（multiple definition of \texttt{\_start\textquotesingle{}）以及未找到}main\texttt{的错误（undefined\ reference\ to}main'）。因此，在定义程序入口时，应当定义一个全局的\texttt{main}标签。
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.section .text
+.globl main
+main:
+\end{CodeBlock}
+
+由于需要调用\texttt{puts}函数，寄存器\texttt{\$ra}（返回地址寄存器）可能会被修改，因此需要将它保存到栈帧中。如果当前函数是一个叶子函数，则不需要保存\texttt{\$ra}。相应地，栈指针只需要减少一个寄存器的长度，即4字节（第6、7行）。
+
+在返回到\texttt{main}的调用函数之前，需要恢复\texttt{\$ra}和\texttt{\$sp}（栈指针）（第11、12行）。
+
+在函数调用时，关于参数需要考虑两个问题：参数存放在哪里？存放什么内容？\texttt{puts}函数只有一个参数，根据寄存器使用约定，\texttt{\$a0}是第一个参数寄存器，因此将参数存入\texttt{\$a0}中。那么，\texttt{\$a0}中存放什么呢？根据C语言函数声明：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+int puts(const char *str);
+\end{CodeBlock}
+
+可以看到它的参数是一个地址，因此需要将要输出的字符串地址通过\texttt{la.local}指令加载到\texttt{\$a0}中（第8、9行）。读者可以思考一下，对于\texttt{printf("\%d\textbackslash{}n",\ a);}和\texttt{scanf("\%d",\ \&a);}，参数应该分别是什么形式。
+
+在返回到\texttt{main}的调用函数之前，还需要将\texttt{main}函数的返回值设置为0，并存入返回值寄存器\texttt{\$v0}（即\texttt{\$a0}）中（第10、13行）。
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+addi.w      $sp, $sp, -4
+st.w        $ra, $sp, 0
+la.local    $a0, output
+bl          puts
+li.w        $a0, 0
+ld.w        $ra, $sp, 0
+addi.w      $sp, $sp, 4
+jr          $ra
+\end{CodeBlock}
+
+完整代码如下：
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+    .extern puts
+    .section .data
+output:
+    .asciz "Hello, world!\n"      # 定义字符串 "Hello, world!\n"
+
+    .section .text
+    .globl main
+
+main:
+    addi.w      $sp, $sp, -4       # 分配堆栈空间
+    st.w        $ra, $sp, 0        # 保存返回地址
+    la.local    $a0, output        # 加载字符串地址
+    bl          puts               # 调用 puts 函数
+    li.w        $a0, 0             # 将零加载到 $a0
+    ld.w        $ra, $sp, 0        # 恢复返回地址
+    addi.w      $sp, $sp, 4        # 释放堆栈空间
+    jr          $ra                # 从函数返回
+
+\end{CodeBlock}
+
+\subsubsection{编写汇编及链接脚本}\label{sec:02-software-preparation-008}
+
+% 代码语言：BookMake
+\begin{CodeBlock}[language=BookMake]
+TOOL    :=  loongarch32r-linux-gnusf-
+CC      :=  $(TOOL)gcc
+OBJCOPY :=  $(TOOL)objcopy
+OBJDUMP :=  $(TOOL)objdump
+QEMU    :=  qemu-system-loongarch32
+
+.PHONY: clean qemu
+
+hello.elf: start.S uart.S hello.S linker.ld
+	$(CC) -nostdlib -T linker.ld start.S uart.S hello.S -o $@
+
+qemu: hello.elf
+	$(QEMU) -M ls3a5k32 -m 32M -kernel hello.elf -nographic
+
+clean:
+	rm start.elf
+\end{CodeBlock}
+
+关于Makefile的内容大家可以上网寻找相关资料。这里编译时添加参数\texttt{-nostdlib}是为了防止stdlib编译到我们的程序中，毕竟这是一个裸机程序。\texttt{start.S}和\texttt{linker.ld}的编写在《为 LoongArch 编写裸机 C 程序》章节介绍。
+
+\subsubsection{使用汇编编写一个冒泡排序函数}\label{sec:02-software-preparation-009}
+
+这个示例希望能够增强读者对函数调用过程，寄存器使用规范，以及\texttt{if}/\texttt{for}/双重\texttt{for}控制流的理解。这里先给出它的c语言版本：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+int arr[50];
+int len;
+
+void bubble_sort(int* array, int len) {
+    for (int i = 0; i < len - 1; i++) {
+        for (int j = 0; j < len - 1 - i; j++) {
+            if (array[j] > array[j + 1]) {
+                int temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    scanf("%d", &len);
+    for (int i = 0; i < len; i++) arr[i] = rand() % 100;
+
+    for (int i = 0; i < len; i++) printf("%d ", arr[i]);
+    printf("\n");
+
+    bubble_sort(arr, len);
+
+    for (int i = 0; i < len; i++) printf("%d ", arr[i]);
+    printf("\n");
+
+    return 0;
+}
+\end{CodeBlock}
+
+这个例子的\texttt{main}函数相对比较复杂。观察到\texttt{main}函数主要完成五部分内容：\texttt{scanf}，\texttt{rand}，\texttt{printf}，\texttt{bubble\_sort}，\texttt{printf}。我们逐个击破。
+
+\textbf{\texttt{scanf}：从标准输入中读取\texttt{len}值}
+
+函数调用前解决参数问题：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+int scanf(const char *format, ...);
+
+scanf("%d", &a);
+\end{CodeBlock}
+
+第一个参数是字符串地址，之后的参数是变量的地址。因此在本例中，我们需要提前定义好字符串\texttt{"\%d"}以及\texttt{len}变量，以便于后续得到地址。
+
+数据部分：
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.section .data
+len: .int 0
+input_format: .asciz "%d"
+\end{CodeBlock}
+
+代码部分：
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+    la.local    $a0, input_format
+    la.local    $a1, len
+    bl          scanf
+\end{CodeBlock}
+
+\textbf{\texttt{rand}：根据\texttt{len}值生成\texttt{len}个随机数，存入\texttt{arr}中}
+
+\textbf{单重\texttt{for}循环控制流} 我们可以使用\texttt{for}循环结构：
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+ 		la.local    $t0, len
+    ld.w        $t0, $t0, 0
+    bne         $t0, $zero, loop
+    jr          $ra
+loop:
+    <do_something>
+    addi.w      $t0, $t0, -1
+    bgt         $t0, $zero, loop
+\end{CodeBlock}
+
+然而在实际循环中，仍有两方面需要注意：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  如果\texttt{\textless{}do\_something\textgreater{}}中有函数的调用，那么存放循环计数的寄存器就不能直接用被调用者不保存的寄存器，如\texttt{\$t\#\#}、\texttt{\$a\#\#}。那么解决方法，可以是将\texttt{\$t\#\#}在\texttt{\textless{}do\_something\textgreater{}}前保存至栈中，在\texttt{\textless{}do\_something\textgreater{}}后取出使用，该方法会在循环中产生较多访存；也可以考虑使用\texttt{\$s\#\#}作为循环计数变量，而代价是使用前需要将旧值存入栈中，以及在该函数返回前将其恢复出来。直观感觉是第二个方法更有利于循环的高效执行。
+\item
+  虽然我们在c语言中常使用的循环增量为1，但如果考虑到这个循环计数值我们将用于数组的访问，我们可以根据数据宽度设置循环增量，并且循环初始值、结束条件可以稍作调整，将其进行等价转换：
+
+  % 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+// before
+for (int i = 0; i < len; i++) arr[i] = rand() % 100;
+
+// after    
+uint32_t addr;
+for (addr = &arr[0]; addr <= &arr[len - 1]; addr += 4) 
+  *(int*)addr = rand() % 100;
+\end{CodeBlock}
+
+  如果我们用一个寄存器作为循环计数寄存器，那么在获取\texttt{arr{[}i{]}}时，需要完成\texttt{addr\ =\ (uint32\_t)\&arr{[}0{]}\ +\ i\ *\ 4}的计算。我们可以转换成汇编做一个对比。
+
+  % 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+# before
+    # $t0 = i
+    # $t1 = &arr[0]
+    # $t3 = store value
+loop:
+    slli.w      $t2, $t0, 2     # $t2 = i * 4
+    add.w       $t2, $t1, $t2   # $t2 = i * 4 + &arr[0]
+    st.w        $t3, $t2, 0
+    addi.w      $t0, $t0, 1
+
+# after
+    # $t0 = &arr[i]
+    # $t1 = store value
+loop:
+    st.w        $t1, $t0, 0
+    addi.w      $t0, $t0, 4
+
+\end{CodeBlock}
+\end{enumerate}
+
+\textbf{数组定义} 与\texttt{len}类似，数组需要提前在数据段定义才能进行访问。这里我们可以采用之前提到的\texttt{.rept\ ...\ .endr}汇编指示来定义50个变量。
+
+\textbf{函数返回} 这里\texttt{rand}是一个无参数但是有返回值的函数，注意返回值存于\texttt{\$a0}中。
+
+那么可以开始编写这部分内容。
+
+数据部分：
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.section .data
+value_array: .rept 50
+             .int 0
+             .endr
+\end{CodeBlock}
+
+代码部分：
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.section .text
+.globl main
+main:
+    addi.w      $sp, $sp, -16
+    st.w        $ra, $sp, 0
+    st.w        $s0, $sp, 4         # s0 = &value_array
+    st.w        $s1, $sp, 8         # s1 = len
+    st.w        $s2, $sp, 12
+
+    ...
+
+    la.local    $s0, value_array    # $s0 = &arr[0]
+    la.local    $s1, len
+    ld.w        $s1, $s1, 0         # $s1 = len
+
+    move        $s2, $s1
+    addi.w      $s2, $s2, -1
+    slli.w      $s2, $s2, 2
+    add.w       $s2, $s0, $s2       # $s2 = &arr[len - 1]
+
+loop_r:
+    bl          rand
+    li.w        $t0, 100            # 使用$t0寄存器，每次循环都需要加载
+    mod.w       $t0, $a0, $t0
+    st.w        $t0, $s2, 0
+    addi.w      $s2, $s2, -4        # 倒着生成的随机值
+    bge         $s2, $s0, loop_r
+
+    ...
+
+    ld.w        $ra, $sp, 0
+    ld.w        $s0, $sp, 4
+    ld.w        $s1, $sp, 8
+    ld.w        $s2, $sp, 12
+    addi.w      $sp, $sp, 16
+    jr          $ra
+\end{CodeBlock}
+
+\textbf{\texttt{printf}：打印数组值}
+
+注意到\texttt{main}中两次\texttt{printf}的操作内容是一样的，我们可以将其提取为一个公共函数：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+void output_data(int* array, int len) {
+    for (int i = 0; i < len; i++) printf("%d ", arr[i]);
+    puts("\n");
+}
+\end{CodeBlock}
+
+\texttt{for}循环的写法与注意事项已在前一小节提及，这里再强调一下\texttt{printf}的写法。
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+int printf(const char *format, ...);
+
+printf("%d ", a);
+\end{CodeBlock}
+
+可以看到\texttt{printf}包含两个参数，字符串\texttt{"\%d\ "}和整形变量\texttt{a}，字符串变量需在数据段定义。整形变量即为数组第\texttt{i}项的值（注意不是地址），此处涉及访存。
+
+数据部分：
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.section .data
+print_format: .asciz "%d "
+print_line: .asciz "\n"
+\end{CodeBlock}
+
+代码部分：main: output\_data
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+		move        $a0, $s0            # arg1: start_addr = &value_array
+    move        $a1, $s1            # arg2: len
+    bl          output_data
+\end{CodeBlock}
+
+代码部分：printf
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.type output_data, @function
+output_data:
+    addi.w      $sp, $sp, -16
+    st.w        $ra, $sp, 0
+    st.w        $s0, $sp, 4
+    st.w        $s1, $sp, 8
+    st.w        $s2, $sp, 12
+
+    move        $s0, $a1            # s0 = len
+    move        $s1, $a0            # s1 = value addr
+    la.local    $s2, print_format   # s2 = printf arg1(print_format)
+loop_o:
+    move        $a0, $s2            # a0 = s2
+    ld.w        $a1, $s1, 0         # a1 = printf arg2(value)
+    bl          printf
+    addi.w      $s1, $s1, 4
+    addi.w      $s0, $s0, -1
+    bne         $s0, $zero, loop_o
+
+    la.local    $a0, print_line
+    bl          puts
+
+    ld.w        $ra, $sp, 0
+    ld.w        $s0, $sp, 4
+    ld.w        $s1, $sp, 8
+    ld.w        $s2, $sp, 12
+    addi.w      $sp, $sp, 16
+    jr          $ra
+\end{CodeBlock}
+
+\textbf{\texttt{bubble\_sort}：冒泡排序}
+
+这是一个双重\texttt{for}循环的控制流，在编写\texttt{for}循环时，我们需要想清楚初始值是什么，终止条件是什么，循环增量怎么设置，循环主体要做什么。
+
+前面我们提到，出于访问数组的便捷性考虑，我们会将循环计数变量改造为每次访问的地址，这里进行相同的改造：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+// before
+for (int i = 0; i < len - 1; i++) {
+  for (int j = 0; j < len - 1 - i; j++) {
+    if (array[j] > array[j + 1]) {
+      int temp = array[j];
+      array[j] = array[j + 1];
+      array[j + 1] = temp;
+    }
+  }
+}
+
+// after
+uint32_t addr_i, addr_j;
+for (addr_i = &array[0]; addr_i < &array[len - 1]; addr_i += 4) {
+  for (addr_j = (uint32_t)&array[0]; \
+       addr_j <= (uint32_t)&array[len - 1] - 4 * i; \
+       addr_j += 4) {
+    int a = *(int*)addr_j;
+    int b = *(int*)(addr_j + 4);
+    if (a > b) {
+      *(int*)addr_j = b;
+      *(int*)(addr_j + 4) = a;
+    }
+  }
+}
+\end{CodeBlock}
+
+注意到这里循环内部没有函数调用，所以我们可以放心大胆地使用\texttt{\$t\#\#}和\texttt{\$a\#\#}。
+
+分析一下寄存器分配方案：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{addr\_j}每次都从\texttt{\&array{[}0{]}}开始，所以必须存\texttt{\&array{[}0{]}}，\texttt{\$a0}作为参数天然存了这个值。
+\item
+  \texttt{addr\_i}要与终止条件\texttt{\&array{[}len\ -\ 1{]}}判断，因此要存\texttt{\&array{[}len\ -\ 1{]}}，\texttt{\$a1}原本存\texttt{len}，经过\texttt{(len\ -\ 1)\ \textless{}\textless{}\ 2\ +\ \$a0}的变换可以得到，直接存于\texttt{\$a1}中即可。
+\item
+  存储\texttt{addr\_i}需要一个寄存器，记为\texttt{\$a2}；存储\texttt{addr\_j}需要一个寄存器，记为\texttt{\$t0}。
+\item
+  \texttt{addr\_j}的终止值不用每次都计算，可以在每次外层循环更新变量时更新内层循环终止值，初始设为\texttt{\$a1}，每次减4即可，记为\texttt{\$t1}。
+\item
+  需要获取\texttt{addr\_j}和\texttt{addr\_j\ +\ 4}地址处的值，分别记为\texttt{\$t2}和\texttt{\$t3}。
+\end{enumerate}
+
+据此，可以设计\texttt{bubble\_sort}的代码了。
+
+\textbf{完整汇编程序}
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.section .data
+value_array: .rept 50
+             .int 0
+             .endr
+len: .int 0
+input_format: .asciz "%d"
+print_format: .asciz "%d "
+print_line: .asciz "\n"
+
+.section .text
+.globl main
+main:
+    addi.w      $sp, $sp, -16
+    st.w        $ra, $sp, 0
+    st.w        $s0, $sp, 4         # s0 = &value_array
+    st.w        $s1, $sp, 8         # s1 = len
+    st.w        $s2, $sp, 12
+
+    la.local    $a0, input_format
+    la.local    $a1, len
+    bl          scanf
+
+    la.local    $s0, value_array
+    la.local    $s1, len
+    ld.w        $s1, $s1, 0
+
+    move        $s2, $s1
+    addi.w      $s2, $s2, -1
+    slli.w      $s2, $s2, 2
+    add.w       $s2, $s0, $s2
+
+loop_r:
+    bl          rand
+    li.w        $t0, 100
+    mod.w       $t0, $a0, $t0
+    st.w        $t0, $s2, 0
+    addi.w      $s2, $s2, -4
+    bge         $s2, $s0, loop_r
+
+    move        $a0, $s0            # arg1: start_addr = &value_array
+    move        $a1, $s1            # arg2: len
+    bl          output_data
+
+    move        $a0, $s0            # arg1: start_addr = &value_array
+    move        $a1, $s1            # arg2: len
+    bl          bubble_sort
+
+    move        $a0, $s0            # arg1: start_addr = &value_array
+    move        $a1, $s1            # arg2: len
+    bl          output_data
+
+    move        $a0, $zero
+    ld.w        $ra, $sp, 0
+    ld.w        $s0, $sp, 4
+    ld.w        $s1, $sp, 8
+    ld.w        $s2, $sp, 12
+    addi.w      $sp, $sp, 16
+    jr          $ra
+
+.type bubble_sort, @function
+bubble_sort:
+    addi.w      $t0, $zero, 1
+    bne         $a1, $t0, sort
+    jr          $ra
+sort:
+    addi.w      $sp, $sp, -4
+    st.w        $ra, $sp, 0
+                                    # a0 = value start addr
+    move        $a2, $a0            # a2 = i start addr
+    addi.w      $a1, $a1, -1
+    slli.w      $a1, $a1, 2
+    add.w       $a1, $a1, $a0       # a1 = value end addr
+    move        $t1, $a1            # t1 = j end addr, i loop changes
+
+loop_i:
+    move        $t0, $a0            # t0 = j start addr, j loop changes
+
+loop_j:
+    ld.w        $t2, $t0, 0         # t2 = value[j]
+    ld.w        $t3, $t0, 4         # t3 = value[j+1]
+    ble         $t2, $t3, noswap
+    st.w        $t2, $t0, 4
+    st.w        $t3, $t0, 0
+
+noswap:
+    addi.w      $t0, $t0, 4
+    bne         $t0, $t1, loop_j
+
+    addi.w      $a2, $a2, 4
+    addi.w      $t1, $t1, -4
+    bne         $a2, $a1, loop_i
+
+end_loop_i:
+    ld.w        $ra, $sp, 0
+    addi.w      $sp, $sp, 4
+    jr          $ra
+
+.type output_data, @function
+output_data:
+    addi.w      $sp, $sp, -16
+    st.w        $ra, $sp, 0
+    st.w        $s0, $sp, 4
+    st.w        $s1, $sp, 8
+    st.w        $s2, $sp, 12
+
+    move        $s0, $a1            # s0 = len
+    move        $s1, $a0            # s1 = value addr
+    la.local    $s2, print_format   # s2 = printf arg1(print_format)
+loop_o:
+    move        $a0, $s2            # a0 = s2
+    ld.w        $a1, $s1, 0         # a1 = printf arg2(value)
+    bl          printf
+    addi.w      $s1, $s1, 4
+    addi.w      $s0, $s0, -1
+    bne         $s0, $zero, loop_o
+
+    la.local    $a0, print_line
+    bl          puts
+
+    ld.w        $ra, $sp, 0
+    ld.w        $s0, $sp, 4
+    ld.w        $s1, $sp, 8
+    ld.w        $s2, $sp, 12
+    addi.w      $sp, $sp, 16
+    jr          $ra
+\end{CodeBlock}
+
+注意这个程序并不能直接在裸机环境下运行，因为它缺少标准库函数的实现。当然读者也可以尝试模仿上述UART驱动汇编程序修改输入输出函数来实现裸机运行。至于这个程序如何运行将在《Linux 系统编译》章节简单介绍。
+
+\subsection{为 LoongArch编写裸机 C 程序}\label{sec:02-software-preparation-010}
+
+\subsubsection{编写汇编入口}\label{sec:02-software-preparation-011}
+
+% 代码语言：BookLoongArch
+\begin{CodeBlock}[language=BookLoongArch]
+.extern main
+.text
+.globl _start
+_start:
+    # Config direct window and set PG
+    li.w    $t0, 0xa0000011
+    csrwr   $t0, 0x180
+    /* CSR_DMWIN0(0x180): 0xa0000000-0xbfffffff->0x00000000-0x1fffffff Cached */
+    li.w    $t0, 0x80000001
+    /* CSR_DMWIN1(0x181): 0x80000000-0x9fffffff->0x00000000-0x1fffffff Uncached */
+    # Enable PG
+    li.w    $t0, 0xb0
+    csrwr   $t0, 0x0
+    /* CSR_CRMD(0x0): PLV=0, IE=0, PG */
+    la  $sp, bootstacktop
+    la  $t0, main
+    jr  $t0
+poweroff:
+    b poweroff
+_stack:
+.section .data
+    .global bootstack
+bootstack:
+    .space 1024
+    .global bootstacktop
+bootstacktop:
+    .space 64
+\end{CodeBlock}
+
+我们将这个文件保存为\texttt{start.S}。
+
+此程序主要完成了对 CSR 的 DMWIN 设置，并修改了 \texttt{CSR\_CRMD} 以开启虚拟地址翻译模式。随后，它直接从栈地址跳转到 \texttt{main} 函数，而 \texttt{main} 函数的定义来自于外部的 \texttt{extern} 声明。
+
+\subsubsection{编写编译及链接脚本}\label{sec:02-software-preparation-012}
+
+在此，我们需要配置链接脚本，以指定程序的起始地址，并去除程序中不需要的存储段。最终的链接脚本如下：
+
+% 代码语言：BookLinker
+\begin{CodeBlock}[language=BookLinker]
+SECTIONS
+{
+    . = 0xa0000000;
+    .text : { *(.text) }
+    .rodata : { *(.rodata) }
+    .bss : { *(.bss) }
+}
+\end{CodeBlock}
+
+将其保存为 \texttt{linker.ld} 文件。
+
+选择起始地址 \texttt{0xa0000000} 是基于我们配置的 DMWIN0。对于代码和数据访问，我们希望将它们放置在具有缓存属性的地址段，以提高运行速度。
+
+后面我们使用GCC编译并运行Hello World程序会用到如下的Makefile脚本：
+
+% 代码语言：BookMake
+\begin{CodeBlock}[language=BookMake]
+TOOL    :=  loongarch32r-linux-gnusf-
+CC      :=  $(TOOL)gcc
+OBJCOPY :=  $(TOOL)objcopy
+OBJDUMP :=  $(TOOL)objdump
+QEMU    :=  qemu-system-loongarch32
+
+.PHONY: clean qemu
+
+hello.elf: start.S hello.c uart.c linker.ld
+    $(CC) -nostdlib -T linker.ld start.S hello.c uart.c linker.ld -O3 -o $@
+
+qemu: hello.elf
+    $(QEMU) -M ls3a5k32 -m 32M -kernel hello.elf -nographic
+
+clean:
+    rm start.elf
+\end{CodeBlock}
+
+\subsubsection{编写串口输入输出程序}\label{sec:02-software-preparation-013}
+
+用C编写的UART读写驱动如下：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+#define UART_BASE 0x9fe001e0
+#define UART_RX     0   /* In:  Receive buffer */
+#define UART_TX     0   /* Out: Transmit buffer */
+#define UART_LSR    5   /* In:  Line Status Register */
+#define UART_LSR_TEMT       0x40 /* Transmitter empty */
+#define UART_LSR_THRE       0x20 /* Transmit-hold-register empty */
+#define UART_LSR_DR         0x01 /* Receiver data ready */
+
+void uart_put_c(char c) {
+    while (!(*((volatile char*)(UART_BASE + UART_LSR)) & (UART_LSR_THRE)));
+    *((volatile char*)(UART_BASE + UART_TX)) = c;
+}
+
+void print_s(const char *c) {
+    while (*c) {
+        uart_put_c(*c);
+        c++;
+    }
+}
+
+char uart_get_c() {
+    // Wait until there is data ready to be read
+    while (!(*((volatile char*)(UART_BASE + UART_LSR)) & UART_LSR_DR));
+    // Read and return the received character
+    return *((volatile char*)(UART_BASE + UART_RX));
+}
+\end{CodeBlock}
+
+\subsubsection{使用 C语言编写一个 Hello World}\label{sec:02-software-preparation-014}
+
+程序如下：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+extern void print_s(const char *c);
+extern char uart_get_c();
+extern void uart_put_c(char c);
+
+void main() {
+    print_s("\nHello World\n\n");
+    
+    // Example of using uart_get_c to receive a character and echo it back
+    print_s("Type a character and it will be echoed back:\n");
+    while (1) {
+        char received = uart_get_c();  // Get a character from UART
+        uart_put_c(received);          // Echo the character back
+    }
+}
+\end{CodeBlock}
+
+程序运行效果如下：
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+$ make qemu 
+loongarch32r-linux-gnusf-gcc -nostdlib -T linker.ld start.S uart.c hello.c -g -O3 -o hello.elf
+qemu-system-loongarch32 -M ls3a5k32 -m 32M -kernel hello.elf -nographic
+loongson32_init: num_nodes 1
+loongson32_init: node 0 mem 0x2000000
+
+Hello World!!!
+
+Type a character and it will be echoed back:
+123456789
+\end{CodeBlock}
+
+其中\texttt{123456789}为键盘输入后由\texttt{uart\_put\_c}函数驱动UART端口形成的输出。
+
+\subsubsection{使用 C语言编写一个快排程序}\label{sec:02-software-preparation-015}
+
+以下是一个用 C 语言编写的快速排序（Quicksort）程序：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+#include <stdio.h>
+
+// 交换两个整数的值
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// 分区函数，用于确定枢轴位置
+int partition(int array[], int low, int high) {
+    int pivot = array[high]; // 选择最后一个元素作为枢轴
+    int i = (low - 1); // i 是较小元素的索引
+
+    for (int j = low; j < high; j++) {
+        if (array[j] <= pivot) {
+            i++;
+            swap(&array[i], &array[j]);
+        }
+    }
+    swap(&array[i + 1], &array[high]);
+    return (i + 1);
+}
+
+// 快速排序函数
+void quicksort(int array[], int low, int high) {
+    if (low < high) {
+        int pi = partition(array, low, high); // 找到分区索引
+        quicksort(array, low, pi - 1); // 递归排序左子数组
+        quicksort(array, pi + 1, high); // 递归排序右子数组
+    }
+}
+
+// 打印数组
+void printArray(int array[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int array[] = {10, 7, 8, 9, 1, 5};
+    int n = sizeof(array) / sizeof(array[0]);
+
+    printf("Unsorted array: \n");
+    printArray(array, n);
+
+    quicksort(array, 0, n - 1);
+
+    printf("Sorted array: \n");
+    printArray(array, n);
+    return 0;
+}
+\end{CodeBlock}
+
+该代码的运行我们将在《Linux 系统编译》章节介绍。
+
+\section{Linux 系统编译}\label{sec:02-software-preparation-016}
+
+\subsection{\texorpdfstring{\texttt{initrd}内存文件系统}{initrd内存文件系统}}\label{sec:02-software-preparation-017}
+
+由于目前la32r的qemu仅支持\texttt{system}模式，我们需要指定内核文件，即为由该源码编译完成的内存镜像文件。
+
+\textbf{\texttt{initrd}内存文件系统} 由于目前la32r的linux尚不支持文件系统，仅支持\texttt{initrd}内存文件系统，我们需要把由gcc编译好的可执行程序放入\texttt{initrd}文件夹中，编译内核，从而\textbf{运行qemu后可以在同一路径中找到可执行程序并进行执行}。每次对\texttt{initrd}中的文件修改后都必须重新编译内核。la32r的linux提供一个基础的\href{https://gitee.com/loongson-edu/la32r-Linux/releases}{\texttt{initrd}包}，下载后解压可直接使用。
+
+可以看到\texttt{initrd}的目录结构就是我们平常所见的根目录下的文件系统的结构。我们可以将写好的应用程序放置于\texttt{initrd\_d/home}目录下，并修改\texttt{initrd\_d/etc/profile}使得每次启动linux后直接进入可执行程序所在路径。
+
+\textbf{目录结构：}
+
+% 代码语言：BookText
+\begin{CodeBlock}[language=BookText]
+initrd_d
+├── bin
+├── dev
+├── emb
+├── etc
+│   └── init.d
+├── home
+├── lib
+│   └── modules
+├── lib32 -> lib
+├── media
+├── mnt
+├── proc
+├── sbin
+├── sys
+├── tmp
+├── usr
+│   ├── bin
+│   ├── lib
+│   └── sbin
+└── var
+\end{CodeBlock}
+
+\textbf{initrd\_d/etc/profile：}
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+# /etc/profile: system-wide .profile file for the Bourne shells                  
+
+echo
+echo -n "Processing /etc/profile... "
+# no-op
+echo "Done"
+echo
+export HOME=/home/
+cd $HOME
+\end{CodeBlock}
+
+\subsection{Linux 内核编译}\label{sec:02-software-preparation-018}
+
+此内核基于 Linux 5.14.0-rc2 移植而来，支持 \href{https://www.loongson.cn/uploads/images/2023041918122813624.\%E9\%BE\%99\%E8\%8A\%AF\%E6\%9E\%B6\%E6\%9E\%8432\%E4\%BD\%8D\%E7\%B2\%BE\%E7\%AE\%80\%E7\%89\%88\%E5\%8F\%82\%E8\%80\%83\%E6\%89\%8B\%E5\%86\%8C_r1p03.pdf}{LoongArch 32 Reduced（la32r）}指令集架构。目前，该内核支持在 la32r 的 3 个不同平台上运行：\href{https://gitee.com/loongson-edu/la32r-QEMU}{la32r-QEMU}，\href{https://gitee.com/loongson-edu/chiplab}{chiplab/loongson-soc} 和全流程平台参考 SOC。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  克隆仓库
+
+  % 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+git clone https://gitee.com/loongson-edu/la32r-Linux.git --depth=1
+cd la32r-Linux
+\end{CodeBlock}
+\item
+  配置环境变量（假设交叉工具链安装在了 \texttt{/opt/loongson-gnu-toolchain-8.3-x86\_64-loongarch32r-linux-gnusf-v2.0/} 下）
+
+  % 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+export PATH=/opt/loongson-gnu-toolchain-8.3-x86_64-loongarch32r-linux-gnusf-v2.0/bin:$PATH
+export CROSS_COMPILE=loongarch32r-linux-gnusf-
+export ARCH=loongarch
+\end{CodeBlock}
+\item
+  配置内核编译选项，\textbf{3 个平台的差异通过此步区分}
+
+  \begin{quote}
+  \begin{itemize}
+  \tightlist
+  \item
+    la32r-QEMU 与 chiplab/loongson-soc 使用的是完全相同的代码，不同的是 la32r-QEMU 平台只模拟了 uart 这一个外设。
+  \item
+    这 3 个平台的差异实际上是通过 \texttt{arch/loongarch/boot/dts/loongson/loongson32\_*.dts} 区分的，查看这些 dts 文件，可以进一步了解不同平台的外设地址空间差异。
+  \item
+    chiplab/loongson-soc 和全流程平台参考 SOC 均支持 nand flash，但是在他们的 dts 文件中，描述 nand 的结点均被 \texttt{\#if\ 0} 注释掉了，如需启用，将 \texttt{\#if\ 0} 和 \texttt{\#endif} 删除即可。
+  \item
+    全流程平台参考 SOC 支持 SD 卡，但是在 \texttt{la32\_bx\_defconfig} 中默认关闭了 SD 卡驱动，如需启用需自行开启。
+  \end{itemize}
+  \end{quote}
+
+  \begin{longtable}[]{@{}
+    >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2326}}
+    >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2791}}
+    >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4884}}@{}}
+  \toprule\noalign{}
+  \begin{minipage}[b]{\linewidth}\centering
+  平台
+  \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+  默认配置
+  \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+  配置文件
+  \end{minipage} \\
+  \midrule\noalign{}
+  \endhead
+  \bottomrule\noalign{}
+  \endlastfoot
+  la32r-QEMU & \texttt{make\ la32\_defconfig} & \texttt{arch/loongarch/configs/la32\_defconfig} \\
+  chiplab/loongson-soc & \texttt{make\ la32\_defconfig} & \texttt{arch/loongarch/configs/la32\_defconfig} \\
+  全流程平台参考 SOC & \texttt{make\ la32\_bx\_defconfig} & \texttt{arch/loongarch/configs/la32\_bx\_defconfig} \\
+  \end{longtable}
+\item
+  配置根文件系统路径
+
+  la32r-Linux 在 3 个平台中均采用 ramfs，编译好的根文件系统在内核构建过程中直接被链接在内核中，因此需要在编译内核前对根文件系统的路径进行配置。
+
+  \begin{quote}
+  编译根文件系统可使用 \href{https://gitee.com/loongson-edu/la32r-buildroot}{la32r-buildroot}
+  \end{quote}
+
+  配置根文件系统路径的方式有 2 种：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    修改 .config 文件中的 \texttt{CONFIG\_INITRAMFS\_SOURCE} 参数，例：\texttt{CONFIG\_INITRAMFS\_SOURCE="\textasciitilde{}/linux-5.14-loongarch32/initrd\_pck32"}
+  \item
+    在 \texttt{make\ menuconfig} 中 \texttt{General\ Setup\ -\textgreater{}\ Initramfs\ source\ file(s)} 修改
+  \end{itemize}
+
+  此外在QEMU平台，\textbf{如果要使用\texttt{initrd\_d}文件系统}，编译linux时，我们需要在配置文件中指明\texttt{initrd\_d}的路径。一个办法是通过\texttt{menuconfig}图形界面完成配置，注意路径按照个人配置来设置。
+
+  % 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+make la32_defconfig
+make menuconfig
+\end{CodeBlock}
+
+  另一个办法是与\texttt{menuconfig}具有相同功能的非图形化配置，修改\texttt{la\_build/.config}文件中的如下参数即可。
+
+  % 代码语言：BookConfig
+\begin{CodeBlock}[language=BookConfig]
+CONFIG_INITRAMFS_SOURCE="<your initrd path>"
+\end{CodeBlock}
+\item
+  编译内核，内核的 ELF 文件为当前目录下的 \texttt{vmlinux}
+
+  % 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+make -j`nproc`
+\end{CodeBlock}
+\item
+  裁剪 \texttt{vmlinux}，将其中多余的符号信息去除，以减小内核体积
+
+  % 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+loongarch32r-linux-gnusf-strip vmlinux
+\end{CodeBlock}
+\end{enumerate}
+
+\begin{quote}
+注：如果想采用自动化编译流程，可参考 \texttt{la\_build.sh}，\textbf{其中需要自行配置 \texttt{CROSS\_COMPILE} 变量，并在打开 \texttt{menuconfig} 后自行修改根文件系统目录}，生成的 ELF 文件为 \texttt{la\_build/vmlinux}。
+\end{quote}
+
+\subsection{获取反汇编的 Linux 代码（objdump）}\label{sec:02-software-preparation-019}
+
+编译产物为vmlinux二进制文件，可通过如下命令进行反汇编：
+
+% 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+$ loongarch32r-linux-gnusf-objdump -S vmlinux > vmlinux.S
+\end{CodeBlock}
+
+值得注意的是，arm-none-eabi-objdump的参数-S表示尽可能的把原来的代码和反汇编出来的代码一起呈现出来，-S参数需要结合 arm-linux-gcc编译参数-g，才能达到反汇编时同时输出原来的代码。所以，我在linux内核代码根目录的Makefile中增加-g编译参 数：
+
+% 代码语言：BookMake
+\begin{CodeBlock}[language=BookMake]
+KBUILD_CFLAGS := -g -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
+     -fno-strict-aliasing -fno-common \
+     -Werror-implicit-function-declaration \
+     -Wno-format-security \
+     -fno-delete-null-pointer-checks
+\end{CodeBlock}
+
+选择内核编译目录下的vmlinux
+
+使用objdump -Dz -S vmlinux \textgreater{} dumpkernel，对于arm平台等，需要使用对应工具链的objdump 要在Linux内核中生成包含C语言注释的反汇编文件，可以按照以下步骤操作：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{启用反汇编注释}： 确保你在编译内核时启用了反汇编注释。可以在内核编译配置文件（\texttt{.config}）中添加以下选项：
+
+  % 代码语言：BookConfig
+\begin{CodeBlock}[language=BookConfig]
+CONFIG_DEBUG_INFO=y
+CONFIG_DEBUG_INFO_DWARF4=y
+CONFIG_DEBUG_INFO_REDUCED=n
+CONFIG_DEBUG_INFO_SPLIT=n
+CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
+CONFIG_GDB_SCRIPTS=y
+\end{CodeBlock}
+\item
+  \textbf{编译内核}： 使用这些选项重新编译内核。你可以通过以下命令重新生成配置文件并编译内核：
+
+  % 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+make menuconfig
+make -j$(nproc)
+\end{CodeBlock}
+\item
+  \textbf{生成反汇编文件}： 使用\texttt{objdump}工具生成带有C语言注释的反汇编文件。例如，假设你的内核映像文件是\texttt{vmlinux}，可以使用以下命令：
+
+  % 代码语言：BookShell
+\begin{CodeBlock}[language=BookShell]
+objdump -S vmlinux > vmlinux.S
+\end{CodeBlock}
+
+  其中\texttt{-S}选项用于在反汇编输出中包含源代码注释。
+\item
+  \textbf{检查生成的文件}： 生成的反汇编文件（例如\texttt{vmlinux.S}）将包含反汇编代码以及C语言注释，方便你进行调试和分析。
+\end{enumerate}
+
+\subsection{在 Linux 代码中插入 printk 辅助调试的介绍}\label{sec:02-software-preparation-020}
+
+借助反汇编（包含反汇编和 C 代码注释）和搜索工具（例如：VScode中的搜索），根据出错指令的PC我们能够较为容易的定位到其在 C 代码中的位置（若为内核PC，可直接通过vmlinux.S进行查看；若为用户态PC，其定位相对较复杂，涉及动态链接），并添加相应的 printk 辅助调试测试。
+
+\subsubsection{printk概述}\label{sec:02-software-preparation-021}
+
+对于从事 Linux 内核开发的人来说，\texttt{printk} 是非常熟悉的工具。内核启动时显示的各种信息大多通过它来实现，在进行内核驱动调试时，它也是常用的工具之一。\texttt{printk} 之所以广泛使用，不仅因为它使用方便，更因为它的健壮性。它的使用范围非常广泛，几乎可以在内核的任何地方调用。无论是中断上下文、进程上下文，还是持有锁时，甚至在 SMP 系统中都可以调用它，而且调用时不需要使用锁。如此高的适应性得益于它的设计，即由三个指针控制的简单``环形缓冲区''（ring buffer）。
+
+需要注意的是，虽然 \texttt{printk} 几乎可以在内核的任何地方使用，但在系统启动过程的早期阶段，终端初始化之前的某些地方使用会有``问题''。在终端和控制台初始化之前，所有通过 \texttt{printk} 输出的信息都会被缓存在 \texttt{printk} 的环形缓冲区中，直到终端和控制台初始化完成后，所有缓存的信息才会一并输出。
+
+如果你需要调试系统启动过程最初阶段的部分（例如 \texttt{setup\_arch()}），可以依靠此时能够工作的硬件设备（如串口）与外界通信，使用 \texttt{printk()} 的变体 \texttt{early\_printk()} 函数。\texttt{early\_printk} 在启动过程初期就能在终端上打印信息，功能与 \texttt{printk()} 类似，主要区别在于：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  函数名不同。
+\item
+  能够更早地工作并输出信息。
+\item
+  拥有自己的小缓存（一般为 512B）。
+\item
+  一次性将信息输出到硬件设备，不再以环形缓冲区形式保留信息。
+\end{enumerate}
+
+需要注意的是，\texttt{early\_printk} 在一些架构上无法实现，因此这种方法缺乏可移植性（大多数架构都可以，包括 x86 和 ARM）。
+
+总之，除非需要在启动初期在终端上输出信息，否则我们认为 \texttt{printk()} 在任何情况下都能工作。这一点可以从内核的启动代码中看出：在进入 \texttt{start\_kernel} 不久后，就通过 \texttt{printk} 打印内核版本信息，如 \texttt{printk(KERN\_NOTICE\ "\%s",\ linux\_banner);}。
+
+\subsubsection{printk的使用}\label{sec:02-software-preparation-022}
+
+\texttt{printk()} 和 C 库中的 \texttt{printf()} 在使用上的一个主要区别是 \texttt{printk()} 指定了日志级别。
+
+\textbf{1. 日志等级}
+
+内核根据日志级别来判断是否在终端（console）上打印消息：内核将级别低于特定值的所有消息显示在终端（console）上，但所有信息都会记录在 \texttt{printk} 的``环形缓冲区''中。
+
+\texttt{printk} 有 8 个日志级别，定义如下：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+#define KERN_EMERG   "<0>" /* 系统不可使用 */
+#define KERN_ALERT   "<1>" /* 需要立即采取行动 */
+#define KERN_CRIT    "<2>" /* 严重情况 */
+#define KERN_ERR     "<3>" /* 错误情况 */
+#define KERN_WARNING "<4>" /* 警告情况 */
+#define KERN_NOTICE  "<5>" /* 正常情况，但值得注意 */
+#define KERN_INFO    "<6>" /* 信息型消息 */
+#define KERN_DEBUG   "<7>" /* 调试级别的信息 */
+
+/* 使用默认内核日志级别 */
+#define KERN_DEFAULT ""
+
+/* 标注为一个“连续”的日志打印输出行（只能用于一个没有用 \n 封闭的行之后）。只能用于启动初期的 core/arch 代码（否则续行是非 SMP 安全的）。 */
+#define KERN_CONT ""
+\end{CodeBlock}
+
+如果使用时没有指定日志等级，内核会选用 \texttt{DEFAULT\_MESSAGE\_LOGLEVEL}，这个定义位于 \texttt{kernel/printk.c} 中：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+/* printk's without a loglevel use this.. */
+#define DEFAULT_MESSAGE_LOGLEVEL CONFIG_DEFAULT_MESSAGE_LOGLEVEL
+\end{CodeBlock}
+
+可以看出，这个等级是可以在内核配置时指定的。从 2.6.39 版本开始，如果不特别配置，那么默认值为 \texttt{\textless{}4\textgreater{}}，即 \texttt{KERN\_WARNING}。内核将最重要的记录等级 \texttt{KERN\_EMERG} 定为 \texttt{\textless{}0\textgreater{}}，将无关紧要的调试记录等级 \texttt{KERN\_DEBUG} 定为 \texttt{\textless{}7\textgreater{}}。内核用这些宏指定日志等级和当前终端的记录等级 \texttt{console\_loglevel} 来决定是否向终端上打印。使用示例如下：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+printk(KERN_EMERG "log_level:%s\n", KERN_EMERG);
+\end{CodeBlock}
+
+编译预处理完成后，前例中的代码实际被编译成如下格式：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+printk("<0>" "log_level:%s\n", KERN_EMERG);
+\end{CodeBlock}
+
+给 \texttt{printk()} 指定什么日志等级完全取决于你。正式且需要保持的消息应该根据信息的性质给出相应的日志等级。但为了解决问题临时添加的调试信息有两种处理方法：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  保持终端的默认记录等级不变，给所有调试信息 \texttt{KERN\_CRIT} 或更低的等级，以保证信息一定会被输出。
+\item
+  给所有调试信息 \texttt{KERN\_DEBUG} 等级，同时将终端的默认记录等级调整为 7，以输出所有调试信息。
+\end{enumerate}
+
+\textbf{2. 相关辅助宏}
+
+如果每次都要为 \texttt{printk} 添加日志等级宏，确实有点麻烦。因此，内核开发者们定义了一些宏来方便 \texttt{printk} 的使用，这些宏在内核代码中也随处可见：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+#ifndef pr_fmt
+#define pr_fmt(fmt) fmt
+#endif
+
+#define pr_emerg(fmt, ...) \
+    printk(KERN_EMERG pr_fmt(fmt), ##__VA_ARGS__)
+#define pr_alert(fmt, ...) \
+    printk(KERN_ALERT pr_fmt(fmt), ##__VA_ARGS__)
+#define pr_crit(fmt, ...) \
+    printk(KERN_CRIT pr_fmt(fmt), ##__VA_ARGS__)
+#define pr_err(fmt, ...) \
+    printk(KERN_ERR pr_fmt(fmt), ##__VA_ARGS__)
+#define pr_warning(fmt, ...) \
+    printk(KERN_WARNING pr_fmt(fmt), ##__VA_ARGS__)
+#define pr_warn pr_warning
+#define pr_notice(fmt, ...) \
+    printk(KERN_NOTICE pr_fmt(fmt), ##__VA_ARGS__)
+#define pr_info(fmt, ...) \
+    printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+#define pr_cont(fmt, ...) \
+    printk(KERN_CONT fmt, ##__VA_ARGS__)
+
+/* 除非定义了 DEBUG，否则 pr_devel() 不产生任何代码 */
+#ifdef DEBUG
+#define pr_devel(fmt, ...) \
+    printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
+#else
+#define pr_devel(fmt, ...) \
+    no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
+#endif
+
+/* 如果你在写一个驱动，请使用 dev_dbg */
+#if defined(DEBUG)
+#define pr_debug(fmt, ...) \
+    printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
+#elif defined(CONFIG_DYNAMIC_DEBUG)
+/* dynamic_pr_debug() 内部使用 pr_fmt()，因此这里不需要 pr_fmt() */
+#define pr_debug(fmt, ...) \
+    dynamic_pr_debug(fmt, ##__VA_ARGS__)
+#else
+#define pr_debug(fmt, ...) \
+    no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
+#endif
+\end{CodeBlock}
+
+通过上述代码，可以看到这些宏的使用。值得注意的是，\texttt{pr\_devel} 和 \texttt{pr\_debug} 这些宏只有在定义了 \texttt{DEBUG} 之后才会产生实际的 \texttt{printk} 代码，这样方便了内核开发：在代码中使用这些宏，当调试结束时，只需简单地 \texttt{\#undef\ DEBUG} 就可以消除这些调试使用的代码，而无需真正删除调试输出代码。
+
+\textbf{3. 输出速率控制}
+
+在调试过程中，有时某些部分的 \texttt{printk} 可能会产生大量输出，导致系统无法正常工作，并可能使系统日志环形缓冲区（ring buffer）溢出，即旧的信息被快速覆盖。特别是在使用慢速控制台设备（如串口）时，过量输出还会拖慢系统速度，从而难以发现系统出问题的具体原因。因此，正常操作时不应当打印任何不必要的信息，打印的输出应当是指示需要注意的异常情况，并且要避免过度打印。
+
+在某些情况下，最好的做法是设置一个标志变量，表示该信息已经打印过一次，以后不再重复打印。此外，内核提供了一个现成的宏来控制打印速率：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+#define printk_ratelimit() __printk_ratelimit(__func__)
+\end{CodeBlock}
+
+这个函数应当在可能产生大量重复消息的打印操作之前调用。如果函数返回非零值，则继续打印消息，否则跳过打印。典型调用方式如下：
+
+% 代码语言：BookC
+\begin{CodeBlock}[language=BookC]
+if (printk_ratelimit())
+    printk(KERN_NOTICE "The printer is still on fire\n");
+\end{CodeBlock}
+
+\texttt{printk\_ratelimit} 通过跟踪发向控制台的消息数量和时间来工作。当输出超过限度时，\texttt{printk\_ratelimit} 开始返回 0，使消息被丢弃。我们可以通过修改以下参数来控制消息的输出：
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{/proc/sys/kern/printk\_ratelimit}（监测周期，在这个周期内只能发出规定数量的信息）
+\item
+  \texttt{/proc/sys/kernel/printk\_ratelimit\_burst}（上述周期内的最大消息数，超过该数则 \texttt{printk\_ratelimit()} 返回 0）
+\end{itemize}
+
+此外，内核还定义了其他宏，例如 \texttt{printk\_ratelimited(fmt,\ ...)} 等，有兴趣的朋友可以查看相关文件，理解这些宏的具体使用方法。
+
+\textbf{4. 最后特别提醒}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{减少 \texttt{printk} 输出以提升性能}：虽然 \texttt{printk} 函数非常健壮，但其效率较低。它在字符拷贝时一次只处理一个字节，并且调用控制台输出时可能会产生中断。因此，在驱动功能调试完成后，进行性能测试或发布时，务必尽量减少 \texttt{printk} 的输出。仅在发生错误时输出少量信息，以免对控制台输出无用信息影响系统性能。我曾在测试 CAN 驱动性能时犯过类似的错误，使用 \texttt{printk} 输出信息进行核对，结果导致系统宕机。
+\item
+  \textbf{\texttt{printk} 的缓存限制}：\texttt{printk} 使用的临时缓存 \texttt{printk\_buf} 只有 1KB。一次 \texttt{printk} 函数调用只能将少于 1KB 的信息记录到日志缓冲区。此外，\texttt{printk} 使用的环形缓冲区（ring buffer）也有限制。如果在系统启动时，\texttt{printk} 输出的信息超出了缓冲区的容量，旧的信息会被新信息覆盖。因此，在设计驱动程序或调试内核时，要特别注意日志的管理，以防重要信息丢失。
+\end{enumerate}

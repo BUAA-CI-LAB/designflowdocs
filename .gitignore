@@ -1,0 +1,18 @@
+# LaTeX intermediate files; compiled PDFs in build/ are tracked.
+*.synctex.gz
+*.aux
+*.log
+*.toc
+*.out
+*.xdv
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+__pycache__/
+
+# Local editor / agent state and OS metadata
+/.agents/
+/.codex/
+.DS_Store
+Thumbs.db

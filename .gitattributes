@@ -1,0 +1,4 @@
+# Normalize text in Git for editing on both Windows and WSL / Linux.
+* text=auto
+*.sh text eol=lf
+*.cmd text eol=crlf

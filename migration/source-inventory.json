@@ -1,0 +1,1595 @@
+{
+  "stage": "/tmp/designflowdocslatex-stage-xnvvmw3m",
+  "source": "/mnt/d/Desktop/教材与专著/CPU_BOOK/designflowdocs",
+  "chapters": [
+    {
+      "source": "index.Rmd",
+      "headers": 1,
+      "codes": 0,
+      "tables": 0,
+      "r_chunks": 1,
+      "code_samples": []
+    },
+    {
+      "source": "01-hardware-preparation.Rmd",
+      "headers": 9,
+      "codes": 16,
+      "tables": 0,
+      "r_chunks": 0,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [
+            "bash"
+          ],
+          "lines": 4,
+          "start": "chip-env@chipenv-virtual-machine:~$ \nchip-env@chipenv-virtual-machine:~$ sudo su\n[sudo] password for chip-env: \nroot@chipenv-virtual-machine:/home/chi"
+        },
+        {
+          "index": 2,
+          "language": [
+            "bash"
+          ],
+          "lines": 9,
+          "start": "ls - list directory contents\n用法:ls [选项]... [文件]...\n选项（常用）：\n    -a 不隐藏任何以. 开始的项目\n    -l 每行只列出一个文件\n\n# 一般的Ubuntu系统中输入ls可看到如下文件夹\nchip-env@chipenv-virtual-"
+        },
+        {
+          "index": 3,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "mkdir - make directories\n用法:mkdir [选项]... 目录..."
+        },
+        {
+          "index": 4,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "rmdir - remove empty directories\n用法:rmdir [选项]... 目录..."
+        },
+        {
+          "index": 5,
+          "language": [
+            "bash"
+          ],
+          "lines": 5,
+          "start": "rm - remove files or directories\n用法:rm [选项]... 文件...\n选项（常用）：\n    -r 递归删除目录及其内容\n    -f 强制删除。忽略不存在的文件，不提示确认"
+        },
+        {
+          "index": 6,
+          "language": [
+            "bash"
+          ],
+          "lines": 5,
+          "start": "d - change working directory\n用法:cd [路径]\ne.g.\n    cd . 变更至当前目录\n    cd .. 变更至父目录"
+        },
+        {
+          "index": 7,
+          "language": [
+            "bash"
+          ],
+          "lines": 4,
+          "start": "cat - concatenate files and print\n用法:cat [选项]... [文件]...\n选项（常用）：\n    -n 对输出的所有行编号"
+        },
+        {
+          "index": 8,
+          "language": [
+            "bash"
+          ],
+          "lines": 4,
+          "start": "cp - copy files and directories\n用法:cp [选项]... 源文件... 目录\n选项（常用）：\n    -r 递归复制目录及其子目录内的所有内容"
+        },
+        {
+          "index": 9,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "mv - move/rename file\n用法:mv [选项]... 源文件... 目录"
+        },
+        {
+          "index": 10,
+          "language": [
+            "bash"
+          ],
+          "lines": 3,
+          "start": "source - execute commands in file\n用法:source 文件名 [参数]\n注：文件应为可执行文件，即为绿色"
+        },
+        {
+          "index": 11,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "find - search for files in a directory hierarchy\n用法:find -name 文件名"
+        },
+        {
+          "index": 12,
+          "language": [
+            "bash"
+          ],
+          "lines": 7,
+          "start": "rep - print lines matching a pattern\n用法:grep [选项]... PATTERN [FILE]...\n选项（常用）：\n    -a 不忽略二进制数据进行搜索\n    -i 忽略文件大小写差异\n    -r 从文件夹递归查找\n    -n 显示行号"
+        },
+        {
+          "index": 13,
+          "language": [
+            "bash"
+          ],
+          "lines": 4,
+          "start": "an - manual\n用法:man page\ne.g.\n    man ls"
+        },
+        {
+          "index": 14,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "# 直接使用 gcc 编译 Hello World 程序\n$ gcc -o hello_world hello_world.c"
+        },
+        {
+          "index": 15,
+          "language": [
+            "makefile"
+          ],
+          "lines": 5,
+          "start": "target: dependencies\n    command 1\n    command 2\n    ...\n    command n"
+        },
+        {
+          "index": 16,
+          "language": [
+            "makefile"
+          ],
+          "lines": 8,
+          "start": "hello_world: hello_world.o\n    gcc -o hello_world hello_world.o\n\nhello_world.o: hello_world.c\n    gcc -c hello_world.c\n\nclean:\n    rm -f hello_world h"
+        }
+      ]
+    },
+    {
+      "source": "02-software-preparation.Rmd",
+      "headers": 23,
+      "codes": 59,
+      "tables": 1,
+      "r_chunks": 0,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "$ sudo apt-get install ninja-build"
+        },
+        {
+          "index": 2,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "# Ubuntu/Debian:\n$ sudo apt-get install libglib2.0-dev"
+        },
+        {
+          "index": 3,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "$ sudo apt-get install meson"
+        },
+        {
+          "index": 4,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "$ sudo apt-get install libpixman-1-dev"
+        },
+        {
+          "index": 5,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "$ git clone --recursive git@gitee.com:loongson-edu/la32r-QEMU.git"
+        },
+        {
+          "index": 6,
+          "language": [
+            "bash"
+          ],
+          "lines": 6,
+          "start": "$ cd qemu\n$ mkdir build\n$ cd build\n$ ../configure --target-list=loongarch32-softmmu --disable-werror --enable-debug\n$ make -j16  # 可根据实际平台调整编译所用线程数量\n$"
+        },
+        {
+          "index": 7,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "$ ./qemu-system-loongarch32 --version"
+        },
+        {
+          "index": 8,
+          "language": [
+            "console"
+          ],
+          "lines": 2,
+          "start": "QEMU emulator version 6.2.50\nCopyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers"
+        },
+        {
+          "index": 9,
+          "language": [
+            "assembly"
+          ],
+          "lines": 52,
+          "start": "#define UART_BASE 0x9fe001e0       # UART 基地址\n#define UART_RX     0              # UART 接收寄存器偏移\n#define UART_TX     0              # UART 发送寄存器偏移\n#def"
+        },
+        {
+          "index": 10,
+          "language": [
+            "c"
+          ],
+          "lines": 5,
+          "start": "hello.c\nint main() {\n    puts(\"Hello, world!\\n\");\n    return 0;\n}"
+        },
+        {
+          "index": 11,
+          "language": [
+            "assembly"
+          ],
+          "lines": 2,
+          "start": ".section .data\noutput: .asciz \"Hello, world!\\n\""
+        },
+        {
+          "index": 12,
+          "language": [
+            "assembly"
+          ],
+          "lines": 3,
+          "start": ".section .text\n.globl main\nmain:"
+        },
+        {
+          "index": 13,
+          "language": [
+            "c"
+          ],
+          "lines": 1,
+          "start": "int puts(const char *str);"
+        },
+        {
+          "index": 14,
+          "language": [
+            "assembly"
+          ],
+          "lines": 8,
+          "start": "addi.w      $sp, $sp, -4\nst.w        $ra, $sp, 0\nla.local    $a0, output\nbl          puts\nli.w        $a0, 0\nld.w        $ra, $sp, 0\naddi.w      $sp, "
+        },
+        {
+          "index": 15,
+          "language": [
+            "assembly"
+          ],
+          "lines": 17,
+          "start": "    .extern puts\n    .section .data\noutput:\n    .asciz \"Hello, world!\\n\"      # 定义字符串 \"Hello, world!\\n\"\n\n    .section .text\n    .globl main\n\nmain:\n   "
+        },
+        {
+          "index": 16,
+          "language": [
+            "makefile"
+          ],
+          "lines": 16,
+          "start": "TOOL    :=  loongarch32r-linux-gnusf-\nCC      :=  $(TOOL)gcc\nOBJCOPY :=  $(TOOL)objcopy\nOBJDUMP :=  $(TOOL)objdump\nQEMU    :=  qemu-system-loongarch32"
+        },
+        {
+          "index": 17,
+          "language": [
+            "c"
+          ],
+          "lines": 29,
+          "start": "int arr[50];\nint len;\n\nvoid bubble_sort(int* array, int len) {\n    for (int i = 0; i < len - 1; i++) {\n        for (int j = 0; j < len – 1 – i; j++) {"
+        },
+        {
+          "index": 18,
+          "language": [
+            "c"
+          ],
+          "lines": 3,
+          "start": "int scanf(const char *format, ...);\n\nscanf(\"%d\", &a);"
+        },
+        {
+          "index": 19,
+          "language": [
+            "assembly"
+          ],
+          "lines": 3,
+          "start": ".section .data\nlen: .int 0\ninput_format: .asciz \"%d\""
+        },
+        {
+          "index": 20,
+          "language": [
+            "assembly"
+          ],
+          "lines": 3,
+          "start": "    la.local    $a0, input_format\n    la.local    $a1, len\n    bl          scanf"
+        },
+        {
+          "index": 21,
+          "language": [
+            "assembly"
+          ],
+          "lines": 8,
+          "start": "        la.local    $t0, len\n    ld.w        $t0, $t0, 0\n    bne         $t0, $zero, loop\n    jr          $ra\nloop:\n    <do_something>\n    addi.w     "
+        },
+        {
+          "index": 22,
+          "language": [
+            "c"
+          ],
+          "lines": 7,
+          "start": "// before\nfor (int i = 0; i < len; i++) arr[i] = rand() % 100;\n\n// after    \nuint32_t addr;\nfor (addr = &arr[0]; addr <= &arr[len - 1]; addr += 4) \n  "
+        },
+        {
+          "index": 23,
+          "language": [
+            "assembly"
+          ],
+          "lines": 16,
+          "start": "# before\n    # $t0 = i\n    # $t1 = &arr[0]\n    # $t3 = store value\nloop:\n    slli.w      $t2, $t0, 2     # $t2 = i * 4\n    add.w       $t2, $t1, $t2  "
+        },
+        {
+          "index": 24,
+          "language": [
+            "assembly"
+          ],
+          "lines": 4,
+          "start": ".section .data\nvalue_array: .rept 50\n             .int 0\n             .endr"
+        },
+        {
+          "index": 25,
+          "language": [
+            "assembly"
+          ],
+          "lines": 36,
+          "start": ".section .text\n.globl main\nmain:\n    addi.w      $sp, $sp, -16\n    st.w        $ra, $sp, 0\n    st.w        $s0, $sp, 4         # s0 = &value_array\n   "
+        },
+        {
+          "index": 26,
+          "language": [
+            "c"
+          ],
+          "lines": 4,
+          "start": "void output_data(int* array, int len) {\n    for (int i = 0; i < len; i++) printf(\"%d \", arr[i]);\n    puts(\"\\n\");\n}"
+        },
+        {
+          "index": 27,
+          "language": [
+            "c"
+          ],
+          "lines": 3,
+          "start": "int printf(const char *format, ...);\n\nprintf(\"%d \", a);"
+        },
+        {
+          "index": 28,
+          "language": [
+            "assembly"
+          ],
+          "lines": 3,
+          "start": ".section .data\nprint_format: .asciz \"%d \"\nprint_line: .asciz \"\\n\""
+        },
+        {
+          "index": 29,
+          "language": [
+            "assembly"
+          ],
+          "lines": 3,
+          "start": "        move        $a0, $s0            # arg1: start_addr = &value_array\n    move        $a1, $s1            # arg2: len\n    bl          output_data"
+        },
+        {
+          "index": 30,
+          "language": [
+            "assembly"
+          ],
+          "lines": 28,
+          "start": ".type output_data, @function\noutput_data:\n    addi.w      $sp, $sp, -16\n    st.w        $ra, $sp, 0\n    st.w        $s0, $sp, 4\n    st.w        $s1, $"
+        },
+        {
+          "index": 31,
+          "language": [
+            "c"
+          ],
+          "lines": 25,
+          "start": "// before\nfor (int i = 0; i < len - 1; i++) {\n  for (int j = 0; j < len – 1 – i; j++) {\n    if (array[j] > array[j + 1]) {\n      int temp = array[j];\n"
+        },
+        {
+          "index": 32,
+          "language": [
+            "assembly"
+          ],
+          "lines": 125,
+          "start": ".section .data\nvalue_array: .rept 50\n             .int 0\n             .endr\nlen: .int 0\ninput_format: .asciz \"%d\"\nprint_format: .asciz \"%d \"\nprint_lin"
+        },
+        {
+          "index": 33,
+          "language": [
+            "assembly"
+          ],
+          "lines": 27,
+          "start": ".extern main\n.text\n.globl _start\n_start:\n    # Config direct window and set PG\n    li.w    $t0, 0xa0000011\n    csrwr   $t0, 0x180\n    /* CSR_DMWIN0(0x"
+        },
+        {
+          "index": 34,
+          "language": [
+            "ld"
+          ],
+          "lines": 7,
+          "start": "SECTIONS\n{\n    . = 0xa0000000;\n    .text : { *(.text) }\n    .rodata : { *(.rodata) }\n    .bss : { *(.bss) }\n}"
+        },
+        {
+          "index": 35,
+          "language": [
+            "makefile"
+          ],
+          "lines": 16,
+          "start": "TOOL    :=  loongarch32r-linux-gnusf-\nCC      :=  $(TOOL)gcc\nOBJCOPY :=  $(TOOL)objcopy\nOBJDUMP :=  $(TOOL)objdump\nQEMU    :=  qemu-system-loongarch32"
+        },
+        {
+          "index": 36,
+          "language": [
+            "c"
+          ],
+          "lines": 26,
+          "start": "#define UART_BASE 0x9fe001e0\n#define UART_RX     0   /* In:  Receive buffer */\n#define UART_TX     0   /* Out: Transmit buffer */\n#define UART_LSR    "
+        },
+        {
+          "index": 37,
+          "language": [
+            "c"
+          ],
+          "lines": 14,
+          "start": "extern void print_s(const char *c);\nextern char uart_get_c();\nextern void uart_put_c(char c);\n\nvoid main() {\n    print_s(\"\\nHello World\\n\\n\");\n    \n  "
+        },
+        {
+          "index": 38,
+          "language": [
+            "bash"
+          ],
+          "lines": 10,
+          "start": "$ make qemu \nloongarch32r-linux-gnusf-gcc -nostdlib -T linker.ld start.S uart.c hello.c -g -O3 -o hello.elf\nqemu-system-loongarch32 -M ls3a5k32 -m 32M"
+        },
+        {
+          "index": 39,
+          "language": [
+            "c"
+          ],
+          "lines": 54,
+          "start": "#include <stdio.h>\n\n// 交换两个整数的值\nvoid swap(int* a, int* b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\n// 分区函数，用于确定枢轴位置\nint partition(int array"
+        },
+        {
+          "index": 40,
+          "language": [
+            "text"
+          ],
+          "lines": 21,
+          "start": "initrd_d\n├── bin\n├── dev\n├── emb\n├── etc\n│   └── init.d\n├── home\n├── lib\n│   └── modules\n├── lib32 -> lib\n├── media\n├── mnt\n├── proc\n├── sbin\n├── sys\n"
+        },
+        {
+          "index": 41,
+          "language": [
+            "ini"
+          ],
+          "lines": 9,
+          "start": "# /etc/profile: system-wide .profile file for the Bourne shells                  \n\necho\necho -n \"Processing /etc/profile... \"\n# no-op\necho \"Done\"\necho"
+        },
+        {
+          "index": 42,
+          "language": [
+            "shell"
+          ],
+          "lines": 2,
+          "start": "git clone https://gitee.com/loongson-edu/la32r-Linux.git --depth=1\ncd la32r-Linux"
+        },
+        {
+          "index": 43,
+          "language": [
+            "shell"
+          ],
+          "lines": 3,
+          "start": "export PATH=/opt/loongson-gnu-toolchain-8.3-x86_64-loongarch32r-linux-gnusf-v2.0/bin:$PATH\nexport CROSS_COMPILE=loongarch32r-linux-gnusf-\nexport ARCH="
+        },
+        {
+          "index": 44,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "make la32_defconfig\nmake menuconfig"
+        },
+        {
+          "index": 45,
+          "language": [
+            "ini"
+          ],
+          "lines": 1,
+          "start": "CONFIG_INITRAMFS_SOURCE=\"<your initrd path>\""
+        },
+        {
+          "index": 46,
+          "language": [
+            "shell"
+          ],
+          "lines": 1,
+          "start": "make -j`nproc`"
+        },
+        {
+          "index": 47,
+          "language": [
+            "shell"
+          ],
+          "lines": 1,
+          "start": "loongarch32r-linux-gnusf-strip vmlinux"
+        },
+        {
+          "index": 48,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "$ loongarch32r-linux-gnusf-objdump -S vmlinux > vmlinux.S"
+        },
+        {
+          "index": 49,
+          "language": [
+            "makefile"
+          ],
+          "lines": 5,
+          "start": "KBUILD_CFLAGS := -g -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \\\n     -fno-strict-aliasing -fno-common \\\n     -Werror-implicit-function-declarat"
+        },
+        {
+          "index": 50,
+          "language": [
+            "plaintext"
+          ],
+          "lines": 6,
+          "start": "CONFIG_DEBUG_INFO=y\nCONFIG_DEBUG_INFO_DWARF4=y\nCONFIG_DEBUG_INFO_REDUCED=n\nCONFIG_DEBUG_INFO_SPLIT=n\nCONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y\nCONFI"
+        },
+        {
+          "index": 51,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "make menuconfig\nmake -j$(nproc)"
+        },
+        {
+          "index": 52,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "objdump -S vmlinux > vmlinux.S"
+        },
+        {
+          "index": 53,
+          "language": [
+            "c"
+          ],
+          "lines": 14,
+          "start": "#define KERN_EMERG   \"<0>\" /* 系统不可使用 */\n#define KERN_ALERT   \"<1>\" /* 需要立即采取行动 */\n#define KERN_CRIT    \"<2>\" /* 严重情况 */\n#define KERN_ERR     \"<3>\" /* "
+        },
+        {
+          "index": 54,
+          "language": [
+            "c"
+          ],
+          "lines": 2,
+          "start": "/* printk's without a loglevel use this.. */\n#define DEFAULT_MESSAGE_LOGLEVEL CONFIG_DEFAULT_MESSAGE_LOGLEVEL"
+        },
+        {
+          "index": 55,
+          "language": [
+            "c"
+          ],
+          "lines": 1,
+          "start": "printk(KERN_EMERG \"log_level:%s\\n\", KERN_EMERG);"
+        },
+        {
+          "index": 56,
+          "language": [
+            "c"
+          ],
+          "lines": 1,
+          "start": "printk(\"<0>\" \"log_level:%s\\n\", KERN_EMERG);"
+        },
+        {
+          "index": 57,
+          "language": [
+            "c"
+          ],
+          "lines": 43,
+          "start": "#ifndef pr_fmt\n#define pr_fmt(fmt) fmt\n#endif\n\n#define pr_emerg(fmt, ...) \\\n    printk(KERN_EMERG pr_fmt(fmt), ##__VA_ARGS__)\n#define pr_alert(fmt, .."
+        },
+        {
+          "index": 58,
+          "language": [
+            "c"
+          ],
+          "lines": 1,
+          "start": "#define printk_ratelimit() __printk_ratelimit(__func__)"
+        },
+        {
+          "index": 59,
+          "language": [
+            "c"
+          ],
+          "lines": 2,
+          "start": "if (printk_ratelimit())\n    printk(KERN_NOTICE \"The printer is still on fire\\n\");"
+        }
+      ]
+    },
+    {
+      "source": "03-base-cpu.Rmd",
+      "headers": 10,
+      "codes": 6,
+      "tables": 1,
+      "r_chunks": 4,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [
+            "scala"
+          ],
+          "lines": 10,
+          "start": "object LA32R_MOUInstr extends HasLa32rInstrType with HasEulaCoreParameter {\n\n  def DBAR      = BitPat(\"b0 0 1 1 1 0 0 0 0 1 1 1 0 0 1 0 0_????????????"
+        },
+        {
+          "index": 2,
+          "language": [
+            "scala"
+          ],
+          "lines": 53,
+          "start": "object PipelineVector2Connect {\n  def apply[T <: Data](gen: T, in1: DecoupledIO[T], in2: DecoupledIO[T], out1: DecoupledIO[T], out2: DecoupledIO[T], f"
+        },
+        {
+          "index": 3,
+          "language": [
+            "scala"
+          ],
+          "lines": 8,
+          "start": "  def isDepend(rfSrc: UInt, rfDest: UInt, wen: Bool): Bool = (rfSrc =/= 0.U) && (rfSrc === rfDest) && wen\n\n  val forwardRfWen = io.forward.wb.rfWen &&"
+        },
+        {
+          "index": 4,
+          "language": [
+            "scala"
+          ],
+          "lines": 4,
+          "start": "val src1ForwardNextCycle = src1DependEX && !dontForward1\nval src2ForwardNextCycle = src2DependEX && !dontForward1\nval src1Forward = src1DependWB && Mu"
+        },
+        {
+          "index": 5,
+          "language": [
+            "scala"
+          ],
+          "lines": 1,
+          "start": "io.out.valid := io.in(0).valid && src1Ready && src2Ready"
+        },
+        {
+          "index": 6,
+          "language": [
+            "scala"
+          ],
+          "lines": 5,
+          "start": "class ForwardIO extends EulaCoreBundle {\n  val valid = Output(Bool())\n  val wb = new WriteBackIO\n  val fuType = Output(FuType())\n}"
+        }
+      ]
+    },
+    {
+      "source": "04-advanced-cpu.Rmd",
+      "headers": 25,
+      "codes": 33,
+      "tables": 1,
+      "r_chunks": 3,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 5,
+          "start": "// 定义4种跳转类型\n`define _BPU_TARGET_NPC  (2'd0)    // 不跳转\n`define _BPU_TARGET_CALL (2'd1)    // 函数调用类型\n`define _BPU_TARGET_RETURN (2'd2)  // 调用返回类型\n`defin"
+        },
+        {
+          "index": 2,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 28,
+          "start": "typedef struct packed {\n  logic taken;  // 预测是否跳转\n  logic [                31:0] predict_pc ;  // 预测跳转地址\n  logic [                 1:0] lphr       ;  "
+        },
+        {
+          "index": 3,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 12,
+          "start": "module core_npc (\n  input  logic              clk       ,\n  input  logic              rst_n     ,\n  input  logic              rst_jmp   ,  // 流水线冲刷信号\n"
+        },
+        {
+          "index": 4,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 9,
+          "start": "// 如果pc是CALL类型指令且流水线不发生暂停\nif(pc_is_call && !f_stall_i) begin\n  // 按照指令是第一条还是第二条计算写入的PC值，并进行写入\n  ras_q[ras_w_ptr_q] <= {pc[31:3], 3'b000} + (inst_0_jmp"
+        },
+        {
+          "index": 5,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 11,
+          "start": "// 在第一个周期将栈顶元素读出到寄存器，优化时序\nalways_ff @(posedge clk) begin\n  ppc_ras_q <= {ras_q[ras_ptr_q][31:2], 2'b00};\nend\n\n// 第二周期，如果pc是RETURN类型指令且流水线不发生暂停\nif(pc_i"
+        },
+        {
+          "index": 6,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 12,
+          "start": "// RETURN MISS: 更新读写指针\n// CALL   MISS: 更新读写指针和RAS栈顶元素\nif(correct_i.miss || correct_i.ras_miss_type) begin\n  // 更新写指针\n  ras_w_ptr_q <= correct_i.ras_pt"
+        },
+        {
+          "index": 7,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 4,
+          "start": "logic[8:0] btb_waddr,btb_raddr;\nlogic[1:0] btb_we;\nlogic[31:0] btb_wdata;\nlogic[1:0][31:0] btb_rdata;"
+        },
+        {
+          "index": 8,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 11,
+          "start": "typedef struct packed {\n  logic [1:0] target_type; // 0 npc, 1 call, 2 return, 3 imm\n  logic conditional_jmp;   // 0：非条件跳转；1：条件跳转\n  logic [4:0] histor"
+        },
+        {
+          "index": 9,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 34,
+          "start": "// 创建两个 btb 和 info mem，用于写更新时区别开来。\nfor(genvar p = 0 ; p < 2 ; p++) begin  \n  simpleDualPortRamRE #(\n    .dataWidth(30 ),\n    .ramSize  (512),\n    .lat"
+        },
+        {
+          "index": 10,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 12,
+          "start": "assign btb_raddr = npc[11:3];              // 读地址来自NPC\nassign btb_waddr = correct_i.pc[11:3];     // 写地址来自BPU更新请求\nassign btb_wdata = correct_i.true_ta"
+        },
+        {
+          "index": 11,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 17,
+          "start": "assign info_raddr = npc[10:3];          // 读地址来自NPC\nassign info_waddr = correct_i.pc[10:3]; // 写地址来自BPU更新请求\nalways_comb begin\n  info_we = '0;  // 默认不发"
+        },
+        {
+          "index": 12,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 5,
+          "start": "logic level2_we;\nlogic [4:0] level2_waddr;\nlogic [1:0] level2_wdata;\nlogic [1:0][4:0] level2_raddr;\nlogic [1:0][1:0] level2_cnt;  // PHT的读出数据"
+        },
+        {
+          "index": 13,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 17,
+          "start": "for(genvar p = 0 ; p < 2; p++) begin\n  simpleDualPortLutRam #(\n    .dataWidth(2 ),\n    .ramSize  (32),\n    .latency  (0 ),  // 注意这里的延迟是0，\n    .readMul"
+        },
+        {
+          "index": 14,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 10,
+          "start": "// 按照两位饱和计数器的规范计算要写入的pht表项信息\nassign level2_wdata = gen_next_lphr(correct_i.lphr, correct_i.true_taken);\n// 写入地址是更新信息中携带的分支历史\nassign level2_waddr = cor"
+        },
+        {
+          "index": 15,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 24,
+          "start": "// 定义相关信号\nlogic [1:0] branch_need_jmp;  // 是否需要跳转\nlogic [1:0] tag_match;  // PC与读出的TAG是否匹配\n\n// 预测逻辑，valid_q参看指令有效性标记\nfor(genvar p = 0 ; p < 2; p++) be"
+        },
+        {
+          "index": 16,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 37,
+          "start": "// 定义相关信号\n// output logic [1:0] valid_o; 标记BPU输出PC的有效性\nlogic[1:0] valid_q;  // nvalid缓存一拍，与npc流动一致\nlogic[1:0] nvalid;   // 表示由npc值决定的有效性\n\n// nvalid 逻辑"
+        },
+        {
+          "index": 17,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 16,
+          "start": "always_comb begin\n  // npc 默认为 align(pc, 8) + 8\n  npc = ppc_plus8;\n  if(branch_need_jmp[0]) begin\n    // 如果第一条指令预测跳转，根据类型选择目标地址\n    npc = rinfo_q[0].t"
+        },
+        {
+          "index": 18,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 23,
+          "start": "always_comb begin\n  if(branch_need_jmp[0]) begin\n    predict_o[0].taken = '1;\n  end\n  else if(branch_need_jmp[1]) begin\n    predict_o[1].taken = '1;\n "
+        },
+        {
+          "index": 19,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "apt install openjdk-21-jre-headless  # 安装Java运行环境\napt install openjdk-21-jdk-headless  # 安装Java开发环境"
+        },
+        {
+          "index": 20,
+          "language": [
+            "bash"
+          ],
+          "lines": 4,
+          "start": "$ java --version\nopenjdk 21.0.3 2024-04-16\nOpenJDK Runtime Environment (build 21.0.3+9-Ubuntu-1ubuntu122.04.1)\nOpenJDK 64-Bit Server VM (build 21.0.3+"
+        },
+        {
+          "index": 21,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "$ javac --version\njavac 21.0.3"
+        },
+        {
+          "index": 22,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "wget https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.deb"
+        },
+        {
+          "index": 23,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "sudo dpkg -i scala-2.11.12.deb"
+        },
+        {
+          "index": 24,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "$ scala -version\nScala code runner version 2.11.12 -- Copyright 2002-2017, LAMP/EPFL"
+        },
+        {
+          "index": 25,
+          "language": [
+            "bash"
+          ],
+          "lines": 5,
+          "start": "echo \"deb https://repo.scala-sbt.org/scalasbt/debian all main\" | sudo tee /etc/apt/sources.list.d/sbt.list\necho \"deb https://repo.scala-sbt.org/scalas"
+        },
+        {
+          "index": 26,
+          "language": [
+            "json"
+          ],
+          "lines": 70,
+          "start": "{\n  // 支持3种指令信号值的定义方式\n  \"signal_values\": {\n    // 列表形式\n    // 最终会在decoder.svh中生成对应宏定义\n    \"signal_name0\": [\n      \"S0_VALUE0\",  // 0\n      \"S0_VALUE1\""
+        },
+        {
+          "index": 27,
+          "language": [
+            "scala"
+          ],
+          "lines": 17,
+          "start": "object Config {\n  val useJson = true  // 也可以直接编写SpinalHDL格式的解码文件，此时设置该值为false，但是此功能还不完整\n  // 定义CPU流水级，需要考虑顺序，需与JSON中出现的一致\n  val stages: List[String] ="
+        },
+        {
+          "index": 28,
+          "language": [
+            "bash"
+          ],
+          "lines": 10,
+          "start": "r$ sbt\n[info] [launcher] getting org.scala-sbt sbt 1.9.3  (this may take some time)...\n[info] [launcher] getting Scala 2.12.18 (for sbt)...\n[info] wel"
+        },
+        {
+          "index": 29,
+          "language": [
+            "bash"
+          ],
+          "lines": 9,
+          "start": "sbt:simple-decoder> run\n\nMultiple main classes detected. Select one to run:\n [1] JsonInstSetLoader\n [2] decoder\n\nEnter number:\n\n  | => root / Compile "
+        },
+        {
+          "index": 30,
+          "language": [
+            "bash"
+          ],
+          "lines": 10,
+          "start": "sbt:simple-decoder> run\n\nMultiple main classes detected. Select one to run:\n [1] JsonInstSetLoader\n [2] decoder\n\nEnter number: 1\n[info] running JsonIn"
+        },
+        {
+          "index": 31,
+          "language": [
+            "bash"
+          ],
+          "lines": 23,
+          "start": "sbt:simple-decoder> run\n\nMultiple main classes detected. Select one to run:\n [1] JsonInstSetLoader\n [2] decoder\n\nEnter number: 2\n[info] running decode"
+        },
+        {
+          "index": 32,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 21,
+          "start": "typedef struct packed {\n          // 缓存请求类型\n          logic cache_refill_valid;\n          logic uncached_read;\n          logic hit_write_req_valid;\n  "
+        },
+        {
+          "index": 33,
+          "language": [
+            "systemverilog"
+          ],
+          "lines": 130,
+          "start": "  // 核心状态机\n  typedef logic[3:0] fsm_t;\n  localparam fsm_t S_NORMAL     = 0;\n  localparam fsm_t S_WB_WADR    = 1;\n  localparam fsm_t S_WB_WDAT    = 2;\n"
+        }
+      ]
+    },
+    {
+      "source": "05-complex-cpu.Rmd",
+      "headers": 21,
+      "codes": 6,
+      "tables": 0,
+      "r_chunks": 9,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [],
+          "lines": 1,
+          "start": "/*--JSON--{\"module_name\":\"core_lsu_rport\",\"module_ver\":\"2\",\"module_type\":\"module\"}--JSON--*/"
+        },
+        {
+          "index": 2,
+          "language": [
+            "json"
+          ],
+          "lines": 1,
+          "start": "\"_REG_R0_IMM\": \"2'b11\""
+        },
+        {
+          "index": 3,
+          "language": [
+            "json"
+          ],
+          "lines": 9,
+          "start": "[\n        [\"alu\", \"c_alu_common\"],\n        [\"c\", \"c_alu_common\"],\n        [\"rob\", \"c\"],\n        [\"p\", \"alu\"],\n        [\"p\", \"rob\"],\n        [\"d\", \"p\"]"
+        },
+        {
+          "index": 4,
+          "language": [
+            "json"
+          ],
+          "lines": 5,
+          "start": "\"imm_type\": {\n    \"length\": 3,\n    \"stage\": \"is\",\n    \"default_value\": \"`_IMM_U5\"\n}"
+        },
+        {
+          "index": 5,
+          "language": [
+            "json"
+          ],
+          "lines": 10,
+          "start": "\"add.w\": {\n    \"opcode\": \"00000000000100000\",\n    \"alu_grand_op\":\"`_ALU_GTYPE_INT\",\n    \"alu_op\":\"`_ALU_STYPE_ADD\",\n    \"reg_type_r0\": \"`_REG_RK\",\n   "
+        },
+        {
+          "index": 6,
+          "language": [
+            "json"
+          ],
+          "lines": 11,
+          "start": "\"bcnez\": {\n    \"opcode\": \"010010xxxxxxxxxxxxxxxx01\",\n    \"fbranch_inst\": 1,\n    \"bcnez\": 1,\n    \"cmp_type\": \"`_CMP_E\",\n    \"target_type\": \"`_TARGET_RE"
+        }
+      ]
+    },
+    {
+      "source": "06-agility.Rmd",
+      "headers": 21,
+      "codes": 20,
+      "tables": 0,
+      "r_chunks": 2,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [
+            "bash"
+          ],
+          "lines": 1,
+          "start": "$ git clone git@github.com:BUAA-CI-LAB/am.git"
+        },
+        {
+          "index": 2,
+          "language": [],
+          "lines": 3,
+          "start": "├── la32r-toolchains\n│   ├── loongarch32r-linux-gnusf-2022-05-20\n│   └── system_newlib"
+        },
+        {
+          "index": 3,
+          "language": [],
+          "lines": 4,
+          "start": "am/src/eula/isa/la32r/boot/start.S        // 初始化栈指针\nam/src/eula/isa/la32r/trm.c : _trm_init   // 初始化外设，初始化缓存，建立地址空间映射等\n执行对应程序 main 函数\n返回 _trm_init 执行 "
+        },
+        {
+          "index": 4,
+          "language": [],
+          "lines": 3,
+          "start": "NAME = coremark\nSRCS = $(shell find -L ./src/ -name \"*.c\")\ninclude $(AM_HOME)/Makefile.app"
+        },
+        {
+          "index": 5,
+          "language": [
+            "scala"
+          ],
+          "lines": 36,
+          "start": "// 定义一个抽象类Animal\nabstract class Animal(var name: String) {\n  def sound(): String // 抽象方法，子类需要实现\n}\n\n// 定义一个Dog类，继承自Animal\nclass Dog(name: String, var b"
+        },
+        {
+          "index": 6,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "cd chisel3\nsbt compile"
+        },
+        {
+          "index": 7,
+          "language": [
+            "scala"
+          ],
+          "lines": 44,
+          "start": "object TopMain extends App {\n  def parseArgs(info: String, args: Array[String]): String = {\n    var target = \"\"\n    for (arg <- args) { if (arg.starts"
+        },
+        {
+          "index": 8,
+          "language": [
+            "scala"
+          ],
+          "lines": 56,
+          "start": "class Core extends BlackBox {\n  override val desiredName = \"mycpu_mega_top\"\n  val io = IO(new Bundle {\n    val out = new AXI4\n    val ext_int = Input("
+        },
+        {
+          "index": 9,
+          "language": [
+            "scala"
+          ],
+          "lines": 7,
+          "start": "class AXI4(val dataBits: Int = AXI4Parameters.dataBits, val idBits: Int = AXI4Parameters.idBits) extends AXI4Lite {\n  override val aw = Decoupled(new "
+        },
+        {
+          "index": 10,
+          "language": [
+            "scala"
+          ],
+          "lines": 7,
+          "start": "class AXI4Lite extends Bundle {\n  val aw = Decoupled(new AXI4LiteBundleA)\n  val w  = Decoupled(new AXI4LiteBundleW)\n  val b  = Flipped(Decoupled(new A"
+        },
+        {
+          "index": 11,
+          "language": [
+            "verilog"
+          ],
+          "lines": 22,
+          "start": "// detect.v\n\nmodule detect (\n    input clk,\n    input data_in,\n    input reset,\n    output reg out\n);\n\nreg [1:0] pattern;\n\nalways @(posedge clk or pos"
+        },
+        {
+          "index": 12,
+          "language": [
+            "cpp"
+          ],
+          "lines": 54,
+          "start": "// Vdetect.h\n// This class is the main interface to the Verilated model\nclass Vdetect VL_NOT_FINAL {\n  private:\n    // Symbol table holding complete m"
+        },
+        {
+          "index": 13,
+          "language": [
+            "cpp"
+          ],
+          "lines": 44,
+          "start": "// Vdetect___[some number].cpp\nVL_INLINE_OPT void Vdetect___024root___sequent__TOP__0(Vdetect___024root* vlSelf) {\n    // Init ...\n    // Body\n    __V"
+        },
+        {
+          "index": 14,
+          "language": [
+            "scala"
+          ],
+          "lines": 10,
+          "start": "class DiffLa32rTlbFillIndexSetIO extends DifftestBundle {\n  val valid = Input(Bool())\n  val index = Input(UInt(8.W))\n}\n\nclass DiffLa32rTlbEntryIO exte"
+        },
+        {
+          "index": 15,
+          "language": [
+            "cpp"
+          ],
+          "lines": 11,
+          "start": "// isa/la32r/difftest/ref.c\nvoid isa_tlbcpy_to_difftest(uint32_t index, void *dut) {\n  struct tlb_struct* tlb_temp = (struct tlb_struct*) dut;\n  tlb_t"
+        },
+        {
+          "index": 16,
+          "language": [
+            "cpp"
+          ],
+          "lines": 6,
+          "start": "tlbcpy = (void (*)(uint32_t, void*))dlsym(handle, \"difftest_tlbcpy_to_difftest\");\ncheck_and_assert(tlbcpy);\ntlbcpy_to_nemu = (void (*)(uint32_t, void*"
+        },
+        {
+          "index": 17,
+          "language": [
+            "cpp"
+          ],
+          "lines": 23,
+          "start": "int Difftest::step() {\n  // ...\n  if (dut.la32r_tlbfill_idx_sync.valid) {\n    proxy->tlbfill_index_set(dut.la32r_tlbfill_idx_sync.index);\n  }\n  // ..."
+        },
+        {
+          "index": 18,
+          "language": [
+            "scala"
+          ],
+          "lines": 13,
+          "start": "val diffTlbFillIdxSync = Module(new DifftestLa32rTlbFillIndexSet)\ndiffTlbFillIdxSync.io.clock := clock\ndiffTlbFillIdxSync.io.coreid := 0.U\ndiffTlbFill"
+        },
+        {
+          "index": 19,
+          "language": [
+            "verilog"
+          ],
+          "lines": 12,
+          "start": "module Bus(input In1, output Out1);\n  import \"DPI\" function void slave_write(input int address,\n                                         input int dat"
+        },
+        {
+          "index": 20,
+          "language": [
+            "c"
+          ],
+          "lines": 7,
+          "start": "#include \"svdpi.h\"\nextern void write(int, int);    // Imported from SystemVerilog\nvoid slave_write(const int I1, const int I2)\n{  \n  buff[I1] = I2;\n  "
+        }
+      ]
+    },
+    {
+      "source": "07-soc-and-system.Rmd",
+      "headers": 11,
+      "codes": 17,
+      "tables": 3,
+      "r_chunks": 0,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [
+            "verilog"
+          ],
+          "lines": 59,
+          "start": "// cpu\n`ifdef EULA_CORE\n  assign cpu_arlen[`Larlen - 1 : 4] = 0;\n  assign cpu_awlen[`Lawlen - 1 : 4] = 0;\n`endif\nmycpu_mega_top cpu_mid (\n  .aclk     "
+        },
+        {
+          "index": 2,
+          "language": [
+            "dts"
+          ],
+          "lines": 174,
+          "start": "/dts-v1/;\n/{\n    model = \"loongson,generic\";\n    compatible = \"loongson,loongson3\";\n    #address-cells = <1>;\n    #size-cells = <1>;\n\n    aliases {\n  "
+        },
+        {
+          "index": 3,
+          "language": [
+            "makefile"
+          ],
+          "lines": 3,
+          "start": "dtb-$(CONFIG_LS_SOC) += loongson32_ls.dtb\ndtb-$(CONFIG_BX_SOC) += loongson32_bx.dtb\ndtb-$(CONFIG_MEGA_SOC_FPGA) += la32rmega_demo.dtb # 新增"
+        },
+        {
+          "index": 4,
+          "language": [],
+          "lines": 336,
+          "start": "CONFIG_SYSVIPC=y\nCONFIG_NO_HZ=y\nCONFIG_HIGH_RES_TIMERS=y\nCONFIG_BPF_SYSCALL=y\nCONFIG_PREEMPT=y\nCONFIG_BSD_PROCESS_ACCT=y\nCONFIG_BSD_PROCESS_ACCT_V3=y\n"
+        },
+        {
+          "index": 5,
+          "language": [
+            "c"
+          ],
+          "lines": 8,
+          "start": "// arch/loongarch/include/asm/time.h\n#elif CONFIG_BX_SOC\n    return 33000000;\n#elif CONFIG_MEGA_SOC_FPGA // 新增\n    return 100000000; // 新增\n#else\n    r"
+        },
+        {
+          "index": 6,
+          "language": [],
+          "lines": 12,
+          "start": "config LS_SOC\n    bool\n    prompt \"Loongson SOC\"\n\n# 以下内容为新增\nconfig MEGA_SOC_FPGA\n    bool\n    prompt \"MEGA SoC For FPGA Platform\"\n\nconfig MEGA_SOC_ASI"
+        },
+        {
+          "index": 7,
+          "language": [
+            "makefile"
+          ],
+          "lines": 8,
+          "start": "obj-$(CONFIG_MMC_TOSHIBA_PCI)   += toshsd.o\nobj-$(CONFIG_MMC_BCM2835)   += bcm2835.o\nobj-$(CONFIG_MMC_OWL)       += owl-mmc.o\nobj-$(CONFIG_MMC_OCSDC) "
+        },
+        {
+          "index": 8,
+          "language": [],
+          "lines": 12,
+          "start": "# 以下内容为新增\nconfig MMC_OCSDC\n        tristate \"OpenCores SD Card Controller IP Core support\"\n        help\n          This selects support for the OpenCor"
+        },
+        {
+          "index": 9,
+          "language": [],
+          "lines": 5,
+          "start": "CONFIG_MMC=y\nCONFIG_MMC_DEBUG=y\nCONFIG_MMC_OCSDC=y\nCONFIG_MMC_OCSDC_AXI=y\nCONFIG_MMC_LITEXSDC=y"
+        },
+        {
+          "index": 10,
+          "language": [
+            "bash"
+          ],
+          "lines": 3,
+          "start": "$ tar -xvf termcap-1.3.1.tar.gz\n$ cd termcap-1.3.1\n$ ./configure"
+        },
+        {
+          "index": 11,
+          "language": [
+            "makefile"
+          ],
+          "lines": 14,
+          "start": "srcdir = .\n\n# CC = gcc 修改前\n# AR = ar 修改前\n# RANLIB = ranlib 修改前\n\nCC = loongarch32r-linux-gnusf-gcc 修改后\nAR = loongarch32r-linux-gnusf-ar 修改后\nRANLIB = lo"
+        },
+        {
+          "index": 12,
+          "language": [
+            "bash"
+          ],
+          "lines": 3,
+          "start": "$ tar -xvf readline-8.2.tar.gz\n$ cd readline-8.2\n$ ./configure"
+        },
+        {
+          "index": 13,
+          "language": [
+            "makefile"
+          ],
+          "lines": 15,
+          "start": "INSTALL = /usr/bin/install -c\nINSTALL_PROGRAM = ${INSTALL}\nINSTALL_DATA = ${INSTALL} -m 644\n\n# CC = gcc 修改前\n# RANLIB = ranlib 修改前\n# AR = ar 修改前\n\nCC = "
+        },
+        {
+          "index": 14,
+          "language": [
+            "makefile"
+          ],
+          "lines": 8,
+          "start": "TERMCAP_DIR = /home/yufoo1/workspace/termcap-1.3.1 # 根据实际需求修改 \n\n# For libraries which include headers from other libraries.\nINCLUDES = -I. -I$(srcdir)"
+        },
+        {
+          "index": 15,
+          "language": [
+            "makefile"
+          ],
+          "lines": 32,
+          "start": "INSTALL = /usr/bin/install -c\nINSTALL_PROGRAM = ${INSTALL}\nINSTALL_DATA = ${INSTALL} -m 644\n\n# CC = gcc 修改前\n# RANLIB = ranlib 修改前\n# AR = ar 修改前\n\nCC = "
+        },
+        {
+          "index": 16,
+          "language": [
+            "bash"
+          ],
+          "lines": 2,
+          "start": "$ git clone https://github.com/lua/lua.git\n$ git checkout v5.4"
+        },
+        {
+          "index": 17,
+          "language": [
+            "makefile"
+          ],
+          "lines": 28,
+          "start": "\nLOCAL = $(TESTS) $(CWARNS)\n\n# 根据实际需求添加\nTERMCAP_LIB = /home/yufoo1/workspace/apps/termcap-1.3.1\n# 由于程序中通常采用 #include <readline/readline.h>写法，因此我们引入rea"
+        }
+      ]
+    },
+    {
+      "source": "08-verification-and-implementation.Rmd",
+      "headers": 24,
+      "codes": 18,
+      "tables": 0,
+      "r_chunks": 43,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [
+            "bash"
+          ],
+          "lines": 3,
+          "start": "source /path/to/synopsys_setup.bash\nfm_shell -file fm_check.tcl\n#fm -gui -file fm_check.tcl 使用gui界面运算脚本"
+        },
+        {
+          "index": 2,
+          "language": [],
+          "lines": 1,
+          "start": "set_svf -append {/home/IC/soc/form_test/svf/test.svf}"
+        },
+        {
+          "index": 3,
+          "language": [],
+          "lines": 1,
+          "start": "read_verilog -container r -libname WORK -05 { /home/IC/soc/form_test/rtl/verilog_test.v }"
+        },
+        {
+          "index": 4,
+          "language": [],
+          "lines": 1,
+          "start": "set hdlin_dwroot /opt/Synopsys/DC2015"
+        },
+        {
+          "index": 5,
+          "language": [],
+          "lines": 1,
+          "start": "read_db { /home/IC/soc/form_test/db/fast.db }"
+        },
+        {
+          "index": 6,
+          "language": [],
+          "lines": 1,
+          "start": "set_top r:/WORK/verilog_test"
+        },
+        {
+          "index": 7,
+          "language": [],
+          "lines": 1,
+          "start": "read_verilog -container i -libname WORK -05 { /home/IC/soc/form_test/netlist/netlist_test.v }"
+        },
+        {
+          "index": 8,
+          "language": [],
+          "lines": 1,
+          "start": "set_top i:/WORK/netlist_test"
+        },
+        {
+          "index": 9,
+          "language": [],
+          "lines": 1,
+          "start": "match"
+        },
+        {
+          "index": 10,
+          "language": [],
+          "lines": 1,
+          "start": "verify"
+        },
+        {
+          "index": 11,
+          "language": [
+            "bash"
+          ],
+          "lines": 6,
+          "start": "# 删除上一次链接的文件\nrm -f test.sdf\n# 链接sdf文件\nln -s /path/to/test.sdf\n# 执行make\nmake test"
+        },
+        {
+          "index": 12,
+          "language": [],
+          "lines": 40,
+          "start": "# 定义VCS编译和链接时使用的通用选项  \nVCS_OPTIONS=-full64 +alwaystrigger -PP +define+VCS -debug_all +vcs+vcdpluson  \n# 注意：虽然定义了VCS_OPTIONS，但在下面的test目标中并未直接使用它  \n  \n#"
+        },
+        {
+          "index": 13,
+          "language": [],
+          "lines": 17,
+          "start": "set_analysis_view \\\n-setup [list func_ss_v1p62_125c_cmax_125 \\\n             func_ff_v1p98_m40c_cmin_m40 \\\n             func_ff_v1p98_0c_cmin_0 \\\n     "
+        },
+        {
+          "index": 14,
+          "language": [],
+          "lines": 10,
+          "start": "#####ICC2：\nverify_pg_nets\n\nverify_lvs -max_error 100 -check_short_locator -check_open_locator \\\n           -ignore_floating_port -ignore_floating_net\n"
+        },
+        {
+          "index": 15,
+          "language": [],
+          "lines": 21,
+          "start": "#update_names -nocase\n\n##Netlist##\nsaveNetlist -excludeLeafCell ./data/Design.v.gz\nsaveNetlist -excludeLeafCell \n                           -excludeCe"
+        },
+        {
+          "index": 16,
+          "language": [],
+          "lines": 9,
+          "start": "set spice_name = Design   ;      #name of top\nset final = /home/path/data/Design.lvs.v.gz\n################################################\nv2lvs \\\n   "
+        },
+        {
+          "index": 17,
+          "language": [],
+          "lines": 13,
+          "start": "calibre -drc -hier -turbo 24 -turbo_litho 24 -hyper -nowait XXX.dmf \\\n        |& tee add_dummy.log\n#############################\ncalibredrv -32 merge_"
+        },
+        {
+          "index": 18,
+          "language": [],
+          "lines": 18,
+          "start": "#!/bin/csh -f\n\nset top = design\nset gds = /design_path/merge/design.final.gds.gz   #gds which have merged dummy \nset sch = /design/v2lvs/design.spi  #"
+        }
+      ]
+    },
+    {
+      "source": "09-test-and-show.Rmd",
+      "headers": 6,
+      "codes": 1,
+      "tables": 2,
+      "r_chunks": 5,
+      "code_samples": [
+        {
+          "index": 1,
+          "language": [
+            "c"
+          ],
+          "lines": 459,
+          "start": "/*\n * (C) Copyright 2023\n * Wang Zhe, dofingert@gmail.com\n */\n\n#include <common.h>\n#include <command.h>\n#include <mapmem.h>\n#include <asm/cache.h>\n#in"
+        }
+      ]
+    },
+    {
+      "source": "20-references.Rmd",
+      "headers": 1,
+      "codes": 0,
+      "tables": 0,
+      "r_chunks": 0,
+      "code_samples": []
+    },
+    {
+      "source": "30-resources.Rmd",
+      "headers": 1,
+      "codes": 0,
+      "tables": 1,
+      "r_chunks": 0,
+      "code_samples": []
+    }
+  ],
+  "code_languages": {
+    "bash": 44,
+    "makefile": 12,
+    "console": 1,
+    "assembly": 16,
+    "c": 21,
+    "ld": 1,
+    "text": 25,
+    "ini": 2,
+    "shell": 4,
+    "plaintext": 1,
+    "scala": 14,
+    "systemverilog": 20,
+    "json": 6,
+    "verilog": 3,
+    "cpp": 5,
+    "dts": 1
+  },
+  "source_files": {
+    ".gitignore": "36424d30043f2a6a8d19a2a1c755c7b31fb8181f4b95d8610c62ed79b3f70a50",
+    ".Rhistory": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".travis.yml": "0e3a419471379435ea2daa3b3bdf00527c514b0d5c9830f040b4ef3494ab11cf",
+    "01-hardware-preparation.Rmd": "b7e1414ef2590cbf27b60fe0af9a671cc01e73dbc3fd2aae36e13b0f0c3458f4",
+    "02-software-preparation.Rmd": "c535f0589bb9988739053c73d17155679e4ab4abdada0373636573aee50ad255",
+    "03-base-cpu.Rmd": "0b170059fdf30bfc3d72941a9f9f3c1f38448c01cc4b3d03fbf634dcb9b7ef6b",
+    "04-advanced-cpu.Rmd": "45c13b1b7eb120ca3923bd4ceec828f0265d5d428cbe549b4d8b2062cea69093",
+    "05-complex-cpu.Rmd": "1c9cbce4a8e99d367a67ecea46c97303bdf34669c904f51a682101ee0dabac20",
+    "06-agility.Rmd": "dc3b22ddb91dc14aa1c9edb5c2957e33eae41c28d0a29ae1f28dd46b5d89e03e",
+    "07-soc-and-system.Rmd": "3c1cfdcc9f01b1fc789143ce0e49ff234e40c85345c4b2262f6e766f45a36b63",
+    "08-verification-and-implementation.Rmd": "46a525f6ee2a9440c9b19f17a1553cdd3b2f81a4cd06afa9ea8b284daccc6e10",
+    "09-test-and-show.Rmd": "8d7a552e2fc9661c6ffa47bfc18b9b8cb61154929362839a1c28ff47128f4148",
+    "20-references.Rmd": "dd99aae76b29132d396f9cb760a8c50e504fc3b6a98f03cb6bc98c4e61f3f19a",
+    "30-resources.Rmd": "1768fa2a34c370fd3d2ec695b5891b2ff5019e0375b31184ceebdc2df7fe28be",
+    "book.bib": "51fae4a163063d4dd0529ae723a710f81bb69332678772a547b66382b49f2362",
+    "bookdown-demo.log": "7acf6364a0aeeba352995388b6a0ca3623ad7b05fafcc20a7fd35fcb67f5a3b0",
+    "bookdown-demo.Rproj": "c1e6fff124a74a6b10c60d7a5a0f8ba86cf6a5066868482198374f55f6931fbf",
+    "DESCRIPTION": "6583947afd7185e4ce1c00c7734711c27ae4041d25115c68133d4299c79b80a1",
+    "Dockerfile": "f374b0546314fe475d75d84406dc507ac9de48ed78e1205ab31e5cbf69cbcfaf",
+    "index.Rmd": "34cabfbd278471cd990cfd5ae957dba4ecd7fd02a121d90971b26e6a77d6264a",
+    "LICENSE": "a9550e8930791fb49ce003b5090211fa272bc6f062a71639de9fa766bb061031",
+    "now.json": "d66ba9193639dd11f17d0ae108ab0619dc7c3f9fdcd982cbf3f0b22d533d437d",
+    "packages.bib": "f7234c99eee8e732f4788334405636676d6f1137ab1698f5697c5fa603d19f48",
+    "preamble.tex": "961d7769925aa5b8e3040fdab92737322e07a4e40103eefcce6b40cafd655fe0",
+    "README.md": "cb1da0ca443deb81d1ffbc8c7b2ee6cb71a07a8a438cddb198c4c401e40318d1",
+    "style.css": "343911c0e02011988de7b4c8450f065fe285ecdf489c0f0721e25c10992af1c1",
+    "toc.css": "5263aafb786dcab803f24d2585cb34a1c95688fe8f5614624ce6bee82a8d5ec9",
+    "_bookdown.yml": "f227e876906d251060d609573a41e398019dc87fae962fff279712f15d505ff7",
+    "_build.sh": "542b6d50d52b948b78d2f01290c632c9d062c92592fb17a67b66ef74411ae32d",
+    "_deploy.sh": "c990e9f5c2a7991a4bbad6e4ed9a54ec6213295107390348c9d371acd7b9fcca",
+    "_output.yml": "925706c38638ed7791353c0cd9b6b59ac728bfd374d9b2dd7daaca91ed948b6a",
+    "_publish.R": "18933383b79f741df067c2f71854c613f2b48c674e551add8aef80e0c606eaf8",
+    "assets/02/menuconfig1.webp": "33345ba869bb8f91094b21a1a9910d47ef6b0c4a88500cb444a81992d4a94c52",
+    "assets/02/menuconfig2.webp": "1df57db78b734ebf3ca6fd243eb7a903fd7957a6e51291ad8e5d8a2660e4bab7",
+    "assets/02/menuconfig3.webp": "24ab4e958811a2b34a3b09634b5eb777d43c234523edc6ff366cb35cd765eabb",
+    "assets/03/bpu-arch.png": "cfda0eab6ccb55df1727d5236af10278d06af77adf1824cf645595e6216d53b1",
+    "assets/03/eula-arch.png": "89fa726ab1ec74e672300019c0cca7aebcc875c4dcdb7737816a7e0d5ede3d2f",
+    "assets/03/lsu-state.png": "2270243769d5d36e280fd9927bb09cfdc192ce9d6bc3525a83b69ebdbaa4778b",
+    "assets/03/mou-state.png": "6ec16aa7e725d8d9aa4fb5f7fe1b62d6cc96f976fadccfc7bf854cf186106a56",
+    "assets/04/bpu-arch.png": "443a6158f7a22f33377845f970c010a12077c022e2b7d308d1bc66643b4ffcbf",
+    "assets/04/cache-arch.png": "2c21c096065fbb74401c3d8aae3b0406b1627972b2a1809243701e2ab184c48c",
+    "assets/04/lain-arch.png": "6eaec3ae75ad87d565a186e7d1d92a253fd43c4f41b9fbcbc4f1876d5fdf6df8",
+    "assets/05/acqfsm.png": "43af2b96165eec570feb1ea82ba427939d8e57e2bc0b2daf79aadba5ad0b2267",
+    "assets/05/cache-subsystem.png": "43f68771794a733eb4deef5d78495347541f2417e6a9adc3c4721f67a6bfdbed",
+    "assets/05/cachepipefsm.png": "cf85aad216ae6471cff5884d367c202f313c3edaeabb22678fc1367eb0c354ef",
+    "assets/05/cpureqfsm.png": "0b223f934ce0b8c9e8ba81cae08bea83ad24d7f99e385bfdd17fa132132a6ca1",
+    "assets/05/invfsm.png": "585f0b696dc55e50dd47e1dc39566e0a9de8e9561bbdfaa8b2492a1e3216c3d3",
+    "assets/05/prbfsm.png": "da4daae7da1e3b47bc13f7f0b3aab4c9a8322757760980bdc567e0d1b55e2e03",
+    "assets/05/rename-showcase.png": "3b72653ea765d5cc80629ade0fa54013310ea178887c412e2a6a695b7e98665a",
+    "assets/05/tso-maintain.png": "cbc8ab985aecbce40719a13c8577d89f2cd41e352c6b5ffbcaec927cb4e51756",
+    "assets/05/wired-arch.png": "7b99201a5ec9c120323aa90cb6654b1720b8fd5e56eb3025333814fcc742b8f3",
+    "assets/06/ethernet-sim.png": "aaba3c680356ef0aa9845778bcbfde38529b23c6b0b1c13841346c5b2d2969d5",
+    "assets/06/uart-sim.png": "99d97e17ea879efad093603a31cca32380785666789f56222b7d2cff05575320",
+    "assets/07/megasoc.drawio.png": "1aa8e67b146d6d0770411c68d442ae14f39c0a5878c0c917fce1b98b4428d4cf",
+    "assets/08/EULA芯片版图.png": "c857302f8a95961b8f7ad82975d3be022fd97320b02c9df48fd005bfd3b15b0b",
+    "assets/08/inittiming.png": "80b2f0c45370afb4e84afaf3bff1dc0fe3b29b7bf0602e0c1c002d189fc5074a",
+    "assets/08/IO_place.png": "c712681f67b29d37917f977e7fd6c20d7779d81ef1393969b5d2ae5f3043e91d",
+    "assets/08/LAIN芯片版图.png": "f5b2574775592260bdceb909c524d1614460a35c6ed55d3647a24e29bf2218b7",
+    "assets/08/LEC验证结果.png": "08af24ce47e811260970903aef65ae47323fc9fcdf3484ad985859b6e0e2e160",
+    "assets/08/LVS验证通过.png": "7eb01556ad603751a7a7408fe25417123f4f258df40ee04fa26056a96c0b089a",
+    "assets/08/macro_place.png": "ad14a09e0f8decc931c87cfeadd1006f8a5ba37b76c47816656b11202b9ce18b",
+    "assets/08/place.png": "1d87baf5bc5db267c4772ff61c9eba98e8abcd3c35dba8753bd5661151ae0790",
+    "assets/08/PostCTS.png": "beb4b66e4fe07998aaf7ceb08437bf22b72aedc8bd054fac2f5d6a5fec37ddb5",
+    "assets/08/power_place.png": "93d8778fbf463a5da8e5c9ff4945113270c5007aa6b60807d70f2ae957cbc641",
+    "assets/08/PVT_list.png": "b4374cc061761e36209af2312dc9fcd1426cde672a932ebf2be25153423e20bc",
+    "assets/08/tt_25工艺角下的时序报告.png": "c88249d2787859f1ec99c1c34e7acf46ea756c6bf14ee24e1e19c3822feae819",
+    "assets/08/tt_85工艺角下的功耗.png": "29f8853f5f455e2c56e8cef7fd862e4ba84fd6414b9a2f2a6d22ed2690728305",
+    "assets/08/vivado_add_constraints_files.png": "125eff52e9f06cdf4e63c52c4b2bfbe5375b1395093a38d767f472d77cc6cd70",
+    "assets/08/vivado_add_constraints_sources.png": "d751d3bc3148a08a4f5423a822d32d1508aa7da457d7681fd65f843c8da30bf6",
+    "assets/08/vivado_add_existing_files.png": "01c3b3f3df03a9ef0bea03066fa1f2ffa19acf1ab07a698e008e9281e4298d14",
+    "assets/08/vivado_add_sources_next.png": "b2079f2b2de5a8069f6581e811a8f94de797639409269e962f41b460d8eee6ff",
+    "assets/08/vivado_add_source_file.png": "34dd73e1d16f8ab6c3b10c62e502a8d25c8a1a426c8d782d43dbb35d1bf25d8a",
+    "assets/08/vivado_fpga_output.png": "ada296543df876f331b8ecf5fa425e67354f4be88a86e25a208d5f3daaa55618",
+    "assets/08/vivado_fpga_programmed.png": "745cec8fe6e5139c037d7cf011d1f540c8835ed2fa2f0c3b355402ef1219cc8d",
+    "assets/08/vivado_generate_bitstream.png": "0776b6adb38e495f6d0efcc8886182c25ee2eac67851a1882b49f48687815af8",
+    "assets/08/vivado_indicate_resynthesis.png": "2887d9c129956f5ca31880b49728f3b11a64dc484195dd756a93bfa8b6b23fce",
+    "assets/08/vivado_new_project_end.png": "5394c65feae5054eec29c7ce6684143c8f67ed8cafdf178d651cb145e52b4efc",
+    "assets/08/vivado_new_project_start.png": "7c87e86c1c703f2b3274bec42d8183c011338cdb951e6f942101b2ec3e9fbb3a",
+    "assets/08/vivado_open_hardware_manager.png": "18643b7b729cd016b86d607c0aa689342001c41f835ab9c70f1211bc7da31de7",
+    "assets/08/vivado_open_new_target.png": "23dc56bcda4bc7415ae38335179611ea21efcc8acdfbea2f0b93d519e184f7df",
+    "assets/08/vivado_program_device.png": "7ff499870ceb278f2172ac8e972fc35cafc284303c3581c342f3fbb466e71692",
+    "assets/08/vivado_project_info_confirm.png": "4d28a8a791e5037eee98d8092eb64b53811697ac06c5010657a534a0f6a1de1d",
+    "assets/08/vivado_select_fpga_info.png": "f43fa59bb46a1a533295c5180779bcf70cf38db7882018236f1ca5e4b87f831c",
+    "assets/08/vivado_set_project_name.png": "cad391d562c1138d96ccf4796a928aaf1346b9f45105c41148c876879af18f0f",
+    "assets/08/vivado_set_project_type.png": "db81111eb99111bbbe07a5c83ec0043a82d1722d7ea5e209b3f1996e1ea6354e",
+    "assets/08/vivado_start.png": "fe0c52c104c62fe00bc04fb9d433dfd7f4b68973463a85a97c4a10908a368e75",
+    "assets/08/动态电压降分析结果.png": "d156693d6a149d9c0108c0a3c867c8d97cbc10831159092c1905da70d22f5c8e",
+    "assets/08/处理器芯片应用.png": "19b6a19699cb15c52e01e26e98d84750218cfa89be7c16dbccb463e569c172b7",
+    "assets/08/布线后的时序分析.png": "c1095595ab1a393cc1f890f038967c68edba4886bb443e6c192b8ebb5705ddcd",
+    "assets/08/布线后的版图.png": "cdf0f74a8287fe5e623118d5595456fccba516620eeb13a8687e4f06b89a92ab",
+    "assets/08/形式化验证.png": "b526f6f1a08e7758921eff8c93912da432af7d1948db29fdd90a2e22defdcdca",
+    "assets/08/时序修复流程.png": "d234b246054a93ffd8aba8f0a599e3dc42b21453ae585ee58a2947501ea9457e",
+    "assets/08/时钟树综合之后的版图.png": "a43d2f486944d7c2171a3fb70d7e4ec97d876003febe09851026cfd6fd1a784c",
+    "assets/08/芯片后端流程.png": "9fe0dc7ce887d2fff158697a44a7560588d2b9278afa64565cb28707e460489c",
+    "assets/08/芯片设计流程.png": "dab1b93287345005bcff0f37bce264550ce2d31a231248b97a59bc3ce6425a46",
+    "assets/08/设计参数与验证指标对比.png": "2893dd014854e078415beeb4c8a7dd953dff16a3acdf27a7bb46f18e6a804111",
+    "assets/08/静态电压降分析结果.png": "f1805412d3d7b738fd5966fa9409ef78cc43a184e066cbabe6ea3e9eb3bb03db",
+    "assets/09/pcb-struct.png": "b317fab3a85bc9c73d87eb91277a4776ebe528863c4d3b013be09183424109a8",
+    "assets/09/power.png": "76f3f64edc3aa5a2d10797fc7bdf08da5e5a37289965aee9ca13a82ff30baeb5",
+    "assets/09/sdram.png": "af37606d04219e52de50a7384ed9781479e8524d6292c214bc512c9527e92558",
+    "assets/09/slt.png": "d3391856003289b0a6f81aa7edd679a18ca597b06e8c438469ac04cc0891d233",
+    "assets/09/test-board.png": "5565a2315df0b4a82c7bcac9533340de00128fa235c01185903349729795ed13",
+    "_book/bookdown-demo.tex": "da54c1fa327780973003a5a1d50d60700cc21e8513e9e63acba94562a09663ea"
+  },
+  "old_tex_chapter_count": 12
+}

@@ -1,0 +1,54 @@
+{
+  "project": "/mnt/d/Desktop/教材与专著/CPU_BOOK/designflowdocslatex",
+  "pdfs": {
+    "main": {
+      "pages": 205,
+      "pages_with_colored_code": 117,
+      "colored_text_operators": {
+        "type": 1235,
+        "keyword": 1737,
+        "comment": 4671,
+        "string": 1605
+      },
+      "fonts": [
+        "/GSXJFF+LMMonoLt10-Bold-Identity-H",
+        "/IHDCWL+LMRoman10-Italic-Identity-H",
+        "/JGUKHG+LMRoman10-Regular-Identity-H",
+        "/JHLEDX+LMRoman10-Bold-Identity-H",
+        "/JRYMRO+FandolSong-Regular-Identity-H",
+        "/NGTUOI+FandolSong-Bold-Identity-H",
+        "/REENYM+LMMono10-Regular-Identity-H",
+        "/RQXYOW+LatinModernMath-Regular-Identity-H",
+        "/SHLWCH+FandolKai-Regular-Identity-H",
+        "/VEQQKW+DejaVuSansMono",
+        "/YBQRHU+FandolFang-Regular-Identity-H"
+      ],
+      "errors_missing_glyphs_font_warnings_overfull_boxes": 0,
+      "sha256": "aea463ef5edfb3c2aa83149d29aae9e0c5d2c2f3b33bad4b63b2c0c2c279ae71"
+    },
+    "code-styles": {
+      "pages": 5,
+      "pages_with_colored_code": 5,
+      "colored_text_operators": {
+        "comment": 175,
+        "keyword": 82,
+        "type": 31,
+        "string": 64
+      },
+      "fonts": [
+        "/ATMKGA+DejaVuSansMono-Bold",
+        "/BEPGIC+FandolSong-Regular-Identity-H",
+        "/DDJHHF+DejaVuSansMono",
+        "/IUOPFF+FandolFang-Regular-Identity-H",
+        "/LIOSER+LMRoman10-Regular-Identity-H",
+        "/QRMRDR+LMRoman10-Bold-Identity-H",
+        "/RQRVGB+FandolSong-Bold-Identity-H",
+        "/XYSWXT+LMMono10-Regular-Identity-H",
+        "/ZEURAD+LMMonoLt10-Bold-Identity-H"
+      ],
+      "errors_missing_glyphs_font_warnings_overfull_boxes": 0,
+      "sha256": "2c9f3fcd9998b1792a0e209cab97598df7e06b448e4b22ec3d4a72ee7c036a62"
+    }
+  },
+  "passed": true
+}

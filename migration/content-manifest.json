@@ -1,0 +1,2909 @@
+{
+  "source_directory": "/mnt/d/Desktop/教材与专著/CPU_BOOK/designflowdocs",
+  "source_tex_sha256": "da54c1fa327780973003a5a1d50d60700cc21e8513e9e63acba94562a09663ea",
+  "chapters": [
+    {
+      "source": "index.Rmd",
+      "target": "chapters/00-preface.tex",
+      "source_sha256": "34cabfbd278471cd990cfd5ae957dba4ecd7fd02a121d90971b26e6a77d6264a",
+      "headings": 1,
+      "source_code_blocks": [],
+      "tables": 0,
+      "figures": 0,
+      "inline_urls_repaired": []
+    },
+    {
+      "source": "01-hardware-preparation.Rmd",
+      "target": "chapters/01-hardware-preparation.tex",
+      "source_sha256": "b7e1414ef2590cbf27b60fe0af9a671cc01e73dbc3fd2aae36e13b0f0c3458f4",
+      "headings": 9,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "8324f8fb97fec4e595c70413bc8958cb74ce23a3250cfae9567dd03a3f7f1ad4",
+          "sha256": "8324f8fb97fec4e595c70413bc8958cb74ce23a3250cfae9567dd03a3f7f1ad4",
+          "lines": 4,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 2,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "7de24238214142f6fa0c1d212beecdf8573fe0cd855f38643e8d62d89ab9a4a7",
+          "sha256": "12faa9b2003f79bf1b29269ed2f7e0dd399164f6a393b5f8512ae582cf1838ae",
+          "lines": 9,
+          "tabs": 2,
+          "edits": [
+            {
+              "old": "-l 每行只列出一个文件",
+              "new": "-l 使用长格式显示文件详细信息",
+              "reason": "修正 ls -l 说明",
+              "occurrences": 1
+            }
+          ],
+          "original_code": "ls - list directory contents\n用法:ls [选项]... [文件]...\n选项（常用）：\n\t-a 不隐藏任何以. 开始的项目\n\t-l 每行只列出一个文件\n\n# 一般的Ubuntu系统中输入ls可看到如下文件夹\nchip-env@chipenv-virtual-machine:~$ ls\nDesktop  Documents  Downloads  Music  Pictures  Public  snap  Templates  Videos",
+          "migrated_code": "ls - list directory contents\n用法:ls [选项]... [文件]...\n选项（常用）：\n\t-a 不隐藏任何以. 开始的项目\n\t-l 使用长格式显示文件详细信息\n\n# 一般的Ubuntu系统中输入ls可看到如下文件夹\nchip-env@chipenv-virtual-machine:~$ ls\nDesktop  Documents  Downloads  Music  Pictures  Public  snap  Templates  Videos"
+        },
+        {
+          "index": 3,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "0658113794d4a74e3c0b2e54a3c7a36163ca3c380d47096d041b80f5214e2b70",
+          "sha256": "0658113794d4a74e3c0b2e54a3c7a36163ca3c380d47096d041b80f5214e2b70",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 4,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "e8f10fd9f4c47cc4987ecece3d60d718d91ca16bd5a93ceb242a8ddb5635860f",
+          "sha256": "e8f10fd9f4c47cc4987ecece3d60d718d91ca16bd5a93ceb242a8ddb5635860f",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 5,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "bdde8a9e12d7ef95dd365ac4979d834fcc40c69850011e285df3296150698c2a",
+          "sha256": "bdde8a9e12d7ef95dd365ac4979d834fcc40c69850011e285df3296150698c2a",
+          "lines": 5,
+          "tabs": 2,
+          "edits": []
+        },
+        {
+          "index": 6,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "5a68e4c925184727f6921b663e349e95648bd8edcca8c73f74a176bc83bfc00d",
+          "sha256": "43dc799fe34d59233e23ac5347619ce67ca6595948bdd5401d8150136f7f9111",
+          "lines": 5,
+          "tabs": 2,
+          "edits": [
+            {
+              "old": "d - change",
+              "new": "cd - change",
+              "reason": "补齐 cd 命令名",
+              "occurrences": 1
+            }
+          ],
+          "original_code": "d - change working directory\n用法:cd [路径]\ne.g.\n\tcd . 变更至当前目录\n\tcd .. 变更至父目录",
+          "migrated_code": "cd - change working directory\n用法:cd [路径]\ne.g.\n\tcd . 变更至当前目录\n\tcd .. 变更至父目录"
+        },
+        {
+          "index": 7,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "d4f75af341b9598913f6117faf5e69ee5479ac4feb1efcc744f4d6b535fe2379",
+          "sha256": "d4f75af341b9598913f6117faf5e69ee5479ac4feb1efcc744f4d6b535fe2379",
+          "lines": 4,
+          "tabs": 1,
+          "edits": []
+        },
+        {
+          "index": 8,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "95a3ed5400f69799688065e076bd36ef0bca625eae940063500775699c9410ef",
+          "sha256": "95a3ed5400f69799688065e076bd36ef0bca625eae940063500775699c9410ef",
+          "lines": 4,
+          "tabs": 1,
+          "edits": []
+        },
+        {
+          "index": 9,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "3bd0859aa1903a383eb25e88df7798d9734c0391f72ad6d3e942478564ade247",
+          "sha256": "3bd0859aa1903a383eb25e88df7798d9734c0391f72ad6d3e942478564ade247",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 10,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "d10a1d97b86adfd5d9e43ab13fe893395f941c75553f6c311a100829f57fb946",
+          "sha256": "2d3393ea72b902a0b5fc1480bd9744448c065a8c1c3afea656b74cd47269d600",
+          "lines": 3,
+          "tabs": 0,
+          "edits": [
+            {
+              "old": "注：文件应为可执行文件，即为绿色",
+              "new": "注：source 读取脚本文件，不要求文件具有执行权限",
+              "reason": "修正 source 对执行权限的错误要求",
+              "occurrences": 1
+            }
+          ],
+          "original_code": "source - execute commands in file\n用法:source 文件名 [参数]\n注：文件应为可执行文件，即为绿色",
+          "migrated_code": "source - execute commands in file\n用法:source 文件名 [参数]\n注：source 读取脚本文件，不要求文件具有执行权限"
+        },
+        {
+          "index": 11,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "d607effa2a6e97538b23b9b29017306aac38e45b83e4b86483e8f0cb23409ffc",
+          "sha256": "d607effa2a6e97538b23b9b29017306aac38e45b83e4b86483e8f0cb23409ffc",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 12,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "5bf4d6cadde36a80408325a357358538f652df35d46f77174a081e9729dcd90a",
+          "sha256": "91139c85da0dec269fc6fee5186c25716800c7a094587fc1845c24007df00d36",
+          "lines": 7,
+          "tabs": 4,
+          "edits": [
+            {
+              "old": "rep - print lines matching a pattern\n用法:grep [选项]... PATTERN [FILE]...\n选项（常用）：\n\t-a 不忽略二进制数据进行搜索\n\t-i 忽略文件大小写差异\n\t-r 从文件夹递归查找\n\t-n 显示行号",
+              "new": "rep - print lines matching a pattern\n用法:grep [选项]... PATTERN [FILE]...\n选项（常用）：\n\t-a 不忽略二进制数据进行搜索\n\t-i 忽略匹配时的大小写差异\n\t-r 从文件夹递归查找\n\t-n 显示行号",
+              "reason": "已记录的 Markdown 修订作用于命令帮助文本",
+              "occurrences": 1
+            },
+            {
+              "old": "rep - print",
+              "new": "grep - print",
+              "reason": "补齐 grep 命令名",
+              "occurrences": 1
+            }
+          ],
+          "original_code": "rep - print lines matching a pattern\n用法:grep [选项]... PATTERN [FILE]...\n选项（常用）：\n\t-a 不忽略二进制数据进行搜索\n\t-i 忽略文件大小写差异\n\t-r 从文件夹递归查找\n\t-n 显示行号",
+          "migrated_code": "grep - print lines matching a pattern\n用法:grep [选项]... PATTERN [FILE]...\n选项（常用）：\n\t-a 不忽略二进制数据进行搜索\n\t-i 忽略匹配时的大小写差异\n\t-r 从文件夹递归查找\n\t-n 显示行号"
+        },
+        {
+          "index": 13,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "776c62aade0fa4731f6a0d60a784cd648d264c2aeb89678c8cc2ef71b226f096",
+          "sha256": "842804bfa359bccf8904056b33e8075580bad34059f5cb41d62b340eeee24617",
+          "lines": 4,
+          "tabs": 1,
+          "edits": [
+            {
+              "old": "an - manual",
+              "new": "man - manual",
+              "reason": "补齐 man 命令名",
+              "occurrences": 1
+            }
+          ],
+          "original_code": "an - manual\n用法:man page\ne.g.\n\tman ls",
+          "migrated_code": "man - manual\n用法:man page\ne.g.\n\tman ls"
+        },
+        {
+          "index": 14,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "89f7ac94d85d8e9b8664f8e524e87236a70ccad26b30ba32d220c802c3aa3dd2",
+          "sha256": "89f7ac94d85d8e9b8664f8e524e87236a70ccad26b30ba32d220c802c3aa3dd2",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 15,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "350375128f20930d1376405c80bf9315835a6666d02e9ad8ec8f573ee70a0a99",
+          "sha256": "350375128f20930d1376405c80bf9315835a6666d02e9ad8ec8f573ee70a0a99",
+          "lines": 5,
+          "tabs": 4,
+          "edits": []
+        },
+        {
+          "index": 16,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "5104f418d7ae7c2d0b54f881a6ea9a552f0d9a32fa6a3b96c90a2eafc7b7357d",
+          "sha256": "5104f418d7ae7c2d0b54f881a6ea9a552f0d9a32fa6a3b96c90a2eafc7b7357d",
+          "lines": 8,
+          "tabs": 3,
+          "edits": []
+        }
+      ],
+      "tables": 0,
+      "figures": 0,
+      "inline_urls_repaired": []
+    },
+    {
+      "source": "02-software-preparation.Rmd",
+      "target": "chapters/02-software-preparation.tex",
+      "source_sha256": "c535f0589bb9988739053c73d17155679e4ab4abdada0373636573aee50ad255",
+      "headings": 23,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "49563082bfc2fceb2f30207a818e22d76991886b45e257abea10355774550937",
+          "sha256": "49563082bfc2fceb2f30207a818e22d76991886b45e257abea10355774550937",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 2,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "51a2e9a06dcef3581e6c725c3b225b179b94d4444b57d7bcf7c5f4f45e5fdfcb",
+          "sha256": "51a2e9a06dcef3581e6c725c3b225b179b94d4444b57d7bcf7c5f4f45e5fdfcb",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 3,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "3a1f6c5f2ce2403c0b5d31ffbc0d1efe58314238b9eeccbf1c097069f4945ec0",
+          "sha256": "3a1f6c5f2ce2403c0b5d31ffbc0d1efe58314238b9eeccbf1c097069f4945ec0",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 4,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "0df75bac46d1e6f6e69d67299198b96fa6a2efe04becfb4ca5e86c03833c9cb7",
+          "sha256": "0df75bac46d1e6f6e69d67299198b96fa6a2efe04becfb4ca5e86c03833c9cb7",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 5,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "7f8cda0c4de87a58a07b69943cc8b35b230055904ad87faee870ec2651b4f32c",
+          "sha256": "7f8cda0c4de87a58a07b69943cc8b35b230055904ad87faee870ec2651b4f32c",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 6,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "ee76cbcef8d922739d91eec2f1a2171c6fffc6097428474676fb7da5f33e5288",
+          "sha256": "863ae20e6f9fe802c8f648878609e3d04b81d22aac704e8d4745ac1cf4724e13",
+          "lines": 6,
+          "tabs": 0,
+          "edits": [
+            {
+              "old": "$ cd qemu",
+              "new": "$ cd la32r-QEMU",
+              "reason": "修正与前文 git clone 默认目录不一致的 cd 命令",
+              "occurrences": 1
+            },
+            {
+              "old": " ",
+              "new": " ",
+              "reason": "将源代码中的不可见排版空格恢复为普通空格",
+              "occurrences": 2
+            }
+          ],
+          "original_code": "$ cd qemu\n$ mkdir build\n$ cd build\n$ ../configure --target-list=loongarch32-softmmu --disable-werror --enable-debug\n$ make -j16  # 可根据实际平台调整编译所用线程数量\n$ make install  # 可以省略（有用的编译结果只有qemu-system-loongarch32这个可执行文件）",
+          "migrated_code": "$ cd la32r-QEMU\n$ mkdir build\n$ cd build\n$ ../configure --target-list=loongarch32-softmmu --disable-werror --enable-debug\n$ make -j16  # 可根据实际平台调整编译所用线程数量\n$ make install  # 可以省略（有用的编译结果只有qemu-system-loongarch32这个可执行文件）"
+        },
+        {
+          "index": 7,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "284e93b88818da3d1fb3450609cfff4c156db89060cceb914c130943a4558097",
+          "sha256": "284e93b88818da3d1fb3450609cfff4c156db89060cceb914c130943a4558097",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 8,
+          "language": "BookText",
+          "original_language": "console",
+          "source_sha256": "50cce24e638e9fda04641d5aa9e76fd311286ba2b70a33d35e7c01158c98cb21",
+          "sha256": "50cce24e638e9fda04641d5aa9e76fd311286ba2b70a33d35e7c01158c98cb21",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 9,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "6951ca7f7573f6e361f3065cc56547f0e96f9f0aafeb2eb7583807ba6df05d8e",
+          "sha256": "6951ca7f7573f6e361f3065cc56547f0e96f9f0aafeb2eb7583807ba6df05d8e",
+          "lines": 52,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 10,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "169647002a22611ae85dbd5657897280827081431300ec48011ff5f44a024fc7",
+          "sha256": "60b0711725d1d10f2d5dbf942f4cfe386b976b45de9d35daa42e5b51091bef21",
+          "lines": 5,
+          "tabs": 0,
+          "edits": [
+            {
+              "old": "hello.c\n",
+              "new": "// hello.c\n",
+              "reason": "将文件名说明改成 C 注释，避免被当作 C 语句",
+              "occurrences": 1
+            }
+          ],
+          "original_code": "hello.c\nint main() {\n    puts(\"Hello, world!\\n\");\n    return 0;\n}",
+          "migrated_code": "// hello.c\nint main() {\n    puts(\"Hello, world!\\n\");\n    return 0;\n}"
+        },
+        {
+          "index": 11,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "974009719b19be7fb470fd719b17a8f03b4da77eb0bda212fb0a66fa0b7169e1",
+          "sha256": "974009719b19be7fb470fd719b17a8f03b4da77eb0bda212fb0a66fa0b7169e1",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 12,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "23307570f7b084fac204f2752ff19267fede39b4aa59e416870fc36e831c76e8",
+          "sha256": "23307570f7b084fac204f2752ff19267fede39b4aa59e416870fc36e831c76e8",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 13,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "4014c0b878fbd09e411c0c7151bab14e6b6729bae4602d675fb04ffc7b7a1e2e",
+          "sha256": "4014c0b878fbd09e411c0c7151bab14e6b6729bae4602d675fb04ffc7b7a1e2e",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 14,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "9c480d5c9db19cda33ff2e535d71c7456c7e3e00a74533f8108328ddb5d7c6a7",
+          "sha256": "9c480d5c9db19cda33ff2e535d71c7456c7e3e00a74533f8108328ddb5d7c6a7",
+          "lines": 8,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 15,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "36e7a2920c10765eb331308b30644542ef8a0c3e5a5994d680d767c882c2e129",
+          "sha256": "36e7a2920c10765eb331308b30644542ef8a0c3e5a5994d680d767c882c2e129",
+          "lines": 17,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 16,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "b629bf8000f65e64e9f7670ad994a866364ae19fad39f4b726d963ac6666b15d",
+          "sha256": "b629bf8000f65e64e9f7670ad994a866364ae19fad39f4b726d963ac6666b15d",
+          "lines": 16,
+          "tabs": 3,
+          "edits": []
+        },
+        {
+          "index": 17,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "34cbd4ed87415f9d07b74fb8280c9f2ec8c5d59f6b9187b7cf14f37dda1c6333",
+          "sha256": "3d3f37bc638388d50c0e0fe1fb6adf3538ac09ba5095f85a6fe6c27756e5df91",
+          "lines": 29,
+          "tabs": 0,
+          "edits": [
+            {
+              "old": " – ",
+              "new": " - ",
+              "reason": "将 C 运算表达式中的排版长横线恢复为减号",
+              "occurrences": 2
+            }
+          ],
+          "original_code": "int arr[50];\nint len;\n\nvoid bubble_sort(int* array, int len) {\n    for (int i = 0; i < len - 1; i++) {\n        for (int j = 0; j < len – 1 – i; j++) {\n            if (array[j] > array[j + 1]) {\n                int temp = array[j];\n                array[j] = array[j + 1];\n                array[j + 1] = temp;\n            }\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d\", &len);\n    for (int i = 0; i < len; i++) arr[i] = rand() % 100;\n\n    for (int i = 0; i < len; i++) printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n\n    bubble_sort(arr, len);\n\n    for (int i = 0; i < len; i++) printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n\n    return 0;\n}",
+          "migrated_code": "int arr[50];\nint len;\n\nvoid bubble_sort(int* array, int len) {\n    for (int i = 0; i < len - 1; i++) {\n        for (int j = 0; j < len - 1 - i; j++) {\n            if (array[j] > array[j + 1]) {\n                int temp = array[j];\n                array[j] = array[j + 1];\n                array[j + 1] = temp;\n            }\n        }\n    }\n}\n\nint main() {\n    scanf(\"%d\", &len);\n    for (int i = 0; i < len; i++) arr[i] = rand() % 100;\n\n    for (int i = 0; i < len; i++) printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n\n    bubble_sort(arr, len);\n\n    for (int i = 0; i < len; i++) printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n\n    return 0;\n}"
+        },
+        {
+          "index": 18,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "b45accb52095899f8f8718e8105be3f4747fac0f66688c012150e3dce79d2fd4",
+          "sha256": "b45accb52095899f8f8718e8105be3f4747fac0f66688c012150e3dce79d2fd4",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 19,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "1db276301cc48d9fd56fca37e174b08cffd918deaef882d49ff67940694ad4dd",
+          "sha256": "1db276301cc48d9fd56fca37e174b08cffd918deaef882d49ff67940694ad4dd",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 20,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "2d9e56cfecbf8462d0e6c74bab59d025843b0352ecd1ea894db7c8319518adbd",
+          "sha256": "2d9e56cfecbf8462d0e6c74bab59d025843b0352ecd1ea894db7c8319518adbd",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 21,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "0a5855ced9bb3bbebafeea4305f1e5afc1c19a02ebbcf21b70e3cd823ead1c87",
+          "sha256": "0a5855ced9bb3bbebafeea4305f1e5afc1c19a02ebbcf21b70e3cd823ead1c87",
+          "lines": 8,
+          "tabs": 2,
+          "edits": []
+        },
+        {
+          "index": 22,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "1797ea5f70b553619ada6143c7df3c6f7f9a92f9c953b567fb235d68dacbb7c1",
+          "sha256": "1797ea5f70b553619ada6143c7df3c6f7f9a92f9c953b567fb235d68dacbb7c1",
+          "lines": 7,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 23,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "c3c717f2956cb43f82ddac3471c27101e519b5dd0d27b193796114ad47e8723e",
+          "sha256": "c3c717f2956cb43f82ddac3471c27101e519b5dd0d27b193796114ad47e8723e",
+          "lines": 16,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 24,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "16688bdcc22be823d5f3fb725e04a99b2038787fba44c3107cb9263b16d4ab0a",
+          "sha256": "16688bdcc22be823d5f3fb725e04a99b2038787fba44c3107cb9263b16d4ab0a",
+          "lines": 4,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 25,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "2cda49f1978e3cb8c2959160fe6c731bfde9b4fa0409cb79299794626ddf4cba",
+          "sha256": "2cda49f1978e3cb8c2959160fe6c731bfde9b4fa0409cb79299794626ddf4cba",
+          "lines": 36,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 26,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "97da95f259cd7d75b7612a416a639a8f8132be328123546f938a94fffea8520b",
+          "sha256": "97da95f259cd7d75b7612a416a639a8f8132be328123546f938a94fffea8520b",
+          "lines": 4,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 27,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "70312098f765e07738a93b831dd7a70d71878e259290f853f0d3afee113801aa",
+          "sha256": "70312098f765e07738a93b831dd7a70d71878e259290f853f0d3afee113801aa",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 28,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "0ba499d0ebe9833b7c266a4b009c1d47db4f71745f0f8a21ae9e45ee856a785b",
+          "sha256": "0ba499d0ebe9833b7c266a4b009c1d47db4f71745f0f8a21ae9e45ee856a785b",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 29,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "a17fc24a515e573b43ccb37dc69d69fa9e2b153e94bc0aa25442dd05bc20fcd9",
+          "sha256": "a17fc24a515e573b43ccb37dc69d69fa9e2b153e94bc0aa25442dd05bc20fcd9",
+          "lines": 3,
+          "tabs": 2,
+          "edits": []
+        },
+        {
+          "index": 30,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "fbeabdd91b4c8cdb2c4ecaf4c240061197e25750439fe83bdd82a91b99b59e99",
+          "sha256": "fbeabdd91b4c8cdb2c4ecaf4c240061197e25750439fe83bdd82a91b99b59e99",
+          "lines": 28,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 31,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "ab342134940fe051ed927c868dcb13fe43d90da358a98753e95164e8314329be",
+          "sha256": "a862746ec1733076d425e18f3633fa1d39fc61329c5bd0d04c11d124ed2b269c",
+          "lines": 25,
+          "tabs": 0,
+          "edits": [
+            {
+              "old": " – ",
+              "new": " - ",
+              "reason": "将 C 运算表达式中的排版长横线恢复为减号",
+              "occurrences": 2
+            }
+          ],
+          "original_code": "// before\nfor (int i = 0; i < len - 1; i++) {\n  for (int j = 0; j < len – 1 – i; j++) {\n    if (array[j] > array[j + 1]) {\n      int temp = array[j];\n      array[j] = array[j + 1];\n      array[j + 1] = temp;\n    }\n  }\n}\n\n// after\nuint32_t addr_i, addr_j;\nfor (addr_i = &array[0]; addr_i < &array[len - 1]; addr_i += 4) {\n  for (addr_j = (uint32_t)&array[0]; \\\n       addr_j <= (uint32_t)&array[len - 1] - 4 * i; \\\n       addr_j += 4) {\n    int a = *(int*)addr_j;\n    int b = *(int*)(addr_j + 4);\n    if (a > b) {\n      *(int*)addr_j = b;\n      *(int*)(addr_j + 4) = a;\n    }\n  }\n}",
+          "migrated_code": "// before\nfor (int i = 0; i < len - 1; i++) {\n  for (int j = 0; j < len - 1 - i; j++) {\n    if (array[j] > array[j + 1]) {\n      int temp = array[j];\n      array[j] = array[j + 1];\n      array[j + 1] = temp;\n    }\n  }\n}\n\n// after\nuint32_t addr_i, addr_j;\nfor (addr_i = &array[0]; addr_i < &array[len - 1]; addr_i += 4) {\n  for (addr_j = (uint32_t)&array[0]; \\\n       addr_j <= (uint32_t)&array[len - 1] - 4 * i; \\\n       addr_j += 4) {\n    int a = *(int*)addr_j;\n    int b = *(int*)(addr_j + 4);\n    if (a > b) {\n      *(int*)addr_j = b;\n      *(int*)(addr_j + 4) = a;\n    }\n  }\n}"
+        },
+        {
+          "index": 32,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "66ac9e58c46e7f8f31d3ba39efa2ed8e6af5195e2ce3034bdf568b13bb355491",
+          "sha256": "66ac9e58c46e7f8f31d3ba39efa2ed8e6af5195e2ce3034bdf568b13bb355491",
+          "lines": 125,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 33,
+          "language": "BookLoongArch",
+          "original_language": "assembly",
+          "source_sha256": "565e49dbe93c6de97e2dd6d74a6bdc8bacf572b4840e0b7439f58401b6e57041",
+          "sha256": "565e49dbe93c6de97e2dd6d74a6bdc8bacf572b4840e0b7439f58401b6e57041",
+          "lines": 27,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 34,
+          "language": "BookLinker",
+          "original_language": "ld",
+          "source_sha256": "6f157db972376d9ed40c66e9376498862d4b6bc5fba82d337165509f18e78642",
+          "sha256": "6f157db972376d9ed40c66e9376498862d4b6bc5fba82d337165509f18e78642",
+          "lines": 7,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 35,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "946592120c27de52e3820340e92d9dea4327bf15c0b6b39efd78301539875857",
+          "sha256": "946592120c27de52e3820340e92d9dea4327bf15c0b6b39efd78301539875857",
+          "lines": 16,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 36,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "91156fc6b36d03be773164339a5b115a4a51d16139205ad3dd8acea62dff2a1f",
+          "sha256": "91156fc6b36d03be773164339a5b115a4a51d16139205ad3dd8acea62dff2a1f",
+          "lines": 26,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 37,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "a160588f12a3c4ea82020baffa846703a0bfcb531b4650bd088fb0885f89069b",
+          "sha256": "a160588f12a3c4ea82020baffa846703a0bfcb531b4650bd088fb0885f89069b",
+          "lines": 14,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 38,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "1dd4bd8b2c0b173d56246ba754c0cb046e0abdbbc3f87970b0f73f503e00c0b3",
+          "sha256": "1dd4bd8b2c0b173d56246ba754c0cb046e0abdbbc3f87970b0f73f503e00c0b3",
+          "lines": 10,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 39,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "c6b0e4ffd3e399e7fc7575f66e3750fbd31b1426f8709ff4a32d559c3ceaf6de",
+          "sha256": "c6b0e4ffd3e399e7fc7575f66e3750fbd31b1426f8709ff4a32d559c3ceaf6de",
+          "lines": 54,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 40,
+          "language": "BookText",
+          "original_language": "text",
+          "source_sha256": "f038d1d338ef6d4e909c47b1f5ed7429c78d0f23f3140e908954cbf5a9a808a8",
+          "sha256": "f038d1d338ef6d4e909c47b1f5ed7429c78d0f23f3140e908954cbf5a9a808a8",
+          "lines": 21,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 41,
+          "language": "BookShell",
+          "original_language": "ini",
+          "source_sha256": "a7362e23fb10390a818a924ce3b50db1750ac4a1a51c28426ce7bfd6d589a5f5",
+          "sha256": "a7362e23fb10390a818a924ce3b50db1750ac4a1a51c28426ce7bfd6d589a5f5",
+          "lines": 9,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 42,
+          "language": "BookShell",
+          "original_language": "shell",
+          "source_sha256": "136fa461e668b16dd32a9f99997715b2b4c44efcae1e2b0b908ec7b17b8bab76",
+          "sha256": "136fa461e668b16dd32a9f99997715b2b4c44efcae1e2b0b908ec7b17b8bab76",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 43,
+          "language": "BookShell",
+          "original_language": "shell",
+          "source_sha256": "a17863fc0f562c89119f5358161c37ddf8b5c65d70810bd61223388a2424f890",
+          "sha256": "a17863fc0f562c89119f5358161c37ddf8b5c65d70810bd61223388a2424f890",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 44,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "d0330a93f62917b726e8e69fcc8c16390d7d0db56f901960706fcb991febd436",
+          "sha256": "d0330a93f62917b726e8e69fcc8c16390d7d0db56f901960706fcb991febd436",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 45,
+          "language": "BookConfig",
+          "original_language": "ini",
+          "source_sha256": "e8601880e610a3809bc23ab8285c1c0cf59f6dca64ea9109e0e6cc5fa06f8272",
+          "sha256": "e8601880e610a3809bc23ab8285c1c0cf59f6dca64ea9109e0e6cc5fa06f8272",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 46,
+          "language": "BookShell",
+          "original_language": "shell",
+          "source_sha256": "0c2d0ad014cfc6101f5458797c7a2e8f8e35d167f5135a575a254eb1d0b2760e",
+          "sha256": "0c2d0ad014cfc6101f5458797c7a2e8f8e35d167f5135a575a254eb1d0b2760e",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 47,
+          "language": "BookShell",
+          "original_language": "shell",
+          "source_sha256": "2a414307cfdb1eb0659e32b2b8bfb39d3054a711acd4ea2ae760a1d8e6662d8f",
+          "sha256": "2a414307cfdb1eb0659e32b2b8bfb39d3054a711acd4ea2ae760a1d8e6662d8f",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 48,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "6d386d4f53fad090ba3e0b29bc1875a49741f831662219649b9b210e528c934b",
+          "sha256": "6d386d4f53fad090ba3e0b29bc1875a49741f831662219649b9b210e528c934b",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 49,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "b2dcc844f314114f89e72764e24b455c2879598fcaa1497e8e2976e5ed5af141",
+          "sha256": "b2dcc844f314114f89e72764e24b455c2879598fcaa1497e8e2976e5ed5af141",
+          "lines": 5,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 50,
+          "language": "BookConfig",
+          "original_language": "plaintext",
+          "source_sha256": "3f098231d49b6b2592bf595b163399642965618c2322bc690efe5f3cc19326f5",
+          "sha256": "3f098231d49b6b2592bf595b163399642965618c2322bc690efe5f3cc19326f5",
+          "lines": 6,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 51,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "4dff314aa0dd04415043748575d7877bcab6bd8e1e5e46f0a95c1e3d9b4d80a5",
+          "sha256": "4dff314aa0dd04415043748575d7877bcab6bd8e1e5e46f0a95c1e3d9b4d80a5",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 52,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "3faae3061bd9629cbf573efdfa24a7961e533135ef359bd0062746977b29001d",
+          "sha256": "3faae3061bd9629cbf573efdfa24a7961e533135ef359bd0062746977b29001d",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 53,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "5e760f6cb0042256bf01156f0ac3eecc90b1af22bb640c41ea4359271bad0a0a",
+          "sha256": "5e760f6cb0042256bf01156f0ac3eecc90b1af22bb640c41ea4359271bad0a0a",
+          "lines": 14,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 54,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "f0bbc995a9a1f914b0ae5cfec17b3a44edd39d41218b3822002552598940c09a",
+          "sha256": "f0bbc995a9a1f914b0ae5cfec17b3a44edd39d41218b3822002552598940c09a",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 55,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "1082155f0fa6f5f69b2f1d90cc36e66c9abc93c59bf00ec2702f316abb1ca74f",
+          "sha256": "1082155f0fa6f5f69b2f1d90cc36e66c9abc93c59bf00ec2702f316abb1ca74f",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 56,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "92158c91b4e63a98cc799417da62d1c9c40ac87591447c45ea644ce1be84d13c",
+          "sha256": "92158c91b4e63a98cc799417da62d1c9c40ac87591447c45ea644ce1be84d13c",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 57,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "ee07ff3f8071188abd5d4475e8e7c82949406eed1b498c6f9a32c4ce704b6af8",
+          "sha256": "ee07ff3f8071188abd5d4475e8e7c82949406eed1b498c6f9a32c4ce704b6af8",
+          "lines": 43,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 58,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "575df830d59c72461ebc9c799aec36c0792e2e41ee56b4f592b632367f4f5948",
+          "sha256": "575df830d59c72461ebc9c799aec36c0792e2e41ee56b4f592b632367f4f5948",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 59,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "315ef63e56302c4443b1e1bf08a141204c681b0cf440221eba84019ce109b950",
+          "sha256": "315ef63e56302c4443b1e1bf08a141204c681b0cf440221eba84019ce109b950",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        }
+      ],
+      "tables": 1,
+      "figures": 0,
+      "inline_urls_repaired": [
+        "https://gitee.com/loongson-edu/la32r-toolchains/releases/",
+        "https://gitee.com/loongson-edu/la32r-QEMU/releases/"
+      ]
+    },
+    {
+      "source": "03-base-cpu.Rmd",
+      "target": "chapters/03-base-cpu.tex",
+      "source_sha256": "0b170059fdf30bfc3d72941a9f9f3c1f38448c01cc4b3d03fbf634dcb9b7ef6b",
+      "headings": 10,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "1cae82e09db392fcfc0eb5d9d30ad53ad73eb5b799cc3a16fc2c90702d552e44",
+          "sha256": "1cae82e09db392fcfc0eb5d9d30ad53ad73eb5b799cc3a16fc2c90702d552e44",
+          "lines": 10,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 2,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "cf301368628d24a9815817c5d2ee1ce8acc0f62fd17988e1c5141c2a2bb5eb36",
+          "sha256": "cf301368628d24a9815817c5d2ee1ce8acc0f62fd17988e1c5141c2a2bb5eb36",
+          "lines": 53,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 3,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "3eaa29d58c1df07d46b5bad20af12a1d67c3e8ebd3a5ff763d1798a06a78828d",
+          "sha256": "3eaa29d58c1df07d46b5bad20af12a1d67c3e8ebd3a5ff763d1798a06a78828d",
+          "lines": 8,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 4,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "c4554912caf703eedefffef0d218ce1469ddaed120fabf7c64db0908f43a61dd",
+          "sha256": "c4554912caf703eedefffef0d218ce1469ddaed120fabf7c64db0908f43a61dd",
+          "lines": 4,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 5,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "31d7b2818dac6036cd2f237e3119a45fae5453c7b1af99343ab8f2eb285eab19",
+          "sha256": "31d7b2818dac6036cd2f237e3119a45fae5453c7b1af99343ab8f2eb285eab19",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 6,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "375030412f5ea606a372227915b22d716b161e0e7a9da58d95174f7e7c9e2c1c",
+          "sha256": "375030412f5ea606a372227915b22d716b161e0e7a9da58d95174f7e7c9e2c1c",
+          "lines": 5,
+          "tabs": 0,
+          "edits": []
+        }
+      ],
+      "tables": 1,
+      "figures": 4,
+      "inline_urls_repaired": []
+    },
+    {
+      "source": "04-advanced-cpu.Rmd",
+      "target": "chapters/04-advanced-cpu.tex",
+      "source_sha256": "45c13b1b7eb120ca3923bd4ceec828f0265d5d428cbe549b4d8b2062cea69093",
+      "headings": 25,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "f388acd34680012c29eb8de6d615a696e9f083f68769a8e033b0565a89384220",
+          "sha256": "f388acd34680012c29eb8de6d615a696e9f083f68769a8e033b0565a89384220",
+          "lines": 5,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 2,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "73a9856f40eb8b27278a29d37d8d1f061735c54b374237438a6e2932bb9e4c38",
+          "sha256": "73a9856f40eb8b27278a29d37d8d1f061735c54b374237438a6e2932bb9e4c38",
+          "lines": 28,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 3,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "a61cba627f19880d7cd3afaeababcb771a97835d1f5b68dbdfc2dc978f59710d",
+          "sha256": "a61cba627f19880d7cd3afaeababcb771a97835d1f5b68dbdfc2dc978f59710d",
+          "lines": 12,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 4,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "117d27f5aa522b2bed7bc8f0f09b4fa0f647851d4cf2f68fd2b72741bbc084d2",
+          "sha256": "117d27f5aa522b2bed7bc8f0f09b4fa0f647851d4cf2f68fd2b72741bbc084d2",
+          "lines": 9,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 5,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "3f6ddd42efd8bb01e61a0429b9dcef36f059c1054a25bd6850a03cf5fbb4839d",
+          "sha256": "3f6ddd42efd8bb01e61a0429b9dcef36f059c1054a25bd6850a03cf5fbb4839d",
+          "lines": 11,
+          "tabs": 4,
+          "edits": []
+        },
+        {
+          "index": 6,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "bc31fad6178703ef48c7baee4cccb65875f740743a658c9c2aa7b0cac3415af8",
+          "sha256": "bc31fad6178703ef48c7baee4cccb65875f740743a658c9c2aa7b0cac3415af8",
+          "lines": 12,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 7,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "9d924d1a0ebbcd240a0b7caaac9bf653f5dc924c221164e038be5456b78bf84e",
+          "sha256": "9d924d1a0ebbcd240a0b7caaac9bf653f5dc924c221164e038be5456b78bf84e",
+          "lines": 4,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 8,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "a35dfcbe6c7a4ed1ba1e24d948787c4b98744c4cbdfa9509e12e975355b190bb",
+          "sha256": "a35dfcbe6c7a4ed1ba1e24d948787c4b98744c4cbdfa9509e12e975355b190bb",
+          "lines": 11,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 9,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "e3f0707c3825540005d6badc10edb03d6a5b895198c912fd48f8dcb0a245f2a4",
+          "sha256": "e3f0707c3825540005d6badc10edb03d6a5b895198c912fd48f8dcb0a245f2a4",
+          "lines": 34,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 10,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "474dbdd0392257ad688529ad8193d6dcb52ffdd98ed18bcd598367dfb5da11c8",
+          "sha256": "474dbdd0392257ad688529ad8193d6dcb52ffdd98ed18bcd598367dfb5da11c8",
+          "lines": 12,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 11,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "5f6bc702ad3ff7cabe797961f22c2fb0b0ed207ddebc1d3c3fe3857aee9833c1",
+          "sha256": "5f6bc702ad3ff7cabe797961f22c2fb0b0ed207ddebc1d3c3fe3857aee9833c1",
+          "lines": 17,
+          "tabs": 6,
+          "edits": []
+        },
+        {
+          "index": 12,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "67e97423e687ca72cdbf70268ae5ac55e000c43d43957e4a0df32c463813de09",
+          "sha256": "67e97423e687ca72cdbf70268ae5ac55e000c43d43957e4a0df32c463813de09",
+          "lines": 5,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 13,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "935254c1485f51c0cddee6fa1516b2cd4ed4e48f4e12799a1286c909e4e46e02",
+          "sha256": "935254c1485f51c0cddee6fa1516b2cd4ed4e48f4e12799a1286c909e4e46e02",
+          "lines": 17,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 14,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "c5e80e64e9fa581757a65c519e75b009b4eb12955f4d6dd09ef8216a3b15a36a",
+          "sha256": "c5e80e64e9fa581757a65c519e75b009b4eb12955f4d6dd09ef8216a3b15a36a",
+          "lines": 10,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 15,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "83db75935d906fbc960614ec1116d7bedaa4cb96b79d70288536f272c705f17a",
+          "sha256": "83db75935d906fbc960614ec1116d7bedaa4cb96b79d70288536f272c705f17a",
+          "lines": 24,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 16,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "e325965dfdc2259b8baf4e280fe0c30f23d3d9c8726527a9d18af403bcfee27a",
+          "sha256": "e325965dfdc2259b8baf4e280fe0c30f23d3d9c8726527a9d18af403bcfee27a",
+          "lines": 37,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 17,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "3b3b7539ccd9c37562f81b67e753ae03cc738d30e3425162996016cfbee87257",
+          "sha256": "3b3b7539ccd9c37562f81b67e753ae03cc738d30e3425162996016cfbee87257",
+          "lines": 16,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 18,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "20ebad8b5ff7a1593f1b79d70ca996027ee9109599a75185245f7c4963f8edcf",
+          "sha256": "20ebad8b5ff7a1593f1b79d70ca996027ee9109599a75185245f7c4963f8edcf",
+          "lines": 23,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 19,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "661b7a8d3116f9e02b0cb457357516bf5858d4ad0ff9618632ca8373d26d3da5",
+          "sha256": "661b7a8d3116f9e02b0cb457357516bf5858d4ad0ff9618632ca8373d26d3da5",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 20,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "a757cea827647c91e7c460672bdd97e31c877665def163a4b14d0d83be1e4873",
+          "sha256": "a757cea827647c91e7c460672bdd97e31c877665def163a4b14d0d83be1e4873",
+          "lines": 4,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 21,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "e58fac8c419536e14441e3a3116227a663dfdbaf12b8f2bd62ab2e4d9d57bb7b",
+          "sha256": "e58fac8c419536e14441e3a3116227a663dfdbaf12b8f2bd62ab2e4d9d57bb7b",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 22,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "b17e2ecc56b1e36ef3f1a8552c0e40d4eee3a4492c15414695cdc688d4a9fbf5",
+          "sha256": "b17e2ecc56b1e36ef3f1a8552c0e40d4eee3a4492c15414695cdc688d4a9fbf5",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 23,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "4509902b663d3f0a1d8e36a3c779ef22f1af390219bc2e9f73b2a698e27f820c",
+          "sha256": "4509902b663d3f0a1d8e36a3c779ef22f1af390219bc2e9f73b2a698e27f820c",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 24,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "1a97fe6773a259b95cc32c0651f19d896122108b3016baa6634d059fa98ecc4f",
+          "sha256": "1a97fe6773a259b95cc32c0651f19d896122108b3016baa6634d059fa98ecc4f",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 25,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "80758b524acfb4b98d4b1d58914ef53b85bd6b830d7b54474068b6535bc8c132",
+          "sha256": "80758b524acfb4b98d4b1d58914ef53b85bd6b830d7b54474068b6535bc8c132",
+          "lines": 5,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 26,
+          "language": "BookJSON",
+          "original_language": "json",
+          "source_sha256": "018cf9f4765036d938e95ad781930349dfe72f1b22e51a27378e0e6992b50d54",
+          "sha256": "018cf9f4765036d938e95ad781930349dfe72f1b22e51a27378e0e6992b50d54",
+          "lines": 70,
+          "tabs": 2,
+          "edits": []
+        },
+        {
+          "index": 27,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "416f4a64b78a5309f8ccca6b4f104572c38210c87a53ef34a37f133e95933606",
+          "sha256": "416f4a64b78a5309f8ccca6b4f104572c38210c87a53ef34a37f133e95933606",
+          "lines": 17,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 28,
+          "language": "BookText",
+          "original_language": "bash",
+          "source_sha256": "efdea17128abc171e9a06d39cc77a9ed05afc51604772f1ea6adcf459a25571e",
+          "sha256": "f5f78c62d5fb8b3116d31d283ee773a6c19e09653db9d0de42e864d0a3cc13dc",
+          "lines": 10,
+          "tabs": 0,
+          "edits": [
+            {
+              "old": "r$ sbt",
+              "new": "$ sbt",
+              "reason": "删除终端提示符前误入的字母",
+              "occurrences": 1
+            }
+          ],
+          "original_code": "r$ sbt\n[info] [launcher] getting org.scala-sbt sbt 1.9.3  (this may take some time)...\n[info] [launcher] getting Scala 2.12.18 (for sbt)...\n[info] welcome to sbt 1.9.3 (Ubuntu Java 21.0.3)\n[info] loading project definition from /home/suyang/projects/complex_loong_cpu/src/simple-decoder/project\n[info] loading settings for project root from build.sbt ...\n[info] set current project to simple-decoder (in build file:/home/suyang/projects/complex_loong_cpu/src/simple-decoder/)\n[info] sbt server started at local:///home/suyang/.sbt/1.0/server/0534a0101acb45c8557d/sock\n[info] started sbt server\nsbt:simple-decoder> ",
+          "migrated_code": "$ sbt\n[info] [launcher] getting org.scala-sbt sbt 1.9.3  (this may take some time)...\n[info] [launcher] getting Scala 2.12.18 (for sbt)...\n[info] welcome to sbt 1.9.3 (Ubuntu Java 21.0.3)\n[info] loading project definition from /home/suyang/projects/complex_loong_cpu/src/simple-decoder/project\n[info] loading settings for project root from build.sbt ...\n[info] set current project to simple-decoder (in build file:/home/suyang/projects/complex_loong_cpu/src/simple-decoder/)\n[info] sbt server started at local:///home/suyang/.sbt/1.0/server/0534a0101acb45c8557d/sock\n[info] started sbt server\nsbt:simple-decoder> "
+        },
+        {
+          "index": 29,
+          "language": "BookText",
+          "original_language": "bash",
+          "source_sha256": "9c683233a9c598c74c0a2dc78b7f525a7942b74208a94a4aba69b4de7b328aa9",
+          "sha256": "9c683233a9c598c74c0a2dc78b7f525a7942b74208a94a4aba69b4de7b328aa9",
+          "lines": 9,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 30,
+          "language": "BookText",
+          "original_language": "bash",
+          "source_sha256": "e6437abea218f458771e9e5978ae668bfa43779439dff47009c7ea2f9a86de6c",
+          "sha256": "e6437abea218f458771e9e5978ae668bfa43779439dff47009c7ea2f9a86de6c",
+          "lines": 10,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 31,
+          "language": "BookText",
+          "original_language": "bash",
+          "source_sha256": "6194faa112c2e4c04870d4354093b2f150174ed7d78ab5e697a2028afa958879",
+          "sha256": "6194faa112c2e4c04870d4354093b2f150174ed7d78ab5e697a2028afa958879",
+          "lines": 23,
+          "tabs": 1,
+          "edits": []
+        },
+        {
+          "index": 32,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "5be7ea0a24fe1b249628e4110af05fcd036718b2215ce3384e8266f7fa916ccc",
+          "sha256": "5be7ea0a24fe1b249628e4110af05fcd036718b2215ce3384e8266f7fa916ccc",
+          "lines": 21,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 33,
+          "language": "BookSystemVerilog",
+          "original_language": "systemverilog",
+          "source_sha256": "ae7d7bd0b62cbb78674a5e788e2d4c8762af3e64b370492be19396a6ea79b1dd",
+          "sha256": "ae7d7bd0b62cbb78674a5e788e2d4c8762af3e64b370492be19396a6ea79b1dd",
+          "lines": 130,
+          "tabs": 0,
+          "edits": []
+        }
+      ],
+      "tables": 1,
+      "figures": 3,
+      "inline_urls_repaired": [
+        "https://gitee.com/loongson-edu/open-la500/blob/master/id_stage.v"
+      ]
+    },
+    {
+      "source": "05-complex-cpu.Rmd",
+      "target": "chapters/05-complex-cpu.tex",
+      "source_sha256": "1c9cbce4a8e99d367a67ecea46c97303bdf34669c904f51a682101ee0dabac20",
+      "headings": 21,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookSystemVerilog",
+          "original_language": "text",
+          "source_sha256": "f3d1cc7264f6d8fc9378cf9d9be18d4ead9b0b2ac1d9f1313d6d81a276576286",
+          "sha256": "f3d1cc7264f6d8fc9378cf9d9be18d4ead9b0b2ac1d9f1313d6d81a276576286",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 2,
+          "language": "BookJSON",
+          "original_language": "json",
+          "source_sha256": "c6df5074a3abfa20fbc4a3b2fff02033fe926f4a1ce5ef6a3ed5cca2c3938928",
+          "sha256": "c6df5074a3abfa20fbc4a3b2fff02033fe926f4a1ce5ef6a3ed5cca2c3938928",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 3,
+          "language": "BookJSON",
+          "original_language": "json",
+          "source_sha256": "c03140a428a76e0bf0eaf9a937658a9ba4fd168771c9a3ee34f07be661e1910e",
+          "sha256": "c03140a428a76e0bf0eaf9a937658a9ba4fd168771c9a3ee34f07be661e1910e",
+          "lines": 9,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 4,
+          "language": "BookJSON",
+          "original_language": "json",
+          "source_sha256": "4038cd722331cf2c8f614932636000a852cff1fd74cb62762d1ab60967565ccd",
+          "sha256": "4038cd722331cf2c8f614932636000a852cff1fd74cb62762d1ab60967565ccd",
+          "lines": 5,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 5,
+          "language": "BookJSON",
+          "original_language": "json",
+          "source_sha256": "da44c51d4e5b264e7b9e456a09beea34b352fce0367721ae59dc285c786015b1",
+          "sha256": "da44c51d4e5b264e7b9e456a09beea34b352fce0367721ae59dc285c786015b1",
+          "lines": 10,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 6,
+          "language": "BookJSON",
+          "original_language": "json",
+          "source_sha256": "59bcf1b867f6a4c05283f06baa1773bdabce0d3817d58cb6360f326985ee5297",
+          "sha256": "59bcf1b867f6a4c05283f06baa1773bdabce0d3817d58cb6360f326985ee5297",
+          "lines": 11,
+          "tabs": 0,
+          "edits": []
+        }
+      ],
+      "tables": 0,
+      "figures": 9,
+      "inline_urls_repaired": []
+    },
+    {
+      "source": "06-agility.Rmd",
+      "target": "chapters/06-agility.tex",
+      "source_sha256": "dc3b22ddb91dc14aa1c9edb5c2957e33eae41c28d0a29ae1f28dd46b5d89e03e",
+      "headings": 21,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "44e13e988475816ac34dad3854d83ace72685ef754bb34c8904089c213bcb6da",
+          "sha256": "44e13e988475816ac34dad3854d83ace72685ef754bb34c8904089c213bcb6da",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 2,
+          "language": "BookText",
+          "original_language": "text",
+          "source_sha256": "4bdfdff051c8941955810e16712d74fc84b363838b18b3f72242e1c231d6b418",
+          "sha256": "4bdfdff051c8941955810e16712d74fc84b363838b18b3f72242e1c231d6b418",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 3,
+          "language": "BookText",
+          "original_language": "text",
+          "source_sha256": "d18510b5b0c224b6ecc504b0a696835ed986ee03199c62f9fdfb93b436af426e",
+          "sha256": "d18510b5b0c224b6ecc504b0a696835ed986ee03199c62f9fdfb93b436af426e",
+          "lines": 4,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 4,
+          "language": "BookMake",
+          "original_language": "text",
+          "source_sha256": "6f367a587743ff112059d7bb38d6350c09ba0d1551f3920067c4ba57b58bca26",
+          "sha256": "6f367a587743ff112059d7bb38d6350c09ba0d1551f3920067c4ba57b58bca26",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 5,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "736425eab358c941535ef8060945032969f585fd9a20e05ce1fac4be7895977a",
+          "sha256": "736425eab358c941535ef8060945032969f585fd9a20e05ce1fac4be7895977a",
+          "lines": 36,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 6,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "2044462d89c3dbeba29a20be1e8d4187fde9d58d93b92ab3d425d6e40df9f0c4",
+          "sha256": "2044462d89c3dbeba29a20be1e8d4187fde9d58d93b92ab3d425d6e40df9f0c4",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 7,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "7a58f13ba6618393f6d5ae2270ca2a4aeef58e1c8adb10642d77996e569028b7",
+          "sha256": "7a58f13ba6618393f6d5ae2270ca2a4aeef58e1c8adb10642d77996e569028b7",
+          "lines": 44,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 8,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "9492d82902614e84886def2d522eb5352550ddd8c24420e9180af9d0604bfcbd",
+          "sha256": "9492d82902614e84886def2d522eb5352550ddd8c24420e9180af9d0604bfcbd",
+          "lines": 56,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 9,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "efcb5731768d1a641c9075536558a2d8580ffc69702350b07fc7a64a6b0e6e21",
+          "sha256": "efcb5731768d1a641c9075536558a2d8580ffc69702350b07fc7a64a6b0e6e21",
+          "lines": 7,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 10,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "b0eee732ff4028f9c444812c439eace09ca633f2083321ba2a4b20003838ee5c",
+          "sha256": "b0eee732ff4028f9c444812c439eace09ca633f2083321ba2a4b20003838ee5c",
+          "lines": 7,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 11,
+          "language": "BookVerilog",
+          "original_language": "verilog",
+          "source_sha256": "f58e53aaa6bd7260fd0702f9aacfdbdadbb5989f6d515f0d9cc7c5011ab1196d",
+          "sha256": "f58e53aaa6bd7260fd0702f9aacfdbdadbb5989f6d515f0d9cc7c5011ab1196d",
+          "lines": 22,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 12,
+          "language": "BookCpp",
+          "original_language": "cpp",
+          "source_sha256": "1d62298e4c203ed5a167334afb0ae6a867eafdfcd79f8becd724913410dd054d",
+          "sha256": "1d62298e4c203ed5a167334afb0ae6a867eafdfcd79f8becd724913410dd054d",
+          "lines": 54,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 13,
+          "language": "BookCpp",
+          "original_language": "cpp",
+          "source_sha256": "5a198d6f451ab97ad99a26b04388ec697edded3abcad2ed96620c243eefe4eaa",
+          "sha256": "5a198d6f451ab97ad99a26b04388ec697edded3abcad2ed96620c243eefe4eaa",
+          "lines": 44,
+          "tabs": 3,
+          "edits": []
+        },
+        {
+          "index": 14,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "14bad7ab4850c634e2505940f78d71faa82c309da97a9827683dd94a582fa2ca",
+          "sha256": "14bad7ab4850c634e2505940f78d71faa82c309da97a9827683dd94a582fa2ca",
+          "lines": 10,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 15,
+          "language": "BookCpp",
+          "original_language": "cpp",
+          "source_sha256": "2ddd527dc46504ad198a41fb765e33ded7950aea1ce41d9e4d81b247d2163666",
+          "sha256": "2ddd527dc46504ad198a41fb765e33ded7950aea1ce41d9e4d81b247d2163666",
+          "lines": 11,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 16,
+          "language": "BookCpp",
+          "original_language": "cpp",
+          "source_sha256": "0e0ddacd59d1629bfd9d48df6c82406fa0db0bf8e470a7181a01908b66b96914",
+          "sha256": "0e0ddacd59d1629bfd9d48df6c82406fa0db0bf8e470a7181a01908b66b96914",
+          "lines": 6,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 17,
+          "language": "BookCpp",
+          "original_language": "cpp",
+          "source_sha256": "8cfe642b37535523e2b19f2c143adb29fa9c2f2a30f5a89558e3e1f9a20b68a3",
+          "sha256": "8cfe642b37535523e2b19f2c143adb29fa9c2f2a30f5a89558e3e1f9a20b68a3",
+          "lines": 23,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 18,
+          "language": "BookScala",
+          "original_language": "scala",
+          "source_sha256": "7ea5cb50e3df4cc8183814e75cc388c9eab37a561f60237f63fe936a8a4897b0",
+          "sha256": "7ea5cb50e3df4cc8183814e75cc388c9eab37a561f60237f63fe936a8a4897b0",
+          "lines": 13,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 19,
+          "language": "BookSystemVerilog",
+          "original_language": "verilog",
+          "source_sha256": "057a25f8ae4db07e7b6619bed8b6df07fc88cb6e1abfc5eaa461bb2c5695fbe8",
+          "sha256": "057a25f8ae4db07e7b6619bed8b6df07fc88cb6e1abfc5eaa461bb2c5695fbe8",
+          "lines": 12,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 20,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "82f4e96c5ba03af183455277c28e9cacc11181e912a56c6fea9822b0134fe33f",
+          "sha256": "82f4e96c5ba03af183455277c28e9cacc11181e912a56c6fea9822b0134fe33f",
+          "lines": 7,
+          "tabs": 0,
+          "edits": []
+        }
+      ],
+      "tables": 0,
+      "figures": 2,
+      "inline_urls_repaired": []
+    },
+    {
+      "source": "07-soc-and-system.Rmd",
+      "target": "chapters/07-soc-and-system.tex",
+      "source_sha256": "3c1cfdcc9f01b1fc789143ce0e49ff234e40c85345c4b2262f6e766f45a36b63",
+      "headings": 11,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookVerilog",
+          "original_language": "verilog",
+          "source_sha256": "dbe6d2a785d387f15cafbfd9e219bbffe4f22651d752f22fb3a4b980bff7b36f",
+          "sha256": "dbe6d2a785d387f15cafbfd9e219bbffe4f22651d752f22fb3a4b980bff7b36f",
+          "lines": 59,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 2,
+          "language": "BookDTS",
+          "original_language": "dts",
+          "source_sha256": "2a7309560c3c491ee2bc0820dc84d05cef553bbce6b90a14e05a0ed298341664",
+          "sha256": "2a7309560c3c491ee2bc0820dc84d05cef553bbce6b90a14e05a0ed298341664",
+          "lines": 174,
+          "tabs": 188,
+          "edits": []
+        },
+        {
+          "index": 3,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "918e8435b2933a7b0aeaa4189ceccf59b4c7c1eef477dcbd509d54641acb382b",
+          "sha256": "918e8435b2933a7b0aeaa4189ceccf59b4c7c1eef477dcbd509d54641acb382b",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 4,
+          "language": "BookConfig",
+          "original_language": "text",
+          "source_sha256": "cc300f7ac9dfbd27b26a319a3353b9b031a2b852cfe109947d2ae926a0f1c090",
+          "sha256": "cc300f7ac9dfbd27b26a319a3353b9b031a2b852cfe109947d2ae926a0f1c090",
+          "lines": 336,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 5,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "56cf403d88f0fe9c90bbabd4daed8089c102fe0d93c728b2fa1df973630c1985",
+          "sha256": "56cf403d88f0fe9c90bbabd4daed8089c102fe0d93c728b2fa1df973630c1985",
+          "lines": 8,
+          "tabs": 3,
+          "edits": []
+        },
+        {
+          "index": 6,
+          "language": "BookConfig",
+          "original_language": "text",
+          "source_sha256": "1f73985e8933d74f21c5e4806e524b127bdf433ef64644ad3b2e2c49a8b5af68",
+          "sha256": "1f73985e8933d74f21c5e4806e524b127bdf433ef64644ad3b2e2c49a8b5af68",
+          "lines": 12,
+          "tabs": 6,
+          "edits": []
+        },
+        {
+          "index": 7,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "2d8cfff504aabe3c142f186e5cc8336374a89ba6a448eb1650811dd7e71ec160",
+          "sha256": "2d8cfff504aabe3c142f186e5cc8336374a89ba6a448eb1650811dd7e71ec160",
+          "lines": 8,
+          "tabs": 10,
+          "edits": []
+        },
+        {
+          "index": 8,
+          "language": "BookConfig",
+          "original_language": "text",
+          "source_sha256": "5061aa775aa9b30c22ec9663068a830be3554a51743be3f818d21aa25b1281ba",
+          "sha256": "5061aa775aa9b30c22ec9663068a830be3554a51743be3f818d21aa25b1281ba",
+          "lines": 12,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 9,
+          "language": "BookConfig",
+          "original_language": "text",
+          "source_sha256": "9ac8485b0c7c2eeefdc10d36ba4a3845ba371fb3a7d6529c1c539b6cc8a6a915",
+          "sha256": "9ac8485b0c7c2eeefdc10d36ba4a3845ba371fb3a7d6529c1c539b6cc8a6a915",
+          "lines": 5,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 10,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "50000ac4aae5b31b55eac5eaa7be3eea2bc139dfb3855286925ac6414bce4ff4",
+          "sha256": "50000ac4aae5b31b55eac5eaa7be3eea2bc139dfb3855286925ac6414bce4ff4",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 11,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "42263f0df8786589c4e52ea111a80466749cd1be5587793da7250b89db4d65a7",
+          "sha256": "42263f0df8786589c4e52ea111a80466749cd1be5587793da7250b89db4d65a7",
+          "lines": 14,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 12,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "51bd71bd336da5cfcfb67f53d1272eb5a41f73bb9003f1f31acb6a5b6fa207cb",
+          "sha256": "51bd71bd336da5cfcfb67f53d1272eb5a41f73bb9003f1f31acb6a5b6fa207cb",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 13,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "3375de182046347ff4cfc689f2d13d41db5fba53b86345d44e7fbcb0f51bd54a",
+          "sha256": "3375de182046347ff4cfc689f2d13d41db5fba53b86345d44e7fbcb0f51bd54a",
+          "lines": 15,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 14,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "30c4a68ad4a10850344b0044153107cce864340d061e908af5739aee7d76cf1e",
+          "sha256": "30c4a68ad4a10850344b0044153107cce864340d061e908af5739aee7d76cf1e",
+          "lines": 8,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 15,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "e8ced51b44a5d0b3af577058e10fce2cd5c68fd7657e1ea6f308647427c449f9",
+          "sha256": "e8ced51b44a5d0b3af577058e10fce2cd5c68fd7657e1ea6f308647427c449f9",
+          "lines": 32,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 16,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "ce16f0450d8bdc29e113c6d1f7eee9139d916e6f199ba3678668b9c647344d6e",
+          "sha256": "ce16f0450d8bdc29e113c6d1f7eee9139d916e6f199ba3678668b9c647344d6e",
+          "lines": 2,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 17,
+          "language": "BookMake",
+          "original_language": "makefile",
+          "source_sha256": "d2bad1fab42ab2fd2c979c651a9e8a5b4bb9f9105380b7448c384b459f0252ed",
+          "sha256": "d2bad1fab42ab2fd2c979c651a9e8a5b4bb9f9105380b7448c384b459f0252ed",
+          "lines": 28,
+          "tabs": 0,
+          "edits": []
+        }
+      ],
+      "tables": 3,
+      "figures": 1,
+      "inline_urls_repaired": [
+        "https://github.com/BUAA-CI-LAB/linux",
+        "https://ftp.gnu.org/gnu/termcap"
+      ]
+    },
+    {
+      "source": "08-verification-and-implementation.Rmd",
+      "target": "chapters/08-verification-and-implementation.tex",
+      "source_sha256": "46a525f6ee2a9440c9b19f17a1553cdd3b2f81a4cd06afa9ea8b284daccc6e10",
+      "headings": 24,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "8ba9a7dae91fd21ad0eace7bfa342f412978297d5657b96f1dd6cb515797bd6c",
+          "sha256": "8ba9a7dae91fd21ad0eace7bfa342f412978297d5657b96f1dd6cb515797bd6c",
+          "lines": 3,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 2,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "efd13d40c6be63802407c8eba9d68102e2fb09e23dfee4950187e4e7c179f7f6",
+          "sha256": "efd13d40c6be63802407c8eba9d68102e2fb09e23dfee4950187e4e7c179f7f6",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 3,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "777ed04a04eb7eefbe6b8af02336765216c08987f038a120fb6509fb925c8af3",
+          "sha256": "777ed04a04eb7eefbe6b8af02336765216c08987f038a120fb6509fb925c8af3",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 4,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "8a1712840845ee0496d70740fc720b022992c7ab19ab4960af7c9256106b13a2",
+          "sha256": "8a1712840845ee0496d70740fc720b022992c7ab19ab4960af7c9256106b13a2",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 5,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "e9c500d7b6ec3023c68e93b2561e623eb0b90d57668a3cbf0eff941ab9365b89",
+          "sha256": "e9c500d7b6ec3023c68e93b2561e623eb0b90d57668a3cbf0eff941ab9365b89",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 6,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "c8f402f8eb2d226acf95906ebcf3f54937856686b2b88c4e31bce281c6d94beb",
+          "sha256": "c8f402f8eb2d226acf95906ebcf3f54937856686b2b88c4e31bce281c6d94beb",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 7,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "c4edcd75dd853aa33dad650a63786dbbdd4b92a06eb4817c264e86264378ce5a",
+          "sha256": "c4edcd75dd853aa33dad650a63786dbbdd4b92a06eb4817c264e86264378ce5a",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 8,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "7386259da0e1aa61bac07e4dc5977c5595a3f87fb3ea9d755d8affd5682f5d85",
+          "sha256": "7386259da0e1aa61bac07e4dc5977c5595a3f87fb3ea9d755d8affd5682f5d85",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 9,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "4945a70fa7f9c13fe1931a3372ac5798140d42eba74d0dd805a4a216ed3a8142",
+          "sha256": "4945a70fa7f9c13fe1931a3372ac5798140d42eba74d0dd805a4a216ed3a8142",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 10,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "a12dd3a7fd3203a452eb34d91a9be20569d5e337a3384347068895c07f3e0c5a",
+          "sha256": "a12dd3a7fd3203a452eb34d91a9be20569d5e337a3384347068895c07f3e0c5a",
+          "lines": 1,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 11,
+          "language": "BookShell",
+          "original_language": "bash",
+          "source_sha256": "46a154e879ab574a18b285f5e5b368be421c68eb7adc79d5bec42726f445e936",
+          "sha256": "46a154e879ab574a18b285f5e5b368be421c68eb7adc79d5bec42726f445e936",
+          "lines": 6,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 12,
+          "language": "BookMake",
+          "original_language": "text",
+          "source_sha256": "4aea3f6d374a8a02e216c9b2faf116d3e9763efa28a95b117a3d82d7bb12043f",
+          "sha256": "4aea3f6d374a8a02e216c9b2faf116d3e9763efa28a95b117a3d82d7bb12043f",
+          "lines": 40,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 13,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "d9ce4bd213b13dad7711b29c93e1d8b4df08a2a484b55240b96461fa9b1abc70",
+          "sha256": "d9ce4bd213b13dad7711b29c93e1d8b4df08a2a484b55240b96461fa9b1abc70",
+          "lines": 17,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 14,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "032a75b90e2bff510616504eebb50f8b53a3775c9b73f43c3d4f651557593862",
+          "sha256": "032a75b90e2bff510616504eebb50f8b53a3775c9b73f43c3d4f651557593862",
+          "lines": 10,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 15,
+          "language": "BookTcl",
+          "original_language": "text",
+          "source_sha256": "43f556df533314e772bf45e50fe05830e496ff0ffcc437bc34b1b7963baa4f28",
+          "sha256": "43f556df533314e772bf45e50fe05830e496ff0ffcc437bc34b1b7963baa4f28",
+          "lines": 21,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 16,
+          "language": "BookCShell",
+          "original_language": "text",
+          "source_sha256": "6f4ce849ba31c95c83223c3ffd047746e79b86db6714ec6615e3f2368ee1d0b8",
+          "sha256": "6f4ce849ba31c95c83223c3ffd047746e79b86db6714ec6615e3f2368ee1d0b8",
+          "lines": 9,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 17,
+          "language": "BookCShell",
+          "original_language": "text",
+          "source_sha256": "efd641440aa46ebb16ae6f94032a40a9f9a6bb215b68edaa6361bfe8327683ce",
+          "sha256": "efd641440aa46ebb16ae6f94032a40a9f9a6bb215b68edaa6361bfe8327683ce",
+          "lines": 13,
+          "tabs": 0,
+          "edits": []
+        },
+        {
+          "index": 18,
+          "language": "BookCShell",
+          "original_language": "text",
+          "source_sha256": "06661acd20640006386d68ce6177f62e882619601aae11ce2ee80e17f75efe8f",
+          "sha256": "06661acd20640006386d68ce6177f62e882619601aae11ce2ee80e17f75efe8f",
+          "lines": 18,
+          "tabs": 0,
+          "edits": []
+        }
+      ],
+      "tables": 0,
+      "figures": 43,
+      "inline_urls_repaired": [
+        "https://github.com/BUAA-CI-LAB/MegaSoC/blob/master/Board/BaiXin/io.xdc"
+      ]
+    },
+    {
+      "source": "09-test-and-show.Rmd",
+      "target": "chapters/09-test-and-show.tex",
+      "source_sha256": "8d7a552e2fc9661c6ffa47bfc18b9b8cb61154929362839a1c28ff47128f4148",
+      "headings": 6,
+      "source_code_blocks": [
+        {
+          "index": 1,
+          "language": "BookC",
+          "original_language": "c",
+          "source_sha256": "d550560df73aa975c61b2bdda5e4bf980371ac90e218ab04f94004e6532b54ac",
+          "sha256": "d550560df73aa975c61b2bdda5e4bf980371ac90e218ab04f94004e6532b54ac",
+          "lines": 459,
+          "tabs": 33,
+          "edits": []
+        }
+      ],
+      "tables": 2,
+      "figures": 5,
+      "inline_urls_repaired": []
+    },
+    {
+      "source": "20-references.Rmd",
+      "target": "chapters/20-references.tex",
+      "source_sha256": "dd99aae76b29132d396f9cb760a8c50e504fc3b6a98f03cb6bc98c4e61f3f19a",
+      "headings": 1,
+      "source_code_blocks": [],
+      "tables": 0,
+      "figures": 0,
+      "inline_urls_repaired": []
+    },
+    {
+      "source": "30-resources.Rmd",
+      "target": "chapters/30-resources.tex",
+      "source_sha256": "1768fa2a34c370fd3d2ec695b5891b2ff5019e0375b31184ceebdc2df7fe28be",
+      "headings": 1,
+      "source_code_blocks": [],
+      "tables": 1,
+      "figures": 0,
+      "inline_urls_repaired": []
+    }
+  ],
+  "edits": [
+    {
+      "file": "01-hardware-preparation",
+      "reason": "原稿未提供链接目标，保留文字并移除空超链接",
+      "old": "[教程文档]()",
+      "new": "教程文档",
+      "occurrences": 1
+    },
+    {
+      "file": "01-hardware-preparation",
+      "reason": "修正将终端代码输出称为图片的表述",
+      "old": "其输出信息的详细示例如下图所示。",
+      "new": "其输出信息的详细示例如下。",
+      "occurrences": 1
+    },
+    {
+      "file": "01-hardware-preparation",
+      "reason": "删除没有对应图片的界面指示句",
+      "old": "它的界面如下图所示。",
+      "new": "",
+      "occurrences": 1
+    },
+    {
+      "file": "01-hardware-preparation",
+      "reason": "恢复被误当 HTML 标签吞掉的用户目录占位符",
+      "old": "/home/<user_name>",
+      "new": "`/home/<user_name>`",
+      "occurrences": 1
+    },
+    {
+      "file": "01-hardware-preparation",
+      "reason": "修正 Bash 清屏快捷键",
+      "old": "**Ctrl+I**：清屏",
+      "new": "**Ctrl+L**：清屏",
+      "occurrences": 1
+    },
+    {
+      "file": "01-hardware-preparation",
+      "reason": "明确 grep -i 作用于匹配文本",
+      "old": "忽略文件大小写差异",
+      "new": "忽略匹配时的大小写差异",
+      "occurrences": 1
+    },
+    {
+      "file": "01-hardware-preparation",
+      "reason": "移除误粘贴到正文的带行号 JSON 污染；原文保留于修订记录，不猜测被覆盖条目",
+      "old": "- 11 1\"bcnez\": {2    \"opcode\": \"010010xxxxxxxxxxxxxxxx01\",3    \"fbranch_inst\": 1,4    \"bcnez\": 1,5    \"cmp_type\": \"`_CMP_E\",6    \"target_type\": \"`_TARGET_REL\",7    \"jump_inst\": 1,8    \"das\": \"\\\"%07x\\\",I26<<2\",9    \"fpd_inst\": 1,10    \"slot0\": 111}json\n",
+      "new": "",
+      "occurrences": 1
+    },
+    {
+      "file": "02-software-preparation",
+      "reason": "修正工具名称拼写",
+      "old": "安装Pixmen",
+      "new": "安装 Pixman",
+      "occurrences": 1
+    },
+    {
+      "file": "04-advanced-cpu",
+      "reason": "原稿未提供链接目标，保留文字并移除空超链接",
+      "old": "[教程文档]()",
+      "new": "教程文档",
+      "occurrences": 4
+    },
+    {
+      "file": "05-complex-cpu",
+      "reason": "重命名表截图误引用上一章 Cache 架构图",
+      "old": "如表\\@ref(fig:cache-arch)",
+      "new": "如图\\@ref(fig:rename-showcase)",
+      "occurrences": 1
+    },
+    {
+      "file": "06-agility",
+      "reason": "移除误粘贴到正文的带行号 JSON 污染；原文保留于修订记录，不猜测被覆盖条目",
+      "old": "* xxxxxxxxxx11 1\"bcnez\": {2    \"opcode\": \"010010xxxxxxxxxxxxxxxx01\",3    \"fbranch_inst\": 1,4    \"bcnez\": 1,5    \"cmp_type\": \"`_CMP_E\",6    \"target_type\": \"`_TARGET_REL\",7    \"jump_inst\": 1,8    \"das\": \"\\\"%07x\\\",I26<<2\",9    \"fpd_inst\": 1,10    \"slot0\": 111}json\n",
+      "new": "",
+      "occurrences": 1
+    },
+    {
+      "file": "06-agility",
+      "reason": "删除重复句式",
+      "old": "将环境变量`AM_HOME`需要设置为",
+      "new": "将环境变量 `AM_HOME` 设置为",
+      "occurrences": 1
+    },
+    {
+      "file": "06-agility",
+      "reason": "移除段落中误入的列表符号",
+      "old": "然后，* 设置 la32r 编译器与库的环境变量：",
+      "new": "然后，设置 la32r 编译器与库的环境变量：",
+      "occurrences": 1
+    },
+    {
+      "file": "06-agility",
+      "reason": "修复多余标点与语序",
+      "old": "在 ，`tests` 或 `apps` 下文件夹中",
+      "new": "在 `tests` 或 `apps` 文件夹中",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "修正同音误字",
+      "old": "处理器芯片的目标引用",
+      "new": "处理器芯片的目标应用",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "删除重复用词",
+      "old": "所示，所示点击",
+      "new": "所示，点击",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "补齐图引用 fig 前缀",
+      "old": "\\@ref(timing-checkflow)",
+      "new": "\\@ref(fig:timing-checkflow)",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "使文字说明与紧邻的 Vdd 平方公式一致",
+      "old": "功耗与电路的工作频率、供电电压和负载电容成正比",
+      "new": "功耗与电路的工作频率、供电电压的平方和负载电容成正比",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "明确短路功耗的时间平均定义",
+      "old": "短路功耗的计算公式较为复杂，但基本可以表示为：",
+      "new": "在供电电压近似恒定时，观察时间 $T$ 内的平均短路功耗可表示为：",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "修正将短路能量误写成功耗的量纲错误",
+      "old": "P_{short-circuit} = I_{sc} \\cdot V_{dd} \\cdot t",
+      "new": "P_{short-circuit} = \\frac{1}{T} \\int_0^T V_{dd} \\, i_{sc}(t) \\, \\mathrm{d}t",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "使变量定义与平均功耗公式一致，避免将一般趋势表述为严格正比",
+      "old": "其中$I_{sc}$是短路电流，$t$是短路状态持续的时间。短路功耗与输入信号的上升和下降时间成正比，这些时间越长，晶体管同时导通的时间也越长，从而增加短路功耗。",
+      "new": "其中 $i_{sc}(t)$ 是瞬时短路电流，$T$ 是观察时间。输入信号的上升和下降时间变长，通常会延长晶体管同时导通的时间，从而增加短路功耗；具体数值还取决于电流波形和开关活动。",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "修正重复复用的图片标题",
+      "old": "提示重新运行综合和实现",
+      "new": "打开硬件管理器",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "修正重复或混入 LaTeX 标记的图标题",
+      "old": "目标硬件编程",
+      "new": "FPGA 编程完成",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "修正重复或混入 LaTeX 标记的图标题",
+      "old": "tt\\texttt{25}工艺角下的时序clean报告",
+      "new": "tt_25 工艺角下的时序检查报告",
+      "occurrences": 1
+    },
+    {
+      "file": "08-verification-and-implementation",
+      "reason": "修正重复或混入 LaTeX 标记的图标题",
+      "old": " tt\\texttt{85} 工艺角下的功耗",
+      "new": "tt_85 工艺角下的功耗报告",
+      "occurrences": 1
+    },
+    {
+      "file": "09-test-and-show",
+      "reason": "修正同音误字",
+      "old": "第5层位电源层",
+      "new": "第5层为电源层",
+      "occurrences": 1
+    },
+    {
+      "file": "30-resources",
+      "reason": "删除链接末尾误入的右括号",
+      "old": "https://gitee.com/loongson-edu/la32r-Linux/releases)",
+      "new": "https://gitee.com/loongson-edu/la32r-Linux/releases",
+      "occurrences": 1
+    }
+  ],
+  "assets": {
+    "assets/02/menuconfig1.webp": "33345ba869bb8f91094b21a1a9910d47ef6b0c4a88500cb444a81992d4a94c52",
+    "assets/02/menuconfig2.webp": "1df57db78b734ebf3ca6fd243eb7a903fd7957a6e51291ad8e5d8a2660e4bab7",
+    "assets/02/menuconfig3.webp": "24ab4e958811a2b34a3b09634b5eb777d43c234523edc6ff366cb35cd765eabb",
+    "assets/03/bpu-arch.png": "cfda0eab6ccb55df1727d5236af10278d06af77adf1824cf645595e6216d53b1",
+    "assets/03/eula-arch.png": "89fa726ab1ec74e672300019c0cca7aebcc875c4dcdb7737816a7e0d5ede3d2f",
+    "assets/03/lsu-state.png": "2270243769d5d36e280fd9927bb09cfdc192ce9d6bc3525a83b69ebdbaa4778b",
+    "assets/03/mou-state.png": "6ec16aa7e725d8d9aa4fb5f7fe1b62d6cc96f976fadccfc7bf854cf186106a56",
+    "assets/04/bpu-arch.png": "443a6158f7a22f33377845f970c010a12077c022e2b7d308d1bc66643b4ffcbf",
+    "assets/04/cache-arch.png": "2c21c096065fbb74401c3d8aae3b0406b1627972b2a1809243701e2ab184c48c",
+    "assets/04/lain-arch.png": "6eaec3ae75ad87d565a186e7d1d92a253fd43c4f41b9fbcbc4f1876d5fdf6df8",
+    "assets/05/acqfsm.png": "43af2b96165eec570feb1ea82ba427939d8e57e2bc0b2daf79aadba5ad0b2267",
+    "assets/05/cache-subsystem.png": "43f68771794a733eb4deef5d78495347541f2417e6a9adc3c4721f67a6bfdbed",
+    "assets/05/cachepipefsm.png": "cf85aad216ae6471cff5884d367c202f313c3edaeabb22678fc1367eb0c354ef",
+    "assets/05/cpureqfsm.png": "0b223f934ce0b8c9e8ba81cae08bea83ad24d7f99e385bfdd17fa132132a6ca1",
+    "assets/05/invfsm.png": "585f0b696dc55e50dd47e1dc39566e0a9de8e9561bbdfaa8b2492a1e3216c3d3",
+    "assets/05/prbfsm.png": "da4daae7da1e3b47bc13f7f0b3aab4c9a8322757760980bdc567e0d1b55e2e03",
+    "assets/05/rename-showcase.png": "3b72653ea765d5cc80629ade0fa54013310ea178887c412e2a6a695b7e98665a",
+    "assets/05/tso-maintain.png": "cbc8ab985aecbce40719a13c8577d89f2cd41e352c6b5ffbcaec927cb4e51756",
+    "assets/05/wired-arch.png": "7b99201a5ec9c120323aa90cb6654b1720b8fd5e56eb3025333814fcc742b8f3",
+    "assets/06/ethernet-sim.png": "aaba3c680356ef0aa9845778bcbfde38529b23c6b0b1c13841346c5b2d2969d5",
+    "assets/06/uart-sim.png": "99d97e17ea879efad093603a31cca32380785666789f56222b7d2cff05575320",
+    "assets/07/megasoc.drawio.png": "1aa8e67b146d6d0770411c68d442ae14f39c0a5878c0c917fce1b98b4428d4cf",
+    "assets/08/EULA芯片版图.png": "c857302f8a95961b8f7ad82975d3be022fd97320b02c9df48fd005bfd3b15b0b",
+    "assets/08/IO_place.png": "c712681f67b29d37917f977e7fd6c20d7779d81ef1393969b5d2ae5f3043e91d",
+    "assets/08/LAIN芯片版图.png": "f5b2574775592260bdceb909c524d1614460a35c6ed55d3647a24e29bf2218b7",
+    "assets/08/LEC验证结果.png": "08af24ce47e811260970903aef65ae47323fc9fcdf3484ad985859b6e0e2e160",
+    "assets/08/LVS验证通过.png": "7eb01556ad603751a7a7408fe25417123f4f258df40ee04fa26056a96c0b089a",
+    "assets/08/PVT_list.png": "b4374cc061761e36209af2312dc9fcd1426cde672a932ebf2be25153423e20bc",
+    "assets/08/PostCTS.png": "beb4b66e4fe07998aaf7ceb08437bf22b72aedc8bd054fac2f5d6a5fec37ddb5",
+    "assets/08/inittiming.png": "80b2f0c45370afb4e84afaf3bff1dc0fe3b29b7bf0602e0c1c002d189fc5074a",
+    "assets/08/macro_place.png": "ad14a09e0f8decc931c87cfeadd1006f8a5ba37b76c47816656b11202b9ce18b",
+    "assets/08/place.png": "1d87baf5bc5db267c4772ff61c9eba98e8abcd3c35dba8753bd5661151ae0790",
+    "assets/08/power_place.png": "93d8778fbf463a5da8e5c9ff4945113270c5007aa6b60807d70f2ae957cbc641",
+    "assets/08/tt_25工艺角下的时序报告.png": "c88249d2787859f1ec99c1c34e7acf46ea756c6bf14ee24e1e19c3822feae819",
+    "assets/08/tt_85工艺角下的功耗.png": "29f8853f5f455e2c56e8cef7fd862e4ba84fd6414b9a2f2a6d22ed2690728305",
+    "assets/08/vivado_add_constraints_files.png": "125eff52e9f06cdf4e63c52c4b2bfbe5375b1395093a38d767f472d77cc6cd70",
+    "assets/08/vivado_add_constraints_sources.png": "d751d3bc3148a08a4f5423a822d32d1508aa7da457d7681fd65f843c8da30bf6",
+    "assets/08/vivado_add_existing_files.png": "01c3b3f3df03a9ef0bea03066fa1f2ffa19acf1ab07a698e008e9281e4298d14",
+    "assets/08/vivado_add_source_file.png": "34dd73e1d16f8ab6c3b10c62e502a8d25c8a1a426c8d782d43dbb35d1bf25d8a",
+    "assets/08/vivado_add_sources_next.png": "b2079f2b2de5a8069f6581e811a8f94de797639409269e962f41b460d8eee6ff",
+    "assets/08/vivado_fpga_output.png": "ada296543df876f331b8ecf5fa425e67354f4be88a86e25a208d5f3daaa55618",
+    "assets/08/vivado_fpga_programmed.png": "745cec8fe6e5139c037d7cf011d1f540c8835ed2fa2f0c3b355402ef1219cc8d",
+    "assets/08/vivado_generate_bitstream.png": "0776b6adb38e495f6d0efcc8886182c25ee2eac67851a1882b49f48687815af8",
+    "assets/08/vivado_indicate_resynthesis.png": "2887d9c129956f5ca31880b49728f3b11a64dc484195dd756a93bfa8b6b23fce",
+    "assets/08/vivado_new_project_end.png": "5394c65feae5054eec29c7ce6684143c8f67ed8cafdf178d651cb145e52b4efc",
+    "assets/08/vivado_new_project_start.png": "7c87e86c1c703f2b3274bec42d8183c011338cdb951e6f942101b2ec3e9fbb3a",
+    "assets/08/vivado_open_hardware_manager.png": "18643b7b729cd016b86d607c0aa689342001c41f835ab9c70f1211bc7da31de7",
+    "assets/08/vivado_open_new_target.png": "23dc56bcda4bc7415ae38335179611ea21efcc8acdfbea2f0b93d519e184f7df",
+    "assets/08/vivado_program_device.png": "7ff499870ceb278f2172ac8e972fc35cafc284303c3581c342f3fbb466e71692",
+    "assets/08/vivado_project_info_confirm.png": "4d28a8a791e5037eee98d8092eb64b53811697ac06c5010657a534a0f6a1de1d",
+    "assets/08/vivado_select_fpga_info.png": "f43fa59bb46a1a533295c5180779bcf70cf38db7882018236f1ca5e4b87f831c",
+    "assets/08/vivado_set_project_name.png": "cad391d562c1138d96ccf4796a928aaf1346b9f45105c41148c876879af18f0f",
+    "assets/08/vivado_set_project_type.png": "db81111eb99111bbbe07a5c83ec0043a82d1722d7ea5e209b3f1996e1ea6354e",
+    "assets/08/vivado_start.png": "fe0c52c104c62fe00bc04fb9d433dfd7f4b68973463a85a97c4a10908a368e75",
+    "assets/08/动态电压降分析结果.png": "d156693d6a149d9c0108c0a3c867c8d97cbc10831159092c1905da70d22f5c8e",
+    "assets/08/处理器芯片应用.png": "19b6a19699cb15c52e01e26e98d84750218cfa89be7c16dbccb463e569c172b7",
+    "assets/08/布线后的时序分析.png": "c1095595ab1a393cc1f890f038967c68edba4886bb443e6c192b8ebb5705ddcd",
+    "assets/08/布线后的版图.png": "cdf0f74a8287fe5e623118d5595456fccba516620eeb13a8687e4f06b89a92ab",
+    "assets/08/形式化验证.png": "b526f6f1a08e7758921eff8c93912da432af7d1948db29fdd90a2e22defdcdca",
+    "assets/08/时序修复流程.png": "d234b246054a93ffd8aba8f0a599e3dc42b21453ae585ee58a2947501ea9457e",
+    "assets/08/时钟树综合之后的版图.png": "a43d2f486944d7c2171a3fb70d7e4ec97d876003febe09851026cfd6fd1a784c",
+    "assets/08/芯片后端流程.png": "9fe0dc7ce887d2fff158697a44a7560588d2b9278afa64565cb28707e460489c",
+    "assets/08/芯片设计流程.png": "dab1b93287345005bcff0f37bce264550ce2d31a231248b97a59bc3ce6425a46",
+    "assets/08/设计参数与验证指标对比.png": "2893dd014854e078415beeb4c8a7dd953dff16a3acdf27a7bb46f18e6a804111",
+    "assets/08/静态电压降分析结果.png": "f1805412d3d7b738fd5966fa9409ef78cc43a184e066cbabe6ea3e9eb3bb03db",
+    "assets/09/pcb-struct.png": "b317fab3a85bc9c73d87eb91277a4776ebe528863c4d3b013be09183424109a8",
+    "assets/09/power.png": "76f3f64edc3aa5a2d10797fc7bdf08da5e5a37289965aee9ca13a82ff30baeb5",
+    "assets/09/sdram.png": "af37606d04219e52de50a7384ed9781479e8524d6292c214bc512c9527e92558",
+    "assets/09/slt.png": "d3391856003289b0a6f81aa7edd679a18ca597b06e8c438469ac04cc0891d233",
+    "assets/09/test-board.png": "5565a2315df0b4a82c7bcac9533340de00128fa235c01185903349729795ed13"
+  },
+  "figures": [
+    {
+      "label": "fig:03-eula-arch",
+      "image": "assets/03/eula-arch.png",
+      "caption": "EULA Core架构图",
+      "width": 1.0
+    },
+    {
+      "label": "fig:03-eula-bpu-arch",
+      "image": "assets/03/bpu-arch.png",
+      "caption": "分支预测模块结构",
+      "width": 0.5
+    },
+    {
+      "label": "fig:03-lsu-state",
+      "image": "assets/03/lsu-state.png",
+      "caption": "LSU状态机",
+      "width": 0.5
+    },
+    {
+      "label": "fig:03-mou-state",
+      "image": "assets/03/mou-state.png",
+      "caption": "MOU状态机",
+      "width": 0.5
+    },
+    {
+      "label": "fig:04-lain-arch",
+      "image": "assets/04/lain-arch.png",
+      "caption": "LainCore架构图",
+      "width": 1.0
+    },
+    {
+      "label": "fig:04-bpu-arch",
+      "image": "assets/04/bpu-arch.png",
+      "caption": "分支预测器架构图",
+      "width": 0.5
+    },
+    {
+      "label": "fig:04-cache-arch",
+      "image": "assets/04/cache-arch.png",
+      "caption": "缓存架构图",
+      "width": 1.0
+    },
+    {
+      "label": "fig:05-wired-arch",
+      "image": "assets/05/wired-arch.png",
+      "caption": "Wired 核心整体架构图",
+      "width": 1.0
+    },
+    {
+      "label": "fig:05-rename-showcase",
+      "image": "assets/05/rename-showcase.png",
+      "caption": "某时刻部分重命名表项状态",
+      "width": 1.0
+    },
+    {
+      "label": "fig:05-tso-maintain",
+      "image": "assets/05/tso-maintain.png",
+      "caption": "访存子系统抽象结构",
+      "width": 0.25
+    },
+    {
+      "label": "fig:05-cache-subsystem",
+      "image": "assets/05/cache-subsystem.png",
+      "caption": "整体访存架构",
+      "width": 1.0
+    },
+    {
+      "label": "fig:05-cachepipefsm",
+      "image": "assets/05/cachepipefsm.png",
+      "caption": "流水线状态机",
+      "width": 1.0
+    },
+    {
+      "label": "fig:05-cpureqfsm",
+      "image": "assets/05/cpureqfsm.png",
+      "caption": "CPU 响应状态机",
+      "width": 0.5
+    },
+    {
+      "label": "fig:05-prbfsm",
+      "image": "assets/05/prbfsm.png",
+      "caption": "仲裁 Probe 响应状态机",
+      "width": 0.35
+    },
+    {
+      "label": "fig:05-invfsm",
+      "image": "assets/05/invfsm.png",
+      "caption": "无效化状态机",
+      "width": 1.0
+    },
+    {
+      "label": "fig:05-acqfsm",
+      "image": "assets/05/acqfsm.png",
+      "caption": "权限请求状态机",
+      "width": 0.5
+    },
+    {
+      "label": "fig:06-uart-sim",
+      "image": "assets/06/uart-sim.png",
+      "caption": "UART DPI 仿真模型结构",
+      "width": 0.75
+    },
+    {
+      "label": "fig:06-ethernet-sim",
+      "image": "assets/06/ethernet-sim.png",
+      "caption": "以太网 DPI 仿真模型结构",
+      "width": 0.75
+    },
+    {
+      "label": "fig:07-megasoc",
+      "image": "assets/07/megasoc.drawio.png",
+      "caption": "百芯部署整体框架图",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-cpu-application",
+      "image": "assets/08/处理器芯片应用.png",
+      "caption": "处理器芯片目标应用",
+      "width": 0.3
+    },
+    {
+      "label": "fig:08-vivado-start",
+      "image": "assets/08/vivado_start.png",
+      "caption": "Vivado启动界面",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-new",
+      "image": "assets/08/vivado_new_project_start.png",
+      "caption": "新建工程向导",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-set-project-name",
+      "image": "assets/08/vivado_set_project_name.png",
+      "caption": "设置工程名称和位置",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-set-project-type",
+      "image": "assets/08/vivado_set_project_type.png",
+      "caption": "设置工程类型",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-select-fpga-info",
+      "image": "assets/08/vivado_select_fpga_info.png",
+      "caption": "选择目标器件",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-project-info-confirm",
+      "image": "assets/08/vivado_project_info_confirm.png",
+      "caption": "工程信息",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-new-project-end",
+      "image": "assets/08/vivado_new_project_end.png",
+      "caption": "新建工程完成的界面",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-add-source-file",
+      "image": "assets/08/vivado_add_source_file.png",
+      "caption": "添加源文件",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-add-sources-next",
+      "image": "assets/08/vivado_add_sources_next.png",
+      "caption": "添加设计文件",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-add-existing-files",
+      "image": "assets/08/vivado_add_existing_files.png",
+      "caption": "添加已有设计文件",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-add-constraints-sources",
+      "image": "assets/08/vivado_add_constraints_sources.png",
+      "caption": "添加约束",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-add-constraints-files",
+      "image": "assets/08/vivado_add_constraints_files.png",
+      "caption": "添加约束文件",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-generate-bitstream",
+      "image": "assets/08/vivado_generate_bitstream.png",
+      "caption": "生成比特流文件",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-indicate-resynthesis",
+      "image": "assets/08/vivado_indicate_resynthesis.png",
+      "caption": "提示重新运行综合和实现",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-open-hardware-manager",
+      "image": "assets/08/vivado_open_hardware_manager.png",
+      "caption": "打开硬件管理器",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-open-new-target",
+      "image": "assets/08/vivado_open_new_target.png",
+      "caption": "打开新目标",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-program-device",
+      "image": "assets/08/vivado_program_device.png",
+      "caption": "目标硬件编程",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-fpga-programmed",
+      "image": "assets/08/vivado_fpga_programmed.png",
+      "caption": "FPGA 编程完成",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-vivado-fpga-output",
+      "image": "assets/08/vivado_fpga_output.png",
+      "caption": "串口输出",
+      "width": 1.0
+    },
+    {
+      "label": "fig:08-chip-flow",
+      "image": "assets/08/芯片设计流程.png",
+      "caption": "芯片设计流程",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-pd-flow",
+      "image": "assets/08/芯片后端流程.png",
+      "caption": "芯片后端流程",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-PVT-list",
+      "image": "assets/08/PVT_list.png",
+      "caption": "库文件中的PVT对照表",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-timing1",
+      "image": "assets/08/inittiming.png",
+      "caption": "initTiming时序检查报告",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-macro-place",
+      "image": "assets/08/macro_place.png",
+      "caption": "宏模块布局结果",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-IO-place",
+      "image": "assets/08/IO_place.png",
+      "caption": "IO布局结果",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-power-place",
+      "image": "assets/08/power_place.png",
+      "caption": "电源规划结果",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-place",
+      "image": "assets/08/place.png",
+      "caption": "最终布局结果",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-PostCTS",
+      "image": "assets/08/PostCTS.png",
+      "caption": "PostCTS时序检查报告",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-PostCTS-res",
+      "image": "assets/08/时钟树综合之后的版图.png",
+      "caption": "时钟树综合之后的版图",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-setup-time",
+      "image": "assets/08/布线后的时序分析.png",
+      "caption": "布线后的时序分析",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-routed-layout",
+      "image": "assets/08/布线后的版图.png",
+      "caption": "布线后的版图",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-timing-checkflow",
+      "image": "assets/08/时序修复流程.png",
+      "caption": "时序修复流程",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-timing-report",
+      "image": "assets/08/tt_25工艺角下的时序报告.png",
+      "caption": "tt_25 工艺角下的时序检查报告",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-fm-flow",
+      "image": "assets/08/形式化验证.png",
+      "caption": "形式化验证流程",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-LEC-res",
+      "image": "assets/08/LEC验证结果.png",
+      "caption": "LEC验证结果",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-power-report",
+      "image": "assets/08/tt_85工艺角下的功耗.png",
+      "caption": "tt_85 工艺角下的功耗报告",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-static-ir-drop",
+      "image": "assets/08/静态电压降分析结果.png",
+      "caption": "静态电压降分析结果",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-dynamic-ir-drop",
+      "image": "assets/08/动态电压降分析结果.png",
+      "caption": "动态电压降分析结果",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-design-metrics",
+      "image": "assets/08/设计参数与验证指标对比.png",
+      "caption": "设计参数与验证指标对比",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-lvs-pass",
+      "image": "assets/08/LVS验证通过.png",
+      "caption": "LVS通过",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-layout1",
+      "image": "assets/08/EULA芯片版图.png",
+      "caption": "EULA芯片版图",
+      "width": 0.7
+    },
+    {
+      "label": "fig:08-layout2",
+      "image": "assets/08/LAIN芯片版图.png",
+      "caption": "LAIN芯片版图",
+      "width": 0.7
+    },
+    {
+      "label": "fig:09-pcb-struct",
+      "image": "assets/09/pcb-struct.png",
+      "caption": "PCB整体结构",
+      "width": 0.75
+    },
+    {
+      "label": "fig:09-power",
+      "image": "assets/09/power.png",
+      "caption": "电源方案",
+      "width": 1.0
+    },
+    {
+      "label": "fig:09-sdram",
+      "image": "assets/09/sdram.png",
+      "caption": "sdram走线",
+      "width": 0.5
+    },
+    {
+      "label": "fig:09-test-board",
+      "image": "assets/09/test-board.png",
+      "caption": "PCB实物图",
+      "width": 0.75
+    },
+    {
+      "label": "fig:09-slt",
+      "image": "assets/09/slt.png",
+      "caption": "测试系统",
+      "width": 1.0
+    }
+  ],
+  "label_map": {
+    "fig:eula-arch": "fig:03-eula-arch",
+    "fig:eula-bpu-arch": "fig:03-eula-bpu-arch",
+    "fig:lsu-state": "fig:03-lsu-state",
+    "fig:mou-state": "fig:03-mou-state",
+    "fig:lain-arch": "fig:04-lain-arch",
+    "fig:bpu-arch": "fig:04-bpu-arch",
+    "fig:cache-arch": "fig:04-cache-arch",
+    "fig:wired-arch": "fig:05-wired-arch",
+    "fig:rename-showcase": "fig:05-rename-showcase",
+    "fig:tso-maintain": "fig:05-tso-maintain",
+    "fig:cache-subsystem": "fig:05-cache-subsystem",
+    "fig:cachepipefsm": "fig:05-cachepipefsm",
+    "fig:cpureqfsm": "fig:05-cpureqfsm",
+    "fig:prbfsm": "fig:05-prbfsm",
+    "fig:invfsm": "fig:05-invfsm",
+    "fig:acqfsm": "fig:05-acqfsm",
+    "fig:uart-sim": "fig:06-uart-sim",
+    "fig:ethernet-sim": "fig:06-ethernet-sim",
+    "fig:cpu-application": "fig:08-cpu-application",
+    "fig:vivado-start": "fig:08-vivado-start",
+    "fig:vivado-new": "fig:08-vivado-new",
+    "fig:vivado-set-project-name": "fig:08-vivado-set-project-name",
+    "fig:vivado-set-project-type": "fig:08-vivado-set-project-type",
+    "fig:vivado-select-fpga-info": "fig:08-vivado-select-fpga-info",
+    "fig:vivado-project-info-confirm": "fig:08-vivado-project-info-confirm",
+    "fig:vivado-new-project-end": "fig:08-vivado-new-project-end",
+    "fig:vivado-add-source-file": "fig:08-vivado-add-source-file",
+    "fig:vivado-add-sources-next": "fig:08-vivado-add-sources-next",
+    "fig:vivado-add-existing-files": "fig:08-vivado-add-existing-files",
+    "fig:vivado-add-constraints-sources": "fig:08-vivado-add-constraints-sources",
+    "fig:vivado-add-constraints-files": "fig:08-vivado-add-constraints-files",
+    "fig:vivado-generate-bitstream": "fig:08-vivado-generate-bitstream",
+    "fig:vivado-indicate-resynthesis": "fig:08-vivado-indicate-resynthesis",
+    "fig:vivado-open-hardware-manager": "fig:08-vivado-open-hardware-manager",
+    "fig:vivado-open-new-target": "fig:08-vivado-open-new-target",
+    "fig:vivado-program-device": "fig:08-vivado-program-device",
+    "fig:vivado-fpga-programmed": "fig:08-vivado-fpga-programmed",
+    "fig:vivado-fpga-output": "fig:08-vivado-fpga-output",
+    "fig:chip-flow": "fig:08-chip-flow",
+    "fig:pd-flow": "fig:08-pd-flow",
+    "fig:PVT-list": "fig:08-PVT-list",
+    "fig:timing1": "fig:08-timing1",
+    "fig:宏模块布局结果": "fig:08-macro-place",
+    "fig:IO-place": "fig:08-IO-place",
+    "fig:power-place": "fig:08-power-place",
+    "fig:place": "fig:08-place",
+    "fig:PostCTS": "fig:08-PostCTS",
+    "fig:PostCTS-res": "fig:08-PostCTS-res",
+    "fig:setup-time": "fig:08-setup-time",
+    "fig:布线后的版图": "fig:08-routed-layout",
+    "fig:timing-checkflow": "fig:08-timing-checkflow",
+    "fig:timing-report": "fig:08-timing-report",
+    "fig:fm-flow": "fig:08-fm-flow",
+    "fig:LEC-res": "fig:08-LEC-res",
+    "fig:power-report": "fig:08-power-report",
+    "fig:静态电压降分析结果": "fig:08-static-ir-drop",
+    "fig:动态电压降分析结果": "fig:08-dynamic-ir-drop",
+    "fig:设计参数与验证指标对比": "fig:08-design-metrics",
+    "fig:lvs-pass": "fig:08-lvs-pass",
+    "fig:layout1": "fig:08-layout1",
+    "fig:layout2": "fig:08-layout2",
+    "fig:pcb-struct": "fig:09-pcb-struct",
+    "fig:power": "fig:09-power",
+    "fig:sdram": "fig:09-sdram",
+    "fig:test-board": "fig:09-test-board",
+    "fig:slt": "fig:09-slt",
+    "00-preface:前言": "chap:00-preface",
+    "01-hardware-preparation:基础知识与技能准备": "chap:01-hardware-preparation",
+    "01-hardware-preparation:linux环境与eda工具掌握": "sec:01-hardware-preparation-001",
+    "01-hardware-preparation:shell": "sec:01-hardware-preparation-002",
+    "01-hardware-preparation:vim": "sec:01-hardware-preparation-003",
+    "01-hardware-preparation:makefile": "sec:01-hardware-preparation-004",
+    "01-hardware-preparation:相关书籍和资料": "sec:01-hardware-preparation-005",
+    "01-hardware-preparation:eda工具掌握": "sec:01-hardware-preparation-006",
+    "01-hardware-preparation:数字电路与逻辑设计": "sec:01-hardware-preparation-007",
+    "01-hardware-preparation:硬件设计仿真环境搭建": "sec:01-hardware-preparation-008",
+    "02-software-preparation:系统软件开发技能准备": "chap:02-software-preparation",
+    "02-software-preparation:交叉编译环境配置": "sec:02-software-preparation-001",
+    "02-software-preparation:下载预编译的交叉编译工具链": "sec:02-software-preparation-002",
+    "02-software-preparation:下载-qemu-仿真平台": "sec:02-software-preparation-003",
+    "02-software-preparation:loongarch-软件编写基础练习": "sec:02-software-preparation-004",
+    "02-software-preparation:为-loongarch-编写裸机汇编程序": "sec:02-software-preparation-005",
+    "02-software-preparation:编写汇编串口输出程序": "sec:02-software-preparation-006",
+    "02-software-preparation:使用汇编编写一个-hello-world": "sec:02-software-preparation-007",
+    "02-software-preparation:编写汇编及链接脚本": "sec:02-software-preparation-008",
+    "02-software-preparation:使用汇编编写一个冒泡排序函数": "sec:02-software-preparation-009",
+    "02-software-preparation:为-loongarch编写裸机-c-程序": "sec:02-software-preparation-010",
+    "02-software-preparation:编写汇编入口": "sec:02-software-preparation-011",
+    "02-software-preparation:编写编译及链接脚本": "sec:02-software-preparation-012",
+    "02-software-preparation:编写串口输入输出程序": "sec:02-software-preparation-013",
+    "02-software-preparation:使用-c语言编写一个-hello-world": "sec:02-software-preparation-014",
+    "02-software-preparation:使用-c语言编写一个快排程序": "sec:02-software-preparation-015",
+    "02-software-preparation:linux-系统编译": "sec:02-software-preparation-016",
+    "02-software-preparation:initrd内存文件系统": "sec:02-software-preparation-017",
+    "02-software-preparation:linux-内核编译": "sec:02-software-preparation-018",
+    "02-software-preparation:获取反汇编的-linux-代码objdump": "sec:02-software-preparation-019",
+    "02-software-preparation:在-linux-代码中插入-printk-辅助调试的介绍": "sec:02-software-preparation-020",
+    "02-software-preparation:printk概述": "sec:02-software-preparation-021",
+    "02-software-preparation:printk的使用": "sec:02-software-preparation-022",
+    "03-base-cpu:基础cpu设计实现": "chap:03-base-cpu",
+    "03-base-cpu:eula-core-简介": "sec:03-base-cpu-001",
+    "03-base-cpu:分支预测模块": "sec:03-base-cpu-002",
+    "03-base-cpu:译码模块设计": "sec:03-base-cpu-003",
+    "03-base-cpu:访存单元lsu设计": "sec:03-base-cpu-004",
+    "03-base-cpu:访存定序单元mou设计": "sec:03-base-cpu-005",
+    "03-base-cpu:csr-模块设计": "sec:03-base-cpu-006",
+    "03-base-cpu:流水线结构": "sec:03-base-cpu-007",
+    "03-base-cpu:处理数据相关性": "sec:03-base-cpu-008",
+    "03-base-cpu:旁路结构": "sec:03-base-cpu-009",
+    "04-advanced-cpu:进阶cpu设计实现": "chap:04-advanced-cpu",
+    "04-advanced-cpu:laincore简介": "sec:04-advanced-cpu-001",
+    "04-advanced-cpu:分支预测": "sec:04-advanced-cpu-002",
+    "04-advanced-cpu:整体架构": "sec:04-advanced-cpu-003",
+    "04-advanced-cpu:具体实现": "sec:04-advanced-cpu-004",
+    "04-advanced-cpu:ras实现": "sec:04-advanced-cpu-005",
+    "04-advanced-cpu:btb实现": "sec:04-advanced-cpu-006",
+    "04-advanced-cpu:pht实现": "sec:04-advanced-cpu-007",
+    "04-advanced-cpu:分支预测-1": "sec:04-advanced-cpu-008",
+    "04-advanced-cpu:指令译码": "sec:04-advanced-cpu-009",
+    "04-advanced-cpu:配置脚本运行环境": "sec:04-advanced-cpu-010",
+    "04-advanced-cpu:安装java": "sec:04-advanced-cpu-011",
+    "04-advanced-cpu:安装scala": "sec:04-advanced-cpu-012",
+    "04-advanced-cpu:安装sbt": "sec:04-advanced-cpu-013",
+    "04-advanced-cpu:脚本使用": "sec:04-advanced-cpu-014",
+    "04-advanced-cpu:编写解码器相关信息": "sec:04-advanced-cpu-015",
+    "04-advanced-cpu:运行脚本": "sec:04-advanced-cpu-016",
+    "04-advanced-cpu:cache实现": "sec:04-advanced-cpu-017",
+    "04-advanced-cpu:整体设计": "sec:04-advanced-cpu-018",
+    "04-advanced-cpu:流水线实现细节": "sec:04-advanced-cpu-019",
+    "04-advanced-cpu:sram-转发": "sec:04-advanced-cpu-020",
+    "04-advanced-cpu:流水线暂停处理": "sec:04-advanced-cpu-021",
+    "04-advanced-cpu:流水线状态机实现": "sec:04-advanced-cpu-022",
+    "04-advanced-cpu:状态机分离设计": "sec:04-advanced-cpu-023",
+    "04-advanced-cpu:旁路结构": "sec:04-advanced-cpu-024",
+    "05-complex-cpu:复杂cpu设计实现wired": "chap:05-complex-cpu",
+    "05-complex-cpu:wired-简介": "sec:05-complex-cpu-001",
+    "05-complex-cpu:代码仓库导读": "sec:05-complex-cpu-002",
+    "05-complex-cpu:工具脚本说明": "sec:05-complex-cpu-003",
+    "05-complex-cpu:重命名实现": "sec:05-complex-cpu-004",
+    "05-complex-cpu:rob-实现": "sec:05-complex-cpu-005",
+    "05-complex-cpu:rob-static-表": "sec:05-complex-cpu-006",
+    "05-complex-cpu:rob-valid-表": "sec:05-complex-cpu-007",
+    "05-complex-cpu:rob-data-表": "sec:05-complex-cpu-008",
+    "05-complex-cpu:rob-dynamic-表": "sec:05-complex-cpu-009",
+    "05-complex-cpu:cdb-实现": "sec:05-complex-cpu-010",
+    "05-complex-cpu:rob-退休": "sec:05-complex-cpu-011",
+    "05-complex-cpu:指令发射及唤醒实现": "sec:05-complex-cpu-012",
+    "05-complex-cpu:访存子系统实现": "sec:05-complex-cpu-013",
+    "05-complex-cpu:整体概览": "sec:05-complex-cpu-014",
+    "05-complex-cpu:访存-cpu-侧流水线": "sec:05-complex-cpu-015",
+    "05-complex-cpu:访存总线侧实现": "sec:05-complex-cpu-016",
+    "05-complex-cpu:访存-cpu-响应状态机": "sec:05-complex-cpu-017",
+    "05-complex-cpu:probe-响应状态机": "sec:05-complex-cpu-018",
+    "05-complex-cpu:无效化状态机": "sec:05-complex-cpu-019",
+    "05-complex-cpu:权限请求状态机": "sec:05-complex-cpu-020",
+    "06-agility:敏捷开发流程": "chap:06-agility",
+    "06-agility:整体测试思路": "sec:06-agility-001",
+    "06-agility:am": "sec:06-agility-002",
+    "06-agility:am简介": "sec:06-agility-003",
+    "06-agility:am配置方法": "sec:06-agility-004",
+    "06-agility:am编写测试": "sec:06-agility-005",
+    "06-agility:chisel": "sec:06-agility-006",
+    "06-agility:scala简介": "sec:06-agility-007",
+    "06-agility:chisel库简介": "sec:06-agility-008",
+    "06-agility:chisel环境的配置方法": "sec:06-agility-009",
+    "06-agility:chisel的使用技巧": "sec:06-agility-010",
+    "06-agility:verilator": "sec:06-agility-011",
+    "06-agility:verilator仿真流程简介": "sec:06-agility-012",
+    "06-agility:verilator仿真的优缺点": "sec:06-agility-013",
+    "06-agility:difftest-差分测试": "sec:06-agility-014",
+    "06-agility:差分测试简介": "sec:06-agility-015",
+    "06-agility:体系结构模拟器": "sec:06-agility-016",
+    "06-agility:接口与微结构状态": "sec:06-agility-017",
+    "06-agility:soc-验证": "sec:06-agility-018",
+    "06-agility:dpi-c-接口": "sec:06-agility-019",
+    "06-agility:soc外设验证": "sec:06-agility-020",
+    "07-soc-and-system:soc与系统移植": "chap:07-soc-and-system",
+    "07-soc-and-system:芯片整体soc设计": "sec:07-soc-and-system-001",
+    "07-soc-and-system:openmegasoc简介": "sec:07-soc-and-system-002",
+    "07-soc-and-system:soc适配": "sec:07-soc-and-system-003",
+    "07-soc-and-system:linux-系统板级移植": "sec:07-soc-and-system-004",
+    "07-soc-and-system:linux-设备树介绍": "sec:07-soc-and-system-005",
+    "07-soc-and-system:在-linux-设备树中添加外设ocsdc": "sec:07-soc-and-system-006",
+    "07-soc-and-system:为设备指定驱动": "sec:07-soc-and-system-007",
+    "07-soc-and-system:linux-系统应用移植": "sec:07-soc-and-system-008",
+    "07-soc-and-system:交叉编译应用软件流程简介": "sec:07-soc-and-system-009",
+    "07-soc-and-system:交叉编译应用软件实例lua": "sec:07-soc-and-system-010",
+    "08-verification-and-implementation:芯片实现与验证": "chap:08-verification-and-implementation",
+    "08-verification-and-implementation:需求分析确定处理器芯片的目标应用": "sec:08-verification-and-implementation-001",
+    "08-verification-and-implementation:确定芯片整体规格": "sec:08-verification-and-implementation-002",
+    "08-verification-and-implementation:芯片的fpga上板验证": "sec:08-verification-and-implementation-003",
+    "08-verification-and-implementation:创建工程": "sec:08-verification-and-implementation-004",
+    "08-verification-and-implementation:添加设计文件": "sec:08-verification-and-implementation-005",
+    "08-verification-and-implementation:添加约束文件": "sec:08-verification-and-implementation-006",
+    "08-verification-and-implementation:综合实现和生成比特流文件": "sec:08-verification-and-implementation-007",
+    "08-verification-and-implementation:烧写比特流文件": "sec:08-verification-and-implementation-008",
+    "08-verification-and-implementation:芯片实现的前端设计": "sec:08-verification-and-implementation-009",
+    "08-verification-and-implementation:芯片实现的测试与验证": "sec:08-verification-and-implementation-010",
+    "08-verification-and-implementation:一致性验证": "sec:08-verification-and-implementation-011",
+    "08-verification-and-implementation:综合后仿真网表仿真": "sec:08-verification-and-implementation-012",
+    "08-verification-and-implementation:芯片实现的后端设计": "sec:08-verification-and-implementation-013",
+    "08-verification-and-implementation:物理设计": "sec:08-verification-and-implementation-014",
+    "08-verification-and-implementation:芯片布局规划与布局": "sec:08-verification-and-implementation-015",
+    "08-verification-and-implementation:时钟树综合cts阶段": "sec:08-verification-and-implementation-016",
+    "08-verification-and-implementation:布线规划": "sec:08-verification-and-implementation-017",
+    "08-verification-and-implementation:芯片的验证与签核": "sec:08-verification-and-implementation-018",
+    "08-verification-and-implementation:时序验证": "sec:08-verification-and-implementation-019",
+    "08-verification-and-implementation:形式化验证": "sec:08-verification-and-implementation-020",
+    "08-verification-and-implementation:功耗验证与电压降分析": "sec:08-verification-and-implementation-021",
+    "08-verification-and-implementation:物理验证": "sec:08-verification-and-implementation-022",
+    "08-verification-and-implementation:最终版图": "sec:08-verification-and-implementation-023",
+    "09-test-and-show:回片测试与系统演示": "chap:09-test-and-show",
+    "09-test-and-show:芯片封装": "sec:09-test-and-show-001",
+    "09-test-and-show:测试pcb设计与制作": "sec:09-test-and-show-002",
+    "09-test-and-show:芯片测试系统": "sec:09-test-and-show-003",
+    "09-test-and-show:性能测试": "sec:09-test-and-show-004",
+    "09-test-and-show:功能演示": "sec:09-test-and-show-005",
+    "20-references:参考文献": "chap:20-references",
+    "30-resources:相关链接": "chap:30-resources"
+  },
+  "additional_code_blocks": [],
+  "method": "Current Rmd content, saved TeX/PDF cross-check, native XeLaTeX output. Original tabs preserved; explicit corrections recorded.",
+  "summary": {
+    "chapters": 12,
+    "numbered_chapters": 9,
+    "headings": 153,
+    "original_code_blocks": 176,
+    "migrated_code_blocks": 176,
+    "tables": 9,
+    "figures": 67,
+    "assets": 70,
+    "manual_references": 12,
+    "code_blocks_with_documented_corrections": 10
+  }
+}
